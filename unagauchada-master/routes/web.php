@@ -14,9 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('user/{user}', 'UserController@show');
-
-Route::get('usuario', function(){
-	return view('user');
-});
