@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriaGauchadasTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCategoriaGauchadasTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria_gauchadas', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('id_admin')
-            $table->foreign('id_admin')->references('id')->on('admins');
+            $table->string('contraseña');
+            $table->string('nick');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateCategoriaGauchadasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria_gauchadas');
+        Schema::dropIfExists('admins');
     }
 }

@@ -23,7 +23,7 @@
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
-                margin: 0;
+                margin: 300;
             }
 
             .full-height {
@@ -65,6 +65,7 @@
             }
 
             .m-b-md {
+                margin-top: 300px;
                 margin-bottom: 30px;
             }
 
@@ -94,20 +95,14 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md verde">
+                <div class="title m-b-md verde">               
                         UNA GAUCHADA                   
                 </div>
-
-                <div class="links">
-                   
-                    <a href="#">Iniciar Sesi&oacute;n</a>
-                    <a href="/NuevoUsuario">Registrarse</a>
-                 
-                </div>
+          
             </div>
         </div>
-            <?php 
-                include "C:/xampp/htdocs/unagauchada/unagauchada-master/resources/views/gauchadas.blade.php";
+             <?php 
+               // include "C:/xampp/htdocs/unagauchada/unagauchada-master/resources/views/gauchadas.blade.php";
             ?>
 
     </body>
