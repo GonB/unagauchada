@@ -23,6 +23,32 @@
                                 @endif
                             </div>
                         </div>
+                         <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
+                            <label for="nick" class="col-md-4 control-label">Nick</label>
+
+                            <div class="col-md-6">
+                                <input id="nick" type="text" class="form-control" name="nick" value="{{ old('nick') }}" required>
+
+                                @if ($errors->has('nick'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nick') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                         <div class="form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
+                            <label for="birthdate" class="col-md-4 control-label">Fecha Nacimiento</label>
+
+                            <div class="col-md-6">
+                                <input id="birthdate" type="date" class="form-control" name="birthdate" required>
+
+                                @if ($errors->has('birthdate'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birthdate') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail</label>

@@ -52,8 +52,8 @@ class RegisterController extends Controller
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'nick' => 'required|string|max:20';
-            'birthdate' => 'required|date';
+            'nick' => 'required|string|max:20',
+            'birthdate' => 'required|date',
         ]);
     }
 
@@ -67,11 +67,11 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'surname' => $data['surname']
+            'surname' => $data['surname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'nick' => $data['nick'];
-            'birthdate' => $data['birthdate'];
+            'nick' => $data['nick'],
+            'birthdate' => $data['birthdate'],
             ]);
     }
 }
