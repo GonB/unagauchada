@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <link rel="stylesheet" type="text/css" href="css/cssPrueba.css">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -78,8 +80,8 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    VIVA LA JODA
+                <div class="title m-b-md verde">
+                        VIVA LA JODA                    
                 </div>
 
                 <div class="links">
