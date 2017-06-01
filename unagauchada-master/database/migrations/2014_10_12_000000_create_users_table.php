@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->date('birthdate');
             /*$table-> ¿el tipo?('image');*/
             $table->integer('score')->unsigned();
+            $table->integer('credits');
             $table->rememberToken();
             $table->timestamps();
         });
