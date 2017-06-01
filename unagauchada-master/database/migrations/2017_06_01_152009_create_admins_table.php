@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriaUsuariosTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCategoriaUsuariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria_usuarios', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('admin_id')->unsigned();            
-            $table->foreign('admin_id')->references('id')->on('admin');
-            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateCategoriaUsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria_usuarios');
+        Schema::dropIfExists('admins');
     }
 }

@@ -15,13 +15,10 @@ class CreatePostulasTable extends Migration
     {
         Schema::create('postulas', function (Blueprint $table) {
             $table->increments('id');
-        /*
-        VER CÓMO SE DECLARAN LOS id DE LAS TABLAS Usuario y Gauchada
-        COMO FORÁNEAS. Y CÓMO OBTENGO LAS MISMAS PARA PODER INSERTARLAS.
-
-            $table->foreingkey('idUsuario');
-            $table->foreingkey('idGauchada');
-        */
+            $table->integer('id_user')->unsigned();            
+            $table->foreign('id_user')->references('id')->on('User');
+            $table->integer('id_Gauchada')->unsigned();            
+            $table->foreign('id_Gauchada')->references('id')->on('Gauchada');
             $table->boolean('seleccionado');
             $table->timestamps();
         });
