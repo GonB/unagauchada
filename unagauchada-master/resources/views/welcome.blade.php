@@ -97,13 +97,7 @@
                 <div class="title m-b-md verde">               
                         UNA GAUCHADA                   
                 </div>
-
-                <div class="links">
-                   
-                    <a href="#">Iniciar Sesion</a>
-                    <a href="/NuevoUsuario">Registrarse</a>
-                 
-                </div>
+          
             </div>
         </div>
              <?php 
