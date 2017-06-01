@@ -1,5 +1,8 @@
+
+
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,11 +27,11 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 35vh;
             }
 
             .flex-center {
-                align-items: center;
+               
                 display: flex;
                 justify-content: center;
             }
@@ -64,6 +67,17 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .contenedor-gauchadas{
+                margin: auto;
+                border-color: black;
+                border-radius: 2px;
+                text-align: center;
+
+            }
+
+
+
         </style>
     </head>
     <body>
@@ -81,17 +95,21 @@
 
             <div class="content">
                 <div class="title m-b-md verde">
-                        VIVA LA JODA                    
+                        UNA GAUCHADA                   
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                   
+                    <a href="#">Iniciar Sesi&oacute;n</a>
+                    <a href="/NuevoUsuario">Registrarse</a>
+                 
                 </div>
             </div>
         </div>
+            <?php 
+                include "C:/xampp/htdocs/unagauchada/unagauchada-master/resources/views/gauchadas.blade.php";
+            ?>
+
     </body>
+
 </html>

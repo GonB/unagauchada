@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return "usuario";
     }
 
     /**
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return "crear usuario";
     }
 
     /**
