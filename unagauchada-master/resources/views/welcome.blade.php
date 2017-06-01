@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md verde">
-                        VIVA LA JODA                    
+                        ALE PELOTUDO                   
                 </div>
 
                 <div class="links">
