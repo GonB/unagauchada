@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('nick');
+            $table->string('nick')->unique();
             $table->date('birthdate');
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categoria_usuarios');
