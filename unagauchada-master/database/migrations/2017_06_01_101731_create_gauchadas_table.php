@@ -15,7 +15,7 @@ class CreateGauchadasTable extends Migration
     {
         Schema::create('gauchadas', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha_publicacion');
+        /*    $table->date('fecha_publicacion');  */
             $table->date('fecha_limite');
             $table->string('titulo');
             $table->text('descripcion');
