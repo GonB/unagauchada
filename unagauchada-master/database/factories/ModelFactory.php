@@ -29,7 +29,7 @@ $factory->define(App\Gauchada::class, function (Faker\Generator $faker) {
 
     return [
         'titulo' => $faker->unique()->text(25),
-        'descipcion' => $faker->unique()->text(300),
+        'descripcion' => $faker->unique()->text(300),
         'fecha_limite' => date('Y-m-d'),
     ];
 });
