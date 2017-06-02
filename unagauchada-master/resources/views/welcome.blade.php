@@ -93,9 +93,7 @@
             @endif
 
             <div class="content">
-            <!--    <div class="title m-b-md verde">UNA GAUCHADA</div>   -->
-                <img src="images/imágen_de_fondo.png" alt="Una Gauchada">
-          
+                <img src="https://static.tumblr.com/9817bfb93e61ddc7d59e3edfa53f38d7/vhrhomj/Gqbocuj67/tumblr_static_cxyqhzp2ceg44css0kswkckgw_2048_v2.png" alt="Una Gauchada">
             </div>
         </div>
              <?php 
