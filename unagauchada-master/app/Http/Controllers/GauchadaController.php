@@ -35,11 +35,10 @@ class GauchadaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        /*$this->validate($request,[
             titulo => 'required',
             descripcion => 'required',
-            fecha_limite => 'required',
-            ]);
+            ]);*/
         dd($request->all());
     }
 
@@ -49,9 +48,10 @@ class GauchadaController extends Controller
      * @param  \App\Gauchada  $gauchada
      * @return \Illuminate\Http\Response
      */
-    public function show(Gauchada $gauchada)
+    public function show(Gauchada $gauchada_id)
     {
-        //
+
+        return view('gauchada.show')-> with(['gauchada => $gauchada']);
     }
 
     /**

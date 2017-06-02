@@ -18,7 +18,7 @@ class CreateGauchadasTable extends Migration
             $table->date('fecha_publicacion');
             $table->date('fecha_limite');
             $table->string('titulo');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

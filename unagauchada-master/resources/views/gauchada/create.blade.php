@@ -21,8 +21,8 @@
 		
 		{{ csrf_field()}}	
 		<div class="form-group">
-			<label for="titulo">Titulo:</label>
-			<input type="text" name="titulo" class="form-control" value="" style="width: 626px" />
+			<label for="Titulo">Titulo:</label>
+			<input type="string" name='titulo' class="form-control" value="{{old('titulo')}}" style="width: 626px" />
 
 			
 
