@@ -35,11 +35,12 @@ class GauchadaController extends Controller
      */
     public function store(Request $gauchada)
     {
-        /*$this->validate($request,[
-            titulo => 'required',
-            descripcion => 'required',
-            ]);*/
-          return Gauchada::create([
+         $this->validate($gauchada, [
+        'titulo' => 'required',
+        'descripcion' => 'required',
+    ]);
+
+           return  Gauchada::create([
             'titulo' => $gauchada['titulo'],
             'descripcion' => $gauchada['descripcion'],
             'fecha_limite' => $gauchada['fecha_limite'],
