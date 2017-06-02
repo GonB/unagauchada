@@ -78,7 +78,6 @@
             @endif
 
             <div class="content">
-            <h1>SARASA</h1>
                 @yield('content') <!-- Con esto Blade entiende que es una parte de la plantilla que va a ser dinámica.
                 El identificador de yield() 'content' no tiene que coincidir con el anterior "content", es únicamente`para saber cómo se llama esa porción de código. -->
             </div>

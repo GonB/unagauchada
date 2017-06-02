@@ -24,7 +24,7 @@ class GauchadaController extends Controller
      */
     public function create()
     {
-        //
+        return view('gauchada.create');
     }
 
     /**
@@ -35,7 +35,12 @@ class GauchadaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            titulo => 'required',
+            descripcion => 'required',
+            fecha_limite => 'required',
+            ]);
+        dd($request->all());
     }
 
     /**
