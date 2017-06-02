@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 
@@ -18,7 +16,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: black;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -55,9 +53,9 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: white;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -95,9 +93,8 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md verde">               
-                        UNA GAUCHADA                   
-                </div>
+            <!--    <div class="title m-b-md verde">UNA GAUCHADA</div>   -->
+                <img src="images/imágen_de_fondo.png" alt="Una Gauchada">
           
             </div>
         </div>
