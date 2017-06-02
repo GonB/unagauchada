@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('nick')->unique();
             $table->date('birthdate');
-            $table->integer('id_categoria')->unsigned();
+            $table->integer('id_categoria')->unsigned()->nullable();
             $table->foreign('id_categoria')->references('id')->on('categoria_usuarios');
-            $table->integer('score')->unsigned();
-            $table->integer('credits');
+            $table->integer('score')->unsigned()->nullable();
+            $table->integer('credits')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
