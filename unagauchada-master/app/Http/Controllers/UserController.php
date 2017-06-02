@@ -14,7 +14,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "usuario";
     }
 
     /**
@@ -46,8 +45,6 @@ class UserController extends Controller
      */
     public function show($user)
     {
-        $usr = User::find($user);
-        return view('user', compact('usr'));
     }    
 
     /**
