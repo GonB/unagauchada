@@ -20,4 +20,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/gauchada/create', 'GauchadaController@create')->name('create_gauchada_path');
 Route::post('/gauchada', 'GauchadaController@store')->name('store_gauchada_path');
-Route::get('/gauchada/{gauchada_id}', 'GauchadaController@show')->('show_gauchada_path');
+Route::get('/gauchada/', 'GauchadaController@show')->name('show_gauchada_path');
