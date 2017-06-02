@@ -24,3 +24,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'birthdate' => date('Y-m-d'),
     ];
 });
+
+$factory->define(App\Gauchada::class, function (Faker\Generator $faker) {
+
+    return [
+        'titulo' => $faker->unique()->text(25),
+        'descipcion' => $faker->unique()->text(300),
+        'fecha_limite' => date('Y-m-d'),
+    ];
+});
