@@ -42,11 +42,11 @@ class GauchadaController extends Controller
         'titulo' => 'required',
         'descripcion' => 'required',
     ]);
-       return  Gauchada::create([
+      return Gauchada::create([
+            'user_id' => Auth::id(),
             'titulo' => $gauchada['titulo'],
             'descripcion' => $gauchada['descripcion'],
             'fecha_limite' => $gauchada['fecha_limite'],
-            'user_id' => Auth::id(),
             ]);
 
     }

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Gauchada extends Model
 {
     protected $fillable = [
-        'titulo', 'descripcion', 'fecha_limite',
+        'user_id','titulo', 'descripcion', 'fecha_limite',
     ];
 }

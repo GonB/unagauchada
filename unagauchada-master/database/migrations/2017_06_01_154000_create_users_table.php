@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->integer('score')->unsigned()->nullable();
             $table->integer('credits')->unsigned()->nullable();
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
