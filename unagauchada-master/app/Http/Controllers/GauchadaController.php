@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gauchada;
 use Illuminate\Http\Request;
+use Auth;
 
 class GauchadaController extends Controller
 {
@@ -14,7 +15,9 @@ class GauchadaController extends Controller
      */
     public function index()
     {
-        //
+        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+
+        return view ('gauchada.index')->with(['gauchadas' => $gauchada]);
     }
 
     /**
@@ -39,11 +42,11 @@ class GauchadaController extends Controller
         'titulo' => 'required',
         'descripcion' => 'required',
     ]);
-
-           return  Gauchada::create([
+       return  Gauchada::create([
             'titulo' => $gauchada['titulo'],
             'descripcion' => $gauchada['descripcion'],
             'fecha_limite' => $gauchada['fecha_limite'],
+            'user_id' => Auth::id(),
             ]);
 
     }
