@@ -24,20 +24,17 @@
 			<label for="Titulo">Titulo:</label>
 			<input type="string" name='titulo' class="form-control" value="{{old('titulo')}}" style="width: 626px" />
 
-			
-
 		</div>
 
 		<div class="form-group">
 			<label for="Descripcion">Descripcion:</label>
 			<textarea rows="5" name="descripcion" class="form-control" style=" width: 626px" /></textarea>
 			
-
 		</div>
 		<div class="form-group">
-			
 			<label for="fecha_limite"> Fecha Limite</label>
 			<input type="date" name="fecha_limite" class="form-control" style="width: 626px"/>
+			
 		</div>
 
 		<div class="form-group">
