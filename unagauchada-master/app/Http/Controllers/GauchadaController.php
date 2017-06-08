@@ -17,7 +17,7 @@ class GauchadaController extends Controller
     {
         $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
 
-        return view ('gauchada.index')->with(['gauchadas' => $gauchada]);
+        return view ('gauchada.index')->with(['gauchada' => $gauchada]);
     }
 
     /**
@@ -27,7 +27,9 @@ class GauchadaController extends Controller
      */
     public function create()
     {
-        return view('gauchada.create');
+        
+        $gauchada = new Gauchada;
+        return view('gauchada.create')->with(['gauchada' => $gauchada]);
     }
 
     /**
@@ -42,13 +44,13 @@ class GauchadaController extends Controller
         'titulo' => 'required',
         'descripcion' => 'required',
     ]);
-      return Gauchada::create([
+    Gauchada::create([
             'user_id' => Auth::id(),
             'titulo' => $gauchada['titulo'],
             'descripcion' => $gauchada['descripcion'],
             'fecha_limite' => $gauchada['fecha_limite'],
             ]);
-
+     return redirect()->route('gauchadas_path');
     }
 
     /**
@@ -71,8 +73,8 @@ class GauchadaController extends Controller
      */
     public function edit(Gauchada $gauchada)
     {
-        //
-    }
+        return view( 'gauchada.edit')-> with (['gauchada' => $gauchada]);
+        }
 
     /**
      * Update the specified resource in storage.
