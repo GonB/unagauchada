@@ -18,7 +18,8 @@
 
 	<form action="{{route('update_gauchada_path', ['gauchada' => $gauchada->id])}}" method='POST'>
 		
-		{{ csrf_field()}}	
+		{{ csrf_field()}}
+		{{ method_field('PUT') }}
 		<div class="form-group">
 			<label for="Titulo">Titulo:</label>
 			<input type="string" name='titulo' class="form-control" value="{{$gauchada->titulo}}" style="width: 626px" />
@@ -36,7 +37,7 @@
 		<div class="form-group">
 			
 			<label for="fecha_limite"> Fecha Limite</label>
-			<input type="date" name="fecha_limite" class="form-control" style="width: 626px"/>
+			<input type="date" name="fecha_limite" class="form-control" style="width: 626px" value="{{ $gauchada->fecha_limite or old('fecha_limite') }}"/>
 		</div>
 
 		<div class="form-group">

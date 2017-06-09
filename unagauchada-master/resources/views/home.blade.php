@@ -7,18 +7,17 @@
           <div class="flex-center position-ref full-height">
                 <div class="top-right links">
                       <div class="flex-center position-ref full-height">
-           
-                    @if (Auth::check())
-                        <h1><a href="{{ url('/gauchada/create') }}">Crear Gauchada</a></h1>
-                   
-                    @endif
-                     </div>
-                </div>
+                        </div>
+            </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading"><?php echo Auth::user()->name ?></div>
 
                 <div class="panel-body">
-                    You are logged in!
+                      @if (Auth::check())
+                        <a href="{{ url('/gauchada/create') }}">Crear Gauchada</a><br>
+                        <a href="{{url('/gauchada')}}">Mis Gauchadas</a>
+                   
+                    @endif
                 </div>
             
             </div>

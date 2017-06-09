@@ -41,8 +41,9 @@ class GauchadaController extends Controller
     public function store(Request $gauchada)
     {
          $this->validate($gauchada, [
-        'titulo' => 'required',
-        'descripcion' => 'required',
+        'titulo' => 'required|min:5',
+        'descripcion' => 'required|min:15',
+        'fecha_limite' => 'required|after:today'
     ]);
     Gauchada::create([
             'user_id' => Auth::id(),
@@ -59,10 +60,9 @@ class GauchadaController extends Controller
      * @param  \App\Gauchada  $gauchada
      * @return \Illuminate\Http\Response
      */
-    public function show(Gauchada $gauchada_id)
+    public function show(Gauchada $gauchada)
     {
-
-        return view('gauchada.show')-> with(['gauchada => $gauchada']);
+        return view('gauchada.show')->with(['gauchada' => $gauchada]);
     }
 
     /**
@@ -85,8 +85,13 @@ class GauchadaController extends Controller
      */
     public function update(Request $request, Gauchada $gauchada)
     {
-        //
+        $gauchada->update(
+            $request->only('titulo', 'descripcion', 'fecha_limite')
+        );
+        session()->flash('message', 'Gauchada Actualizada!');
+        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -94,8 +99,10 @@ class GauchadaController extends Controller
      * @param  \App\Gauchada  $gauchada
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gauchada $gauchada)
+    public function delete(Gauchada $gauchada)
     {
-        //
+        $gauchada->delete();
+        session()->flash('message', 'Gauchada Borrada!');
+        return redirect()->route('gauchadas_path');
     }
 }
