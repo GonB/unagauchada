@@ -85,20 +85,20 @@
                 <div class="top-right links">
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Perfil</a>
+                           <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
                     @else
                         <a href="{{ url('/login') }}">Loguearse</a>
                         <a href="{{ url('/register') }}">Registrarse</a>
+                           <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
                 <img src="https://static.tumblr.com/9817bfb93e61ddc7d59e3edfa53f38d7/vhrhomj/Gqbocuj67/tumblr_static_cxyqhzp2ceg44css0kswkckgw_2048_v2.png" alt="Una Gauchada">
+
             </div>
         </div>
-             <?php 
-               // include "C:/xampp/htdocs/unagauchada/unagauchada-master/resources/views/gauchadas.blade.php";
-            ?>
 
     </body>
 

@@ -20,6 +20,13 @@ class GauchadaController extends Controller
         return view ('gauchada.index')->with(['gauchada' => $gauchada]);
     }
 
+     public function indexpublico()
+    {
+        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+
+        return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -91,7 +98,6 @@ class GauchadaController extends Controller
         session()->flash('message', 'Gauchada Actualizada!');
         return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
-
 
     /**
      * Remove the specified resource from storage.
