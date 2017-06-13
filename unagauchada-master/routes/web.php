@@ -23,8 +23,13 @@ Route::get('/gauchada/{gauchada}/edit', 'GauchadaController@edit')->name('edit_g
 Route::delete('/gauchada/{gauchada}/delete', 'GauchadaController@delete')->name('delete_gauchada_path');
 Route::put('/gauchada/{gauchada}', 'GauchadaController@update')->name('update_gauchada_path');
 Route::get('/gauchada/index/publico', 'GauchadaController@indexpublico')->name('indexpublico_gauchada_path');
+Route::get('/gauchada', 'GauchadaController@index')->name('gauchadas_path');
+Route::get('/gauchada/{gauchada}', 'GauchadaController@show')->name('gauchada_path');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/gauchada', 'GauchadaController@index')->name('gauchadas_path');
-Route::get('/gauchada/{gauchada}', 'GauchadaController@show')->name('gauchada_path');
+Route::get('/perfil', 'UserController@index')->name('perfil_index_path');
+Route::get('/perfil/edit', 'UserController@edit')->name('edit_perfil_path');
+Route::put('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
+
+

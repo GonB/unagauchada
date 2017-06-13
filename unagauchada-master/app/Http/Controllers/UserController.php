@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Auth;
 
 class UserController extends Controller
 {
@@ -14,6 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        return view('perfil.index');
     }
 
     /**
@@ -53,9 +55,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view( 'perfil.edit');
     }
 
     /**
@@ -65,9 +67,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $user_id)
+    {  
+            $user = User::find($user_id);
+
+           $user->update($request->only('name', 'email','password'));
+        return redirect()->route('perfil_index_path');
     }
 
     /**

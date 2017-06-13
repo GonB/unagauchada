@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -48,16 +49,22 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->nick }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                    <a href="{{ route('perfil_index_path') }}"
+                                            onclick="event.preventDefault();
+                                                    .submit();">
+                                            Ver Perfil
+                                        </a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Cerrar Sesión
                                         </a>
+                                         
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
