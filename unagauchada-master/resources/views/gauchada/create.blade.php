@@ -28,7 +28,7 @@
 
 		<div class="form-group">
 			<label for="Descripcion">Descripcion:</label>
-			<textarea rows="5" name="descripcion" class="form-control" style=" width: 626px" /></textarea>
+			<textarea rows="5" name="descripcion" id="descripcion" class="form-control" style=" width: 626px" />{{ old('descripcion') }}</textarea>
 			
 		</div>
 		<div class="form-group">
