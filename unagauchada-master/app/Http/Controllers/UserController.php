@@ -47,6 +47,7 @@ class UserController extends Controller
      */
     public function show($user)
     {
+        //
     }    
 
     /**
@@ -57,7 +58,7 @@ class UserController extends Controller
      */
     public function edit()
     {
-        return view( 'perfil.edit');
+        return view('perfil.edit');
     }
 
     /**
@@ -69,9 +70,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $user_id)
     {  
-            $user = User::find($user_id);
+        $user = User::find($user_id);
 
-           $user->update($request->only('name', 'email','password'));
+        $user->update($request->only('name', 'email','password'));
         return redirect()->route('perfil_index_path');
     }
 
@@ -84,5 +85,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request, $search)
+    {
+        $search = urldecode($search);
+        $user = User::where('nick', $search) -> first();
+        //return $user;
+        return view('user.show') -> with('user', $user);
     }
 }

@@ -84,8 +84,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
+                        <form class="navbar-form navbar-left" role="search" action="{{ url('/usuario/searchredirect') }}">
+                            <input type="text" class="form-control" name='search' placeholder="Buscar usuario" />
+                            <button type="submit" class="btn btn-default">Buscar</button>
+                        </form>
                         <a href="{{ url('/home') }}">Perfil</a>
-                           <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
+                        <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
                     @else
                         <a href="{{ url('/login') }}">Loguearse</a>
                         <a href="{{ url('/register') }}">Registrarse</a>
