@@ -10,12 +10,16 @@
                         </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><?php echo Auth::user()->name ?></div>
+                <div class="panel-heading">
+                <?php echo Auth::user()->name;
+                      echo "_________________________ Creditos:";
+                      echo Auth::user()->credits?></div>
 
                 <div class="panel-body">
                       @if (Auth::check())
                         <a href="{{ url('/gauchada/create') }}">Crear Gauchada</a><br>
-                        <a href="{{url('/gauchada')}}">Mis Gauchadas</a>
+                        <a href="{{url('/gauchada')}}">Mis Gauchadas</a><br>
+                         <a href="{{url('/pago')}}">Comprar Creditos</a>
                    
                     @endif
                 </div>

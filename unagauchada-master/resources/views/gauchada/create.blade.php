@@ -18,6 +18,7 @@
 	@endif
 
 	<form action="{{route('store_gauchada_path')}}" method='POST'>
+		<div class="col-md-8 col-md-offset-2">
 		
 		{{ csrf_field()}}	
 		<div class="form-group">
@@ -41,6 +42,7 @@
 			<button type="submit" class="btn btn-primary" autofocus="">Crear Gauchada</button> 			
 
 		</div>
+	</div>
 		
 	</form>
 

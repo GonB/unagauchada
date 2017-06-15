@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Gauchada;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\input;
+use App\User;
 
 class GauchadaController extends Controller
 {
@@ -110,5 +112,17 @@ class GauchadaController extends Controller
         $gauchada->delete();
         session()->flash('message', 'Gauchada Borrada!');
         return redirect()->route('gauchadas_path');
+    }
+
+
+    public function search(Request $request)
+    {
+    if (empty(Input::get('search'))) return redirect()->back();
+    
+    $search = urlencode(e(Input::get('search')));
+    $gauchada = Gauchada::where('titulo', $search) -> first();
+    return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
+
+   
     }
 }

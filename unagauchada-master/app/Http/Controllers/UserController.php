@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Auth;
+use Auth;
 use Illuminate\Support\Facades\input;
 
 class UserController extends Controller
@@ -73,8 +73,14 @@ class UserController extends Controller
     {  
         $user = User::find($user_id);
 
-        $user->update($request->only('name', 'email','password'));
+        $user->update($request->only('name', 'email','password','credits'));
         return redirect()->route('perfil_index_path');
+    }
+    public function update_creditos(Request $request, $pago)
+    {
+        $user =User::find(Auth::user());
+        $user->update($pago->only('credits'));
+        return redirect()->route('home');
     }
 
     /**
@@ -94,6 +100,10 @@ class UserController extends Controller
     
     $search = urlencode(e(Input::get('search')));
     $user = User::where('nick', $search) -> first();
-    return view('user.show') -> with('user', $user);
+    if ($user != null) {
+        return view('perfil.show') -> with('user', $user);
+    }else
+        redirect()->route('home');
+   
     }
 }
