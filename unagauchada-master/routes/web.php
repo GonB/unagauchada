@@ -33,14 +33,4 @@ Route::get('/perfil', 'UserController@index')->name('perfil_index_path');
 Route::get('/perfil/edit', 'UserController@edit')->name('edit_perfil_path');
 Route::put('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
 
-
-Route::get('usuario/searchredirect', function(){
-     
-    // Nuevo: si el argumento search está vacío regresar a la página anterior
-    // if (empty(Input::get('search'))) return redirect()->back();
-    
-    $search = urlencode(e(Input::get('search')));
-    $route = "/usuario/$search";
-    return redirect($route);
-}); 
-Route::get("/usuario/{search}", "UserController@search");
+Route::get('/perfil/search', 'UserController@search')->name('buscar_perfil_path');

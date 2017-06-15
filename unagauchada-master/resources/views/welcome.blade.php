@@ -84,10 +84,6 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <form class="navbar-form navbar-left" role="search" action="{{ url('/usuario/searchredirect') }}">
-                            <input type="text" class="form-control" name='search' placeholder="Buscar usuario" />
-                            <button type="submit" class="btn btn-default">Buscar</button>
-                        </form>
                         <a href="{{ url('/home') }}">Perfil</a>
                         <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
                     @else
@@ -100,6 +96,10 @@
 
             <div class="content">
                 <img src="https://static.tumblr.com/9817bfb93e61ddc7d59e3edfa53f38d7/vhrhomj/Gqbocuj67/tumblr_static_cxyqhzp2ceg44css0kswkckgw_2048_v2.png" alt="Una Gauchada">
+                 <form class="navbar-form navbar-left" role="search" action="{{ route('buscar_perfil_path') }}">
+                            <input type="text" class="form-control" name='search' placeholder="Buscar usuario" />
+                            <button type="submit" class="btn btn-default">Buscar</button>
+                        </form>
 
             </div>
         </div>

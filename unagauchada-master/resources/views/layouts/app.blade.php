@@ -37,7 +37,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <form class="navbar-form navbar-left" role="search" action="{{ route('buscar_perfil_path') }}">
+                            <input type="text" class="form-control" name='search' placeholder="Buscar usuario" />
+                            <button type="submit" class="btn btn-default">Buscar</button>
+                        </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

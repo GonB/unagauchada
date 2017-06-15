@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Auth;
+use Illuminate\Support\Facades\input;
 
 class UserController extends Controller
 {
@@ -87,11 +88,12 @@ class UserController extends Controller
         //
     }
 
-    public function search(Request $request, $search)
+    public function search(Request $request)
     {
-        $search = urldecode($search);
-        $user = User::where('nick', $search) -> first();
-        //return $user;
-        return view('user.show') -> with('user', $user);
+    if (empty(Input::get('search'))) return redirect()->back();
+    
+    $search = urlencode(e(Input::get('search')));
+    $user = User::where('nick', $search) -> first();
+    return view('user.show') -> with('user', $user);
     }
 }
