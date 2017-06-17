@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\input;
+use App\Pago;
 
 class UserController extends Controller
 {
@@ -76,11 +77,12 @@ class UserController extends Controller
         $user->update($request->only('name', 'email','password','credits'));
         return redirect()->route('perfil_index_path');
     }
-    public function update_creditos(Request $request, $pago)
+    public function update_creditos(Pago $pago)
     {
-        $user =User::find(Auth::user());
-        $user->update($pago->only('credits'));
-        return redirect()->route('home');
+       $user = User::find($pago->user_id);
+       $user->credits=$user->credits+$pago->creditos;
+       $user->save();
+       return redirect()->route('home');
     }
 
     /**

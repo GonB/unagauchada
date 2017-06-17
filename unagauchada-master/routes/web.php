@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Rutas gauchada
 Route::get('/gauchada/create', 'GauchadaController@create')->name('create_gauchada_path');
 Route::post('/gauchada/', 'GauchadaController@store')->name('store_gauchada_path');
 Route::get('/gauchada/{gauchada}/edit', 'GauchadaController@edit')->name('edit_gauchada_path');
@@ -27,15 +29,16 @@ Route::get('/gauchada/index/publico', 'GauchadaController@indexpublico')->name('
 Route::get('/gauchada', 'GauchadaController@index')->name('gauchadas_path');
 Route::get('/gauchada/{gauchada}', 'GauchadaController@show')->name('gauchada_path');
 Route::get('/gauchada/search', 'GauchadaController@search')->name('buscar_gauchada_path');
-Route::get('/home', 'HomeController@index')->name('home');
 
+
+// Rutas perfil
 Route::get('/perfil', 'UserController@index')->name('perfil_index_path');
 Route::get('/perfil/edit', 'UserController@edit')->name('edit_perfil_path');
 Route::put('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
-
 Route::get('/perfil/search', 'UserController@search')->name('buscar_perfil_path');
 
+//Rutas pago
 Route::get('/pago', 'PagoController@create')->name('create_pago_path');
 Route::post('/pago', 'PagoController@store')->name('store_pago_path');
-Route::get('/pago/update', 'UserController@update_creditos')->name('update_creditos_path');
+Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('update_creditos_path');
 

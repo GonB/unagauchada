@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
+<?php use App\User; ?>
 @section('content')
      <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
             <h2>{{ $gauchada->titulo }}</h2>
             <p>{{ $gauchada->descripcion }}</p>
             <p>{{$gauchada->fecha_limite}}</p>

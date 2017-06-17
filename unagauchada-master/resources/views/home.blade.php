@@ -17,7 +17,7 @@
 
                 <div class="panel-body">
                       @if (Auth::check())
-                        <a href="{{ url('/gauchada/create') }}">Crear Gauchada</a><br>
+                        <a href="{{ url('/gauchada/create') }}">Crear Gauchada (4 creditos necesarios)</a><br>
                         <a href="{{url('/gauchada')}}">Mis Gauchadas</a><br>
                          <a href="{{url('/pago')}}">Comprar Creditos</a>
                    

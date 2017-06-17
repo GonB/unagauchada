@@ -44,14 +44,14 @@ class PagoController extends Controller
         'vencimiento' => 'required|after:today',
         'creditos' => 'required|max:999',
     ]);
-    Pago::create([
+    $pago=Pago::create([
             'user_id' => Auth::id(),
             'numero_tarjeta' => $pago['numero_tarjeta'],
             'cod_seguridad' => $pago['cod_seguridad'],
             'vencimiento' => $pago['vencimiento'],
             'creditos' => $pago['creditos'],
             ]);
-    return redirect()->route('update_creditos_path')->with(['pago' =>$pago]);
+    return view ('pago.update')->with(['pago' => $pago]);
     }
 
     /**

@@ -49,18 +49,24 @@ class GauchadaController extends Controller
      */
     public function store(Request $gauchada)
     {
-         $this->validate($gauchada, [
-        'titulo' => 'required|min:5',
-        'descripcion' => 'required|min:15',
-        'fecha_limite' => 'required|after:today'
-    ]);
-    Gauchada::create([
-            'user_id' => Auth::id(),
-            'titulo' => $gauchada['titulo'],
-            'descripcion' => $gauchada['descripcion'],
-            'fecha_limite' => $gauchada['fecha_limite'],
-            ]);
-     return redirect()->route('gauchadas_path');
+        $user=User::find(Auth::id());
+        if($user->credits>1){
+           $this->validate($gauchada, [
+            'titulo' => 'required|min:5',
+            'descripcion' => 'required|min:15',
+            'fecha_limite' => 'required|after:today'
+        ]);
+        Gauchada::create([
+                'user_id' => Auth::id(),
+             'titulo' => $gauchada['titulo'],
+             'descripcion' => $gauchada['descripcion'],
+             'fecha_limite' => $gauchada['fecha_limite'],
+               ]);
+             $user->credits=$user->credits-1;
+             $user->save();
+            return redirect()->route('gauchadas_path');
+        }else
+            return view('gauchada.error');
     }
 
     /**
