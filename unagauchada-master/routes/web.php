@@ -38,6 +38,7 @@ Route::put('/perfil/{user_id}', 'UserController@update')->name('update_perfil_pa
 Route::get('/perfil/search', 'UserController@search')->name('buscar_perfil_path');
 
 //Rutas pago
+
 Route::get('/pago', 'PagoController@create')->name('create_pago_path');
 Route::post('/pago', 'PagoController@store')->name('store_pago_path');
 Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('update_creditos_path');
