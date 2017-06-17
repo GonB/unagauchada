@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Postula;
 use Illuminate\Http\Request;
+use App\Gauchada;
+use Auth;
 
 class PostulaController extends Controller
 {
@@ -24,7 +26,6 @@ class PostulaController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -33,10 +34,18 @@ class PostulaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Gauchada $gauchada)
     {
-        //
+        $gauch=Gauchada::find($_GET['gauchada']);
+        $post=Postula::find($_GET['gauchada']);
+         Postula::create([
+                'user_id' => Auth::id(),
+             'gauchada_id' => $gauch->id,
+               ]);
+         return redirect()->route('indexpublico_gauchada_path');
+         
     }
+    
 
     /**
      * Display the specified resource.

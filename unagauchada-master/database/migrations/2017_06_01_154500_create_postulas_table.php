@@ -15,11 +15,11 @@ class CreatePostulasTable extends Migration
     {
         Schema::create('postulas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user')->unsigned();            
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->integer('id_Gauchada')->unsigned();            
-            $table->foreign('id_Gauchada')->references('id')->on('gauchadas');
-            $table->boolean('seleccionado');
+            $table->integer('user_id')->unsigned();            
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('gauchada_id')->unsigned();            
+            $table->foreign('gauchada_id')->references('id')->on('gauchadas');
+            $table->boolean('seleccionado')->default(false);
             $table->timestamps();
         });
     }

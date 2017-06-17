@@ -2,11 +2,14 @@
 @extends('layouts.app') 
  <?php 
    use App\User;
+   use App\Postula;
   ?>
 @section('content')
     @foreach($gauchada as $gauchada)
+
         <div class="row">
-             <div class="col-md-8 col-md-offset-2">
+           
+              <div class="col-md-8 col-md-offset-2">
 
                 <small class="pull-left">
 
@@ -17,9 +20,19 @@
                     echo "Creado por $user->nick"
                   ?>
                   <p>Posteado: {{ $gauchada->created_at->diffForHumans() }}</p>
+
+
                   
                 </small>
+
             </div>
+           
+           <form action="{{route('store_postula_path', ['gauchada' => $gauchada->id])}}" method='POST'>
+           {{ csrf_field()}}
+            <small class="pull-center">
+           <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
+          </small>
+          </form>
         </div>
         <hr>
     @endforeach

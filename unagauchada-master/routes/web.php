@@ -43,3 +43,7 @@ Route::get('/pago', 'PagoController@create')->name('create_pago_path');
 Route::post('/pago', 'PagoController@store')->name('store_pago_path');
 Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('update_creditos_path');
 
+//Rutas Postula
+
+Route::post('/postular', 'PostulaController@store')->name('store_postula_path');
+

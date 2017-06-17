@@ -16,10 +16,9 @@
 
 	@endif
 
-	<form action="{{route('update_gauchada_path', ['gauchada' => $gauchada->id])}}" method='POST'>
+	<form action="{{route('store_postula_path', ['gauchada' => $gauchada->id])}}" method='POST'>
 		
 		{{ csrf_field()}}
-		{{ method_field('PUT') }}
 		<div class="form-group">
 			<label for="Titulo">Titulo:</label>
 			<input type="string" name='titulo' class="form-control" value="{{$gauchada->titulo}}" style="width: 626px" />
