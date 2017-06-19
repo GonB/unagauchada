@@ -16,10 +16,9 @@ class CreateComentarioTable extends Migration
         Schema::create('comentario', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->required();
-            $table->foreign('user_id')->references->('id')->on('users');
-            $table->integer('gauchada_id')->references->('id')->on('gauchadas');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('gauchada_id')->references('id')->on('gauchadas');
             $table->text('contenido')->required();
-            $table->timestamp('created_at')->nullable();
             $table->timestamps();
         });
     }
