@@ -9,4 +9,7 @@ class Gauchada extends Model
     protected $fillable = [
         'user_id','titulo', 'descripcion', 'fecha_limite',
     ];
+    public function scopeSearch($query, $titulo){
+    	 return $query->where('titulo', 'LIKE', '%$titulo%');
+ 	}
 }

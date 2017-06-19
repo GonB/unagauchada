@@ -101,10 +101,6 @@
                             <input type="text" class="form-control" name='search' placeholder="Buscar usuario" />
                             <button type="submit" class="btn btn-default">Buscar</button>
                         </form>
-                 <form class="navbar-form navbar-left" role="search" action="{{ route('buscar_gauchada_path') }}">
-                            <input type="text" class="form-control" name='search' placeholder="NO FUNCIONA" />
-                            <button type="submit" class="btn btn-default">Buscar</button>
-                        </form>
 
             </div>
         </div>

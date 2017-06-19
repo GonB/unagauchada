@@ -24,7 +24,7 @@ class GauchadaController extends Controller
 
      public function indexpublico()
     {
-        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+        $gauchada = Gauchada:: orderBy('id','desc')->paginate(10);
 
         return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
     }
@@ -123,12 +123,8 @@ class GauchadaController extends Controller
 
     public function search(Request $request)
     {
-    if (empty(Input::get('search'))) return redirect()->back();
-    
-    $search = urlencode(e(Input::get('search')));
-    $gauchada = Gauchada::where('titulo', $search) -> first();
-    return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
-
+     $gauchada = Gauchada::where('titulo', 'LIKE','%'.$_GET['titulo'].'%')->orderBy('id','desc')->paginate(10);
+    return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
    
     }
 }
