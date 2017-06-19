@@ -27,7 +27,8 @@
 
                 <small class="pull-left">
 
-                  <h2>{{ $gauchada->titulo }}</h2>  
+                  <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}"><h2>{{ $gauchada->titulo }}</h2></a>
+                  <!-- <h2>{{ $gauchada->titulo }}</h2> -->
                   <p>{{ $gauchada->descripcion }}</p>
                   <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
                     <?php   $user= User::find($gauchada->user_id);
