@@ -2,9 +2,9 @@
 
 @section('content')
     @foreach($gauchada as $gauchada)
-        @if($gauchada->user_id == Auth::id())
-        <div class="row">
-             <div class="col-md-8 col-md-offset-2">
+        @if($gauchada -> user_id == Auth::id())
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
                     <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}">{{ $gauchada->titulo }}</a>
 
                     <small class="pull-right">
@@ -19,9 +19,9 @@
                         </form>
                     </small>  
                      <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>         
+                </div>
             </div>
-        </div>
-        <hr>
+            <hr>
         @endif
     @endforeach
 @endsection

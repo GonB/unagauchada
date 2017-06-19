@@ -51,21 +51,21 @@ class GauchadaController extends Controller
     {
         $user=User::find(Auth::id());
         if($user->credits>1){
-           $this->validate($gauchada, [
-            'titulo' => 'required|min:5',
-            'descripcion' => 'required|min:15',
-            'fecha_limite' => 'required|after:today'
-        ]);
-        Gauchada::create([
+            $this->validate($gauchada, [
+                'titulo' => 'required|min:5',
+                'descripcion' => 'required|min:15',
+                'fecha_limite' => 'required|after:today'
+            ]);
+            Gauchada::create([
                 'user_id' => Auth::id(),
-             'titulo' => $gauchada['titulo'],
-             'descripcion' => $gauchada['descripcion'],
-             'fecha_limite' => $gauchada['fecha_limite'],
-               ]);
-             $user->credits=$user->credits-1;
-             $user->save();
+                'titulo' => $gauchada['titulo'],
+                'descripcion' => $gauchada['descripcion'],
+                'fecha_limite' => $gauchada['fecha_limite'],
+            ]);
+            $user->credits=$user->credits-1;
+            $user->save();
             return redirect()->route('gauchadas_path');
-        }else
+        } else
             return view('gauchada.error');
     }
 
@@ -122,10 +122,12 @@ class GauchadaController extends Controller
 
 
     public function search(Request $request)
-    {
-     $gauchada = Gauchada::where('titulo', 'LIKE','%'.$request->titulo.'%')->orderBy('id','desc')->paginate(10);
-     if($request->titulo != "")
-        return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
+    {        
+        $gauchada = Gauchada::where('titulo', 'LIKE','%'.$request->titulo.'%')->orderBy('id','desc')->paginate(10);
+        if($request->titulo != "")
+            return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
+        else
+            return redirect()->back();
    
     }
 }

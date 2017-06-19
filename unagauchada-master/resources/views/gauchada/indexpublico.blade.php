@@ -1,8 +1,8 @@
 
 @extends('layouts.app') 
- <?php 
-   use App\User;
-   use App\Postula;
+  <?php 
+    use App\User;
+    use App\Postula;
   ?>
 @section('content')
   <div class="row">
