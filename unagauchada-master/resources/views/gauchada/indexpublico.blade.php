@@ -40,15 +40,19 @@
 
            
           @if(Auth::check())
-           <form action="{{route('store_postula_path', ['gauchada' => $gauchada->id])}}" method='POST'>
-           {{ csrf_field()}}
-            <small class="pull-right">
-           <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
-          </small>
-          
-         
-          </form>
-           @endif
+            <?php
+              if (Auth::user()->id != $gauchada->user_id) {
+            ?>
+              <form action="{{route('store_postula_path', ['gauchada' => $gauchada->id])}}" method='POST'>
+                {{ csrf_field()}}
+                <small class="pull-right">
+                  <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
+                </small>
+              </form>
+            <?php
+              }
+            ?>
+          @endif
           </div>
        </div>
         <hr>

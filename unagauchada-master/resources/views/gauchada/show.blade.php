@@ -16,8 +16,9 @@
             @foreach(Postula::all() as $post)
               <?php
                 if ($post->gauchada_id == $gauchada->id) {
+                  $user_p = User::where('id', '=', $post->user_id)->first();
               ?>
-              {{$post->user_id}}
+                {{$user_p -> nick}}
               <?php
                 }
               ?>
