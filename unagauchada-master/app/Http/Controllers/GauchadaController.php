@@ -123,11 +123,13 @@ class GauchadaController extends Controller
 
     public function search(Request $request)
     {        
+         $this->validate($request, [
+                'titulo' => 'required|min:3',
+            ]);
         $gauchada = Gauchada::where('titulo', 'LIKE','%'.$request->titulo.'%')->orderBy('id','desc')->paginate(10);
         if($request->titulo != "")
             return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
-        else
-            return redirect()->back();
+        
    
     }
 }
