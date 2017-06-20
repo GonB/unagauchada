@@ -98,14 +98,14 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-    if (empty(Input::get('search'))) return redirect()->back();
+        if (empty(Input::get('search'))) return redirect()->back();
     
-    $search = urlencode(e(Input::get('search')));
-    $user = User::where('nick', $search) -> first();
-    if ($user != null) {
-        return view('perfil.show') -> with('user', $user);
-    }else
-        redirect()->route('home');
+        $search = urlencode(e(Input::get('search')));
+        $user = User::where('nick', $search) -> first();
+        if ($user != null) {
+            return view('perfil.show') -> with('user', $user);
+        }else
+            redirect()->route('home');
    
     }
 }

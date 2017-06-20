@@ -1,8 +1,8 @@
 
 @extends('layouts.app') 
- <?php 
-   use App\User;
-   use App\Postula;
+  <?php 
+    use App\User;
+    use App\Postula;
   ?>
 @section('content')
   <div class="row">
@@ -27,7 +27,8 @@
 
                 <small class="pull-left">
 
-                  <h2>{{ $gauchada->titulo }}</h2>  
+                  <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}"><h2>{{ $gauchada->titulo }}</h2></a>
+                  <!-- <h2>{{ $gauchada->titulo }}</h2> -->
                   <p>{{ $gauchada->descripcion }}</p>
                   <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
                     <?php   $user= User::find($gauchada->user_id);
@@ -52,6 +53,18 @@
           </small>
            </form>
            @endif
+            <?php
+              if (Auth::user()->id != $gauchada->user_id) {
+            ?>
+              <form action="{{route('store_postula_path', ['gauchada' => $gauchada->id])}}" method='POST'>
+                {{ csrf_field()}}
+                <small class="pull-right">
+                  <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
+                </small>
+              </form>
+            <?php
+              }
+            ?>
           </div>
        </div>
         <hr>
