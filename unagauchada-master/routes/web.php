@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\input;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('back', function (){
+		return redirect()->back();	
+})->name('back');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

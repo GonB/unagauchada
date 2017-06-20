@@ -46,7 +46,7 @@ class ComentarioController extends Controller
                 'gauchada_id' => $gauchada->id,
                 'contenido' => $comentario['contenido'],
             ]);
-            return redirect()->route('indexpublico_gauchada_path');
+             return view('gauchada.show')->with(['gauchada' => $gauchada]);
          }
 
     /**
