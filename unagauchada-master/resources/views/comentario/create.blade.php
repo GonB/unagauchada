@@ -17,7 +17,7 @@
 
 	@endif
 
-	<form action="{{route('store_comentario_path', ['gauchada' => $gauchada])}}" method='get'>
+	<form action="{{route('store_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
 		<div class="col-md-8 col-md-offset-2">
 		
 		<div class="form-group">
@@ -25,7 +25,7 @@
 			<input type="text" name='contenido' class="form-control" value="{{old('contenido')}}" style="width: 626px" />
 
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button> 			
+			<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button>			
 
 		</div>
 	</div>

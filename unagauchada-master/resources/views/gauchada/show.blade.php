@@ -36,7 +36,7 @@
             @foreach(Comentario::all() as $comentario)
             <?php 
               if($comentario->gauchada_id == $gauchada->id){
-                  $coment = Comentario::where('id', '=', $comentario->gauchada_id)->first();
+                  $coment = Comentario::where('id', '=', $comentario->id)->first();
             ?>
                 <hr style="border-color:red;"><p>{{$coment->contenido}}</p>
                  <p>Comentado por: {{User::find($coment->user_id)->name}}</p>
