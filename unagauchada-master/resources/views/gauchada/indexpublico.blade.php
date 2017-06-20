@@ -44,9 +44,13 @@
             <small class="pull-right">
            <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
           </small>
-          
-         
-          </form>
+           </form>
+            <form action="{{route('create_comentario_path', ['gauchada' => $gauchada->id])}}" method='GET'>
+           {{ csrf_field()}}
+            <small class="pull-right">
+           <button type="submit" class="btn btn-warning" autofocus="">Añadir Comentario</button>
+          </small>
+           </form>
            @endif
           </div>
        </div>

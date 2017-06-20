@@ -47,3 +47,7 @@ Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('updat
 
 Route::post('/postular', 'PostulaController@store')->name('store_postula_path');
 
+//Rutas Comentario
+
+Route::get('/{gauchada}/comentar', 'ComentarioController@create')->name('create_comentario_path');
+
