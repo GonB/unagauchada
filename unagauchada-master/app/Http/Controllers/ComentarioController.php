@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Comentario;
 use Illuminate\Http\Request;
+use App\Gauchada;
+use Auth;
 
 class ComentarioController extends Controller
 {
@@ -22,9 +24,10 @@ class ComentarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Gauchada $gauchada)
     {
-        //
+       $comentario= new Comentario;
+       return view ('comentario.create')->with(['comentario' => $comentario, 'gauchada' =>$gauchada]);
     }
 
     /**
@@ -33,10 +36,18 @@ class ComentarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $comentario, Gauchada $gauchada)
     {
-        //
-    }
+            $this->validate($comentario, [
+                'contenido' => 'required|min:15',
+            ]);
+            Comentario::create([
+                'user_id' => Auth::id(),
+                'gauchada_id' => $gauchada->id,
+                'contenido' => $comentario['contenido'],
+            ]);
+            return redirect()->route('indexpublico_gauchada_path');
+         }
 
     /**
      * Display the specified resource.
