@@ -53,5 +53,5 @@ Route::post('/postular', 'PostulaController@store')->name('store_postula_path');
 //Rutas Comentario
 
 Route::get('/comentar/create/{gauchada}', 'ComentarioController@create')->name('create_comentario_path');
-Route::get('/comentar/{gauchada}', 'ComentarioController@store')->name('store_comentario_path');	
+Route::post('/comentar/{gauchada}', 'ComentarioController@store')->name('store_comentario_path');	
 

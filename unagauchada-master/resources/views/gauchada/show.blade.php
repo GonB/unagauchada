@@ -30,15 +30,19 @@
               ?>
             @endforeach
             <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
-            <h3>Comentarios: </h3>
+
+
+             <hr style="border-color:red;"><p><h3>Comentarios: </h3>
             @foreach(Comentario::all() as $comentario)
             <?php 
               if($comentario->gauchada_id == $gauchada->id){
                   $coment = Comentario::where('id', '=', $comentario->gauchada_id)->first();
-              }
+            ?>
+                <hr style="border-color:red;"><p>{{$coment->contenido}}</p>
+                 <p>Comentado por: {{User::find($coment->user_id)->name}}</p>
+             <?php  
+               }
              ?>
-              <hr style="border-color:red;"><p>{{$comentario->contenido}}</p>
-             <p>Comentado por: {{User::find($comentario->user_id)->name}}</p>
 
             @endforeach
         </div>
