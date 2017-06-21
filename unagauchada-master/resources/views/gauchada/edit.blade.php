@@ -17,6 +17,7 @@
 	@endif
 
 	<form action="{{route('update_gauchada_path', ['gauchada' => $gauchada->id])}}" method='POST'>
+	<div class="col-md-8 col-md-offset-2">
 		
 		{{ csrf_field()}}
 		{{ method_field('PUT') }}
@@ -44,6 +45,7 @@
 			<button type="submit" class="btn btn-primary" autofocus="">Editar Gauchada</button> 			
 
 		</div>
+	</div>
 		
 	</form>
 

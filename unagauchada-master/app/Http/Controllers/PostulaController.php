@@ -49,8 +49,7 @@ class PostulaController extends Controller
      */
     public function store(Gauchada $gauchada)
     {
-        $gauch=Gauchada::find($_GET['gauchada']);
-        $post=Postula::find($_GET['gauchada']);
+        $post=Postula::find($gauchada->id);
         
         // esto es para ver si ya existe la postulacion
         //los return son para ver como iban las variables
@@ -59,7 +58,7 @@ class PostulaController extends Controller
         //return array($postulaciones, $gauch);
         foreach ($postulaciones  as $p) {
             //return $p;
-            if (($p->gauchada_id == $gauch->id) and ($p->user_id == Auth::id())) 
+            if (($p->gauchada_id == $gauchada->id) and ($p->user_id == Auth::id())) 
             {
                 //return 'entra al if';
                 $existe = False;
@@ -69,10 +68,10 @@ class PostulaController extends Controller
         if ($existe) {
             Postula::create([
                 'user_id' => Auth::id(),
-                'gauchada_id' => $gauch->id,
+                'gauchada_id' => $gauchada->id,
             ]);
         }
-        return redirect()->route('indexpublico_gauchada_path'); 
+        return redirect()->route('indexpublico_gauchada_path');
     }
 
     /**

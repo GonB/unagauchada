@@ -56,7 +56,7 @@
           @if(Auth::check())
                                  <?php
               if (Auth::user()->id != $gauchada->user_id) {?>
-              <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='POST'>
+              <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
                 <small class="pull-right">
                   <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
                 </small>

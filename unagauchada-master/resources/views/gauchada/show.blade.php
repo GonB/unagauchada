@@ -39,7 +39,8 @@
                   $coment = Comentario::where('id', '=', $comentario->id)->first();
             ?>
                 <hr style="border-color:red;"><p>{{$coment->contenido}}</p>
-                 <p>Comentado por: {{User::find($coment->user_id)->name}}</p>
+                 <p>{{User::find($coment->user_id)->name}}</p>
+                 <p> {{$coment->created_at}}</p>
              <?php  
                }
              ?>
