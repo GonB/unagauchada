@@ -10,12 +10,10 @@
                     <small class="pull-right">
 
                         <a href="{{ route('edit_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Editar</a>
-                        <form action="{{ route('delete_gauchada_path', ['gauchada' => $gauchada->id]) }}" method="POST">
+                        <form action="{{ route('delete_gauchada_path', ['gauchada' => $gauchada->id]) }}" method="GET">
 
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
 
-                            <button type="submit" class='btn btn-danger'>Delete</button>
+                            <button type="submit" class='btn btn-danger'>Delete (error si hay postulados)</button>
                         </form>
                     </small>  
                      <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>         
