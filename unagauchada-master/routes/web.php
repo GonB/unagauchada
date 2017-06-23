@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\input;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('back', function (){
-		return redirect()->back();	
-})->name('back');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -37,13 +35,13 @@ Route::get('/gauchada', 'GauchadaController@search')->name('buscar_gauchada_path
 // Rutas perfil
 Route::get('/perfil', 'UserController@index')->name('perfil_index_path')->middleware('auth');
 Route::get('/perfil/edit', 'UserController@edit')->name('edit_perfil_path');
-Route::put('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
+Route::get('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
 Route::get('/perfil/search', 'UserController@search')->name('buscar_perfil_path');
 
 //Rutas pago
 
-Route::get('/pago', 'PagoController@create')->name('create_pago_path')->middleware('auth');
-Route::post('/pago', 'PagoController@store')->name('store_pago_path');
+Route::get('/pago/create', 'PagoController@create')->name('create_pago_path')->middleware('auth');
+Route::get('/pago', 'PagoController@store')->name('store_pago_path');
 Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('update_creditos_path');
 
 //Rutas Postula

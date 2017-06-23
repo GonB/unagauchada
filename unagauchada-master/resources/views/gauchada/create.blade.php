@@ -39,7 +39,14 @@
 		</div>
 
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" autofocus="">Crear Gauchada</button> 			
+			<button type="submit" class="btn btn-primary" autofocus="">Crear Gauchada</button>
+			<button class ="btn btn-warning" onclick="goBack()"> Cancelar</button>
+			<script>
+				function goBack(){
+					window.history.back();
+				}
+			</script>			
+ 			
 
 		</div>
 	</div>

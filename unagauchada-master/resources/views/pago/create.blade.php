@@ -16,7 +16,7 @@
 
 	@endif
 
-<form action="{{route('store_pago_path', ['pago' => $pago->id])}}" method='POST'>
+<form action="{{route('store_pago_path', ['pago' => $pago->id])}}" method='GET'>
 		{{ csrf_field()}}
 	 <div class="col-md-8 col-md-offset-2">
 		<div class="form-group">
@@ -47,7 +47,14 @@
 
 
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" autofocus="">Añadir Pago</button> 			
+			<button type="submit" class="btn btn-primary" autofocus="">Añadir Pago</button>
+			<button class ="btn btn-warning" onclick="goBack()"> Cancelar</button>
+			<script>
+				function goBack(){
+					window.history.back();
+				}
+			</script>			
+ 			
 
 		</div>
 	</div>

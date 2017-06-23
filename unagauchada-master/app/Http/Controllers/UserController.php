@@ -73,6 +73,11 @@ class UserController extends Controller
     public function update(Request $request, $user_id)
     {  
         $user = User::find($user_id);
+        $this->validate($request, [
+                'name' => 'required|min:5',
+                'email' => 'required|email',
+                'password' => 'required|min:6'
+            ]);
 
         $user->update($request->only('name', 'email','password','credits'));
         return redirect()->route('perfil_index_path');

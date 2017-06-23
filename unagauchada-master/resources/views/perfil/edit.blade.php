@@ -16,10 +16,8 @@
 
 	@endif
 
-	<form action="{{route('update_perfil_path', ['user_id' => Auth::user()->id])}}" method='POST'>
+	<form action="{{route('update_perfil_path', ['user_id' => Auth::user()->id])}}" method='GET'>
 		
-		{{ csrf_field()}}
-		{{ method_field('PUT') }}
 		<div class="form-group">
 			<label for="name">Nombre</label>
 			<input type="string" name='name' class="form-control" value="{{Auth::user()->name}}" style="width: 626px" />
@@ -41,7 +39,13 @@
 		</div>
 
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" autofocus="">Editar Perfil</button> 			
+			<button type="submit" class="btn btn-primary" autofocus="">Editar Perfil</button> 
+			<button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
+			<script>
+				function goBack(){
+					window.history.back();
+				}
+			</script>			
 
 		</div>
 		

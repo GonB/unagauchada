@@ -8,7 +8,13 @@
                 <p>Nick: <?php echo $user -> nick; ?></p>
                 <p>Fecha Nacimiento: <?php echo $user -> birthdate; ?></p>
                 <p>Email: <?php echo $user -> email; ?></p>
-            </medium>  
+            </medium> 
+            <button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
+            <script>
+                function goBack(){
+                    window.history.back();
+                }
+            </script>    
         </div>
     </div>
     <hr>	 
