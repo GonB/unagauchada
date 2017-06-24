@@ -47,7 +47,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user)
+    public function show(int $id)
     {
         //
     }    
@@ -82,6 +82,7 @@ class UserController extends Controller
         $user->update($request->only('name', 'email','password','credits'));
         return redirect()->route('perfil_index_path');
     }
+    
     public function update_creditos(Pago $pago)
     {
        $user = User::find($pago->user_id);
@@ -101,6 +102,11 @@ class UserController extends Controller
         //
     }
 
+    public function ver(User $user) {
+
+        return view('perfil.show') -> with('user', $user);
+    }
+
     public function search(Request $request)
     {
         if (empty(Input::get('search'))) return redirect()->back();
@@ -108,7 +114,7 @@ class UserController extends Controller
         $search = urlencode(e(Input::get('search')));
         $user = User::where('nick', $search) -> first();
         if ($user != null) {
-            return view('perfil.show') -> with('user', $user);
+            return redirect()->route('ver_perfil_path', ['user' => $user]);
         }else
             redirect()->route('home');
    

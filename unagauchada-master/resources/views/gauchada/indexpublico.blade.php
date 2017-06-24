@@ -56,32 +56,34 @@
           @if(Auth::check())
               <?php
               // esto es para ver si ya existe la postulacion
-              //los return son para ver como iban las variables
               $existe = False;
               $postulaciones = Postula::all();
-              //return array($postulaciones, $gauch);
               foreach ($postulaciones  as $p) {
-                  //return $p;
                   if (($p->gauchada_id == $gauchada->id) and ($p->user_id == Auth::id())) 
                   {
-                      //return 'entra al if';
                       $existe = True;
                   }
               }
+
               if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {?>
+
                 <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
                   <small class="pull-right">
                     <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
                   </small>
                 </form>
+
               <?php
               } else {
+
                 if ((Auth::user()->id != $gauchada->user_id) and ($existe)) { ?>
+
                   <form action="{{route('destroy_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
                     <small class="pull-right">
                       <button type="submit" class="btn btn-danger" autofocus="">Despostularse</button>
                     </small>
                   </form>
+
               <?php
                 }
               }

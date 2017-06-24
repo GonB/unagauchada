@@ -46,6 +46,15 @@ class PostulaController extends Controller
         return redirect()->route('indexpublico_gauchada_path');
     }
 
+    public function choose(Postula $postula)
+    {
+        $post=Postula::find($_GET['postula']);
+        
+        $post->seleccionado=1;
+        $post->save();
+        return redirect()->back();
+    }
+    
     /**
      * Display the specified resource.
      *

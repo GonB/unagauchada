@@ -37,6 +37,7 @@ Route::get('/perfil', 'UserController@index')->name('perfil_index_path')->middle
 Route::get('/perfil/edit', 'UserController@edit')->name('edit_perfil_path');
 Route::get('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
 Route::get('/perfil/search', 'UserController@search')->name('buscar_perfil_path');
+Route::get('/perfil/{user}/ver', 'UserController@ver')->name('ver_perfil_path');
 
 //Rutas pago
 
@@ -48,6 +49,7 @@ Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('updat
 
 Route::get('/postular/{gauchada}', 'PostulaController@store')->name('store_postula_path');
 Route::get('/despostular/{gauchada}', 'PostulaController@destroy')->name('destroy_postula_path');
+Route::post('/elegido', 'PostulaController@choose')->name('choose_postula_path');
 
 //Rutas Comentario
 
