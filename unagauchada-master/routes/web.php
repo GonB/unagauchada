@@ -47,6 +47,7 @@ Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('updat
 //Rutas Postula
 
 Route::get('/postular/{gauchada}', 'PostulaController@store')->name('store_postula_path');
+Route::get('/despostular/{gauchada}', 'PostulaController@destroy')->name('destroy_postula_path');
 
 //Rutas Comentario
 

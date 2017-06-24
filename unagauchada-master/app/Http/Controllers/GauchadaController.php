@@ -17,7 +17,7 @@ class GauchadaController extends Controller
      */
     public function index()
     {
-        $gauchada = Gauchada::orderBy('id','desc')->paginate(2);
+        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
 
         return view ('gauchada.index')->with(['gauchada' => $gauchada]);
     }

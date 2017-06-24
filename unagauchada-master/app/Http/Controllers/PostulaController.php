@@ -28,19 +28,6 @@ class PostulaController extends Controller
     {
     }
 
-    public function existe(Postula $p) {
-        $id = 1;
-        echo $p->user_id;
-        foreach (Postula::find('id', $id) as $post) {
-            if (($post->gauchada_id == $p->gauchada_id) &&
-                ($post->user_id == $p->user_id)) {
-                return true;
-            }
-            $id = $id + 1;
-        }
-        return false;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,27 +37,12 @@ class PostulaController extends Controller
     public function store(Gauchada $gauchada)
     {
         $post=Postula::find($gauchada->id);
-        
-        // esto es para ver si ya existe la postulacion
-        //los return son para ver como iban las variables
-        $existe = True;
-        $postulaciones = Postula::all();
-        //return array($postulaciones, $gauch);
-        foreach ($postulaciones  as $p) {
-            //return $p;
-            if (($p->gauchada_id == $gauchada->id) and ($p->user_id == Auth::id())) 
-            {
-                //return 'entra al if';
-                $existe = False;
-            }
-        }
 
-        if ($existe) {
-            Postula::create([
-                'user_id' => Auth::id(),
-                'gauchada_id' => $gauchada->id,
-            ]);
-        }
+        Postula::create([
+            'user_id' => Auth::id(),
+            'gauchada_id' => $gauchada->id,
+        ]);
+
         return redirect()->route('indexpublico_gauchada_path');
     }
 
@@ -111,11 +83,18 @@ class PostulaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Postula  $postula
+     * @param  \App\Gauchada  $gauchada
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Postula $postula)
+    public function destroy(Gauchada $gauchada)
     {
-        //
+        $postulaciones = Postula::all();
+        foreach ($postulaciones  as $p) {
+            if (($p->gauchada_id == $gauchada->id) and ($p->user_id == Auth::id())) 
+            {
+                $p -> delete();
+            }
+        }
+        return redirect()->route('indexpublico_gauchada_path');
     }
 }
