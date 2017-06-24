@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 
@@ -17,7 +16,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: black;
+                background-color: lavender;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -54,7 +53,7 @@
             }
 
             .links > a {
-                color: white;
+                color: goldenrod;
                 padding: 0 25px;
                 font-size: 14px;
                 font-weight: 600;
@@ -73,7 +72,6 @@
                 border-color: black;
                 border-radius: 2px;
                 text-align: center;
-
             }
 
 
@@ -97,11 +95,6 @@
 
             <div class="content">
                 <img src="https://static.tumblr.com/9817bfb93e61ddc7d59e3edfa53f38d7/vhrhomj/Gqbocuj67/tumblr_static_cxyqhzp2ceg44css0kswkckgw_2048_v2.png" alt="Una Gauchada">
-                 <form class="navbar-form navbar-left" role="search" action="{{ route('buscar_perfil_path') }}">
-                            <input type="text" class="form-control" name='search' placeholder="Buscar usuario" />
-                            <button type="submit" class="btn btn-default">Buscar</button>
-                        </form>
-
             </div>
         </div>
 
