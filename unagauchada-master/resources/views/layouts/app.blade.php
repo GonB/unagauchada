@@ -10,7 +10,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Una gauchada</title>
-
+    <link rel="shortcut icon" href="https://68.media.tumblr.com/avatar_28012e5b8492_128.png">
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -27,10 +28,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Una Gauchada
+                    <a href="{{ url('/') }}">
+                        <img src="https://68.media.tumblr.com/avatar_28012e5b8492_128.png" WIDTH=52 HEIGHT=52>
                     </a>
                 </div>
 
@@ -49,8 +51,8 @@
                         <!-- Authentication Links -->
                           
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Registrar</a></li>
+                            <li><a href="{{ route('login') }}">Loguearse</a></li>
+                            <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li><a href="{{ route('home') }}">Home</a></li>
 

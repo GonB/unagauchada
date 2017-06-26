@@ -7,8 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Una Gauchada</title>
-
-        <!-- Fonts -->
+        <link rel="shortcut icon" href="https://68.media.tumblr.com/avatar_28012e5b8492_128.png">        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <link rel="stylesheet" type="text/css" href="css/cssPrueba.css">
@@ -21,7 +20,7 @@
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
-                margin: 300;
+                margin: 0px;
             }
 
             .full-height {
@@ -29,7 +28,6 @@
             }
 
             .flex-center {
-               
                 display: flex;
                 justify-content: center;
             }
@@ -67,6 +65,10 @@
                 margin-bottom: 30px;
             }
 
+            .max{
+                width: 100%;
+            }
+
             .contenedor-gauchadas{
                 margin: auto;
                 border-color: black;
@@ -93,8 +95,8 @@
                 </div>
             @endif
 
-            <div class="content">
-                <img src="https://static.tumblr.com/9817bfb93e61ddc7d59e3edfa53f38d7/vhrhomj/Gqbocuj67/tumblr_static_cxyqhzp2ceg44css0kswkckgw_2048_v2.png" alt="Una Gauchada">
+            <div>
+                <img src="https://static.tumblr.com/9817bfb93e61ddc7d59e3edfa53f38d7/vhrhomj/Gqbocuj67/tumblr_static_cxyqhzp2ceg44css0kswkckgw_2048_v2.png" alt="Una Gauchada" class="max" >
             </div>
         </div>
 

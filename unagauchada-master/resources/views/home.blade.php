@@ -10,7 +10,7 @@
                         </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" >PONEMOS LA IMGEN DE LAS 2 MANITOS DEL BLOG REAL</div>
+                <div class="panel-heading" >ACA IRÍA LA IMAGEN DE PERFIL</div>
 
                 <div class="panel-body">
                       @if (Auth::check())
