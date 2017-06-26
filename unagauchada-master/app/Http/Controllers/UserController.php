@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\input;
 use App\Pago;
+
 
 class UserController extends Controller
 {
@@ -19,7 +18,6 @@ class UserController extends Controller
     {
         return view('perfil.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +27,6 @@ class UserController extends Controller
     {
         
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -40,18 +37,16 @@ class UserController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user)
+    public function show(int $id)
     {
         //
     }    
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,7 +57,6 @@ class UserController extends Controller
     {
         return view('perfil.edit');
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -76,12 +70,12 @@ class UserController extends Controller
         $this->validate($request, [
                 'name' => 'required|min:5',
                 'email' => 'required|email',
-                'password' => 'required|string|min:6|confirmed',
+                'password' => 'required|min:6'
             ]);
-
         $user->update($request->only('name', 'email','password','credits'));
         return redirect()->route('perfil_index_path');
     }
+    
     public function update_creditos(Pago $pago)
     {
        $user = User::find($pago->user_id);
@@ -89,7 +83,6 @@ class UserController extends Controller
        $user->save();
        return redirect()->route('home');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -100,7 +93,9 @@ class UserController extends Controller
     {
         //
     }
-
+    public function ver(User $user) {
+        return view('perfil.show') -> with('user', $user);
+    }
     public function search(Request $request)
     {
         if (empty(Input::get('search'))) return redirect()->back();
@@ -108,7 +103,7 @@ class UserController extends Controller
         $search = urlencode(e(Input::get('search')));
         $user = User::where('nick', $search) -> first();
         if ($user != null) {
-            return view('perfil.show') -> with('user', $user);
+            return redirect()->route('ver_perfil_path', ['user' => $user]);
         }else
             redirect()->route('home');
    

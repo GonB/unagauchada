@@ -17,11 +17,12 @@ class CreateRespuestasTable extends Migration
             $table->increments('id');
             $table->integer('comentario_id')->unsigned()->required();
             $table->foreign('comentario_id')->references('id')->on('comentarios');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned()->required();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('contenido')->required();
+            $table->text('contenido')->required();
             $table->timestamps();
         });
+
     }
 
     /**
@@ -31,6 +32,6 @@ class CreateRespuestasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('respuesta');
+        Schema::dropIfExists('Respuesta');
     }
 }

@@ -54,16 +54,44 @@
 
            
           @if(Auth::check())
-                                 <?php
-              if (Auth::user()->id != $gauchada->user_id) {?>
-              <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
-                <small class="pull-right">
-                  <button type="submit" onclick="alert('Te has postulado!')" class="btn btn-warning" autofocus="">Postularse</button>
-                </small>
-              </form>
-            <?php
+              <?php
+              // esto es para ver si ya existe la postulacion
+              $existe = False;
+              $hay_elegido = False;
+              $postulaciones = Postula::all();
+              foreach ($postulaciones  as $p) {
+                  if (($p->seleccionado == 1) and ($p->gauchada_id == $gauchada->id)) {
+                    $hay_elegido = true;
+                  }
+                  if (($p->gauchada_id == $gauchada->id) and ($p->user_id == Auth::id())) 
+                  {
+                    $existe = True;
+                  }
               }
-            ?>
+              if (! $hay_elegido) {
+                if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {?>
+
+                  <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                    <small class="pull-right">
+                      <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
+                    </small>
+                  </form>
+
+                <?php
+                } else {
+                  if ((Auth::user()->id != $gauchada->user_id) and ($existe)) { ?>
+
+                    <form action="{{route('destroy_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                      <small class="pull-right">
+                        <button type="submit" class="btn btn-danger" autofocus="">Despostularse</button>
+                      </small>
+                    </form>
+
+                <?php
+                  }
+                }
+              }
+              ?>
           @endif
           </div>
        </div>

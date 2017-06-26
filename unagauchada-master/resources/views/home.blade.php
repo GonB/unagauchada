@@ -10,17 +10,13 @@
                         </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">
-                <?php echo Auth::user()->name;
-                      echo "_________________________ Creditos:";
-                      echo Auth::user()->credits?></div>
+                <div class="panel-heading" >PONEMOS LA IMGEN DE LAS 2 MANITOS DEL BLOG REAL</div>
 
                 <div class="panel-body">
                       @if (Auth::check())
                         <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br>
                         <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
-                         <a href="{{url('/pago/create')}}">Comprar Creditos</a>
-                   
+                        <a href="{{url('/pago/create')}}">Comprar Creditos</a>
                     @endif
                 </div>
             
