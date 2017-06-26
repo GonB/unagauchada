@@ -76,7 +76,7 @@ class UserController extends Controller
         $this->validate($request, [
                 'name' => 'required|min:5',
                 'email' => 'required|email',
-                'password' => 'required|min:6'
+                'password' => 'required|string|min:6|confirmed',
             ]);
 
         $user->update($request->only('name', 'email','password','credits'));

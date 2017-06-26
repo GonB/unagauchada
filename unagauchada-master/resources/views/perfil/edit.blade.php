@@ -37,6 +37,9 @@
 			<input type="password" name='password' class="form-control" value="{{Auth::user()->password}}" style="width: 626px" />			
 
 		</div>
+		<div class="form-group">
+              <label for="password-confirm" >Confirmar Contraseña</label>
+              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary" autofocus="">Editar Perfil</button> 

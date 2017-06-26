@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('id_categoria')->unsigned()->nullable();
             $table->foreign('id_categoria')->references('id')->on('categoria_usuarios');
             $table->integer('score')->unsigned()->nullable();
-            $table->integer('credits')->unsigned()->nullable()->default(4);
+            $table->integer('credits')->unsigned()->nullable()->default(1);
             $table->timestamps();
             $table->rememberToken();
         });
