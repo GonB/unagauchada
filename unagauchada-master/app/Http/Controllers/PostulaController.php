@@ -48,10 +48,8 @@ class PostulaController extends Controller
 
     public function choose(Postula $postula)
     {
-        $post=Postula::find($_GET['postula']);
-        
-        $post->seleccionado=1;
-        $post->save();
+        $postula->seleccionado = 1;
+        $postula->save();
         return redirect()->back();
     }
     
