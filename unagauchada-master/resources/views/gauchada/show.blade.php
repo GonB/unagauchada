@@ -13,6 +13,7 @@
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php   $user= User::find($gauchada->user_id); ?>
             Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a>
+
             <p>Postulantes:<br>
 
             <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
@@ -36,15 +37,17 @@
                   if ($post->gauchada_id == $gauchada->id) {
                     $user_p = User::where('id', '=', $post->user_id)->first();
                 ?>
+                    <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
+                    <form action="{{ route('choose_postula_path', ['postula' => $post]) }}" method='GET'>
+                    {{ csrf_field() }}
                     - <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a>
+                    
                     <?php
                     if (! $hay) { ?>
-                      <form action="{{ route('choose_postula_path', ['postula' => $post]) }}" method='GET'>
-                      {{ csrf_field() }}
-                        <button type="submit" class="btn btn-info" autofocus="">Elegir</button>
-                      </form>
+                      <button type="submit" class="btn btn-info" autofocus="">Elegir</button>
                 <?php
                     } ?>
+                    </form>
                     <br>
                 <?php
                   } ?>
