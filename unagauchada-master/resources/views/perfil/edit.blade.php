@@ -21,9 +21,6 @@
 		<div class="form-group">
 			<label for="name">Nombre</label>
 			<input type="string" name='name' class="form-control" value="{{Auth::user()->name}}" style="width: 626px" />
-
-			
-
 		</div>
 
 		<div class="form-group">

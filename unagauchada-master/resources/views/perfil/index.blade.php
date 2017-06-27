@@ -10,7 +10,7 @@
                 <p>Email: {{Auth::user()->email}}</p>
                 <p>Creditos: {{Auth::user()->credits}}</p>
 
-                <a href="{{ route('edit_perfil_path') }}" class="btn btn-info">Editar Perfil</a>
+                <a href="{{ route('edit_perfil_path') }}" class="btn btn-primary">Editar Perfil</a>
                 <button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
             <script>
                 function goBack(){

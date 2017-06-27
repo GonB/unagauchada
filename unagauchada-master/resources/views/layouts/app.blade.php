@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="https://68.media.tumblr.com/avatar_28012e5b8492_128.png">
     
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/cssPrincipal.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

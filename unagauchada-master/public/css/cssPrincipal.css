@@ -59,3 +59,15 @@ html, body {
     border-radius: 2px;
     text-align: center;
 }
+
+.cab_form{
+	color: #FFF;
+	background-color: #3097D1;
+	border-color: #d3e0e9;
+	text-align: center;
+	font-size: 20px;
+	padding: 10px 15px;
+	border-bottom: 1px solid transparent;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
