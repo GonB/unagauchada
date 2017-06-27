@@ -89,27 +89,35 @@
             <?php 
               if($comentario->gauchada_id == $gauchada->id){
                   $coment = Comentario::where('id', '=', $comentario->id)->first();
-            ?><hr>
-            <!--BOTON RESPUESTA-->
-            <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
+            ?>
+            <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
+
+            @if($gauchada->user_id == Auth::id())
+               <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
               <small class="pull-right">
                 <button type="submit" class="btn btn-info  " autofocus="">Responder Comentario</button>
               </small>
             </form> 
+            @endif
+            
                 <hr style="border-color:black;"><p>{{$coment->contenido}}</p>
                  <p>{{User::find($coment->user_id)->name}}</p>
                  <p> {{$coment->created_at}}</p><hr>
                  <?php  
              ?>
-              <small class="pull-right">
-               
-              </small>
+              
                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
              <?php
+             $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
+             ?>
+              <small class="pull">
+              {{User::find($respuesta['user_id'])['name']}} :
+              {{$respuesta['contenido']}};<br>
+              {{$respuesta['created_at']}}
+              </small>
 
-             $respuesta= Respuesta::all();
-             $respuesta= Respuesta::where('comentario_id', '=', $coment->id);
-             
+              <?php
+            
                }
                ?>
             
