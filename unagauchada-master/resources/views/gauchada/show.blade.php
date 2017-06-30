@@ -67,12 +67,13 @@
                 ?>
               @endforeach
             @endif
-
+            @if(Auth::check())
             <form action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
               <small class="pull-right">
                 <button type="submit" class="btn btn-warning" autofocus="">Añadir Comentario</button>
               </small>
             </form>
+            @endif
 
             @if ($hay)
               <p>Postulante elegido: 
@@ -86,40 +87,47 @@
 
              <hr style="border-color:black;"><p><h3>Comentarios: </h3>
             @foreach(Comentario::all() as $comentario)
-            <?php 
-              if($comentario->gauchada_id == $gauchada->id){
-                  $coment = Comentario::where('id', '=', $comentario->id)->first();
-            ?>
+                <?php 
+                  if($comentario->gauchada_id == $gauchada->id){
+                     $coment = Comentario::where('id', '=', $comentario->id)->first();
+                  ?>
+                <?php 
+                    $hay = False;
+                   foreach(Respuesta::all() as $resp) {
+                        if (($coment->id == $resp->comentario_id)) {
+                            $hay = True;
+                        }
+                   }
+               ?>
             <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
-            @if($gauchada->user_id == Auth::id())
-               <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
-              <small class="pull-right">
-                <button type="submit" class="btn btn-info  " autofocus="">Responder Comentario</button>
-              </small>
-            </form> 
-            @endif
+               @if(($gauchada->user_id == Auth::id())and(!$hay))
+                 <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
+                  <small class="pull-right">
+                    <button type="submit" class="btn btn-info  " autofocus="">Responder Comentario</button>
+                  </small>
+                </form> 
+              @endif
             
                 <hr style="border-color:black;"><p>{{$coment->contenido}}</p>
                  <p>{{User::find($coment->user_id)->name}}</p>
                  <p> {{$coment->created_at}}</p><hr>
-                 <?php  
-             ?>
+                 
               
                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
-             <?php
-             $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
-             ?>
-              <small class="pull">
-              {{User::find($respuesta['user_id'])['name']}} :
-              {{$respuesta['contenido']}};<br>
-              {{$respuesta['created_at']}}
-              </small>
+                <?php
+                  $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
+                 ?>
+                  <small class="pull">
+                   {{User::find($respuesta['user_id'])['name']}} : 
+                    {{$respuesta['contenido']}};<br>
+                    {{$respuesta['created_at']}}
+                   </small>
 
-              <?php
+                 <?php
             
-               }
-               ?>
+                   }
+                  ?>
             
 
 
