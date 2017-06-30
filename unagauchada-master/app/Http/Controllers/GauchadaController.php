@@ -132,4 +132,9 @@ class GauchadaController extends Controller
         
    
     }
+    public function despostular(Gauchada $gauchada){
+        $gauchada->activo=false;
+        $gauchada->save();
+        return redirect()->route('gauchadas_path');
+    }
 }

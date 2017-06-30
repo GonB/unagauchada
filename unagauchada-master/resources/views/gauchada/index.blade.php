@@ -8,13 +8,16 @@
                     <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}">{{ $gauchada->titulo }}</a>
 
                     <small class="pull-right">
-
-                        <a href="{{ route('edit_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Editar</a>
-                        <form action="{{ route('delete_gauchada_path', ['gauchada' => $gauchada->id]) }}" method="GET">
+                        @if ($gauchada->activo)
+                            <a href="{{ route('edit_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Editar</a>
+                            <form action="{{ route('delete_gauchada_path', ['gauchada' => $gauchada->id]) }}" method="GET">
 
 
                             <button type="submit" class='btn btn-danger'>Delete (error si hay postulados)</button>
-                        </form>
+                            </form>
+                            
+                            <a href="{{ route('despostular_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-warning">Despublicar</a>
+                        @endif
                     </small>  
                      <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>         
                 </div>

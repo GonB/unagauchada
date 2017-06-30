@@ -7,7 +7,7 @@
   use App\Respuesta;
 ?>
 @section('content')
-     <div class="row">
+    <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h2>{{ $gauchada->titulo }}</h2>
             <p>{{ $gauchada->descripcion }}</p>
@@ -45,7 +45,9 @@
                     
                     <?php
                     if (! $hay) { ?>
-                      <button type="submit" class="btn btn-info" autofocus="">Elegir</button>
+                      @if ($gauchada->activo)
+                        <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
+                      @endif
                 <?php
                     } ?>
                     </form>
@@ -68,25 +70,28 @@
               @endforeach
             @endif
             @if(Auth::check())
-            <form action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
-              <small class="pull-right">
-                <button type="submit" class="btn btn-warning" autofocus="">Añadir Comentario</button>
-              </small>
-            </form>
+                @if ($gauchada->activo)
+                <form action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
+                  <small class="pull-right">
+                    <button type="submit" class="btn btn-warning" autofocus="">Añadir Comentario</button>
+                  </small>
+                </form>
+              @endif
             @endif
-             <p>
+            
+            <p>
             @if ($hay)
               Postulante elegido: 
               <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
-              @if ($es_mia)
+              @if (($es_mia) and ($gauchada->activo))
                 <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg]) }}" method='GET'>
-                  <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="">+</button>
+                  <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="" onclick="alert('Puntuaste +1 al usuario')">+</button>
                 </form>
                 <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg]) }}" method='GET'>
-                  <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="">0</button>
+                  <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
                 </form>
                 <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg]) }}" method='GET'>
-                  <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="">-</button>
+                  <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
                 </form>
               @endif
             @endif
@@ -113,12 +118,14 @@
                ?>
             <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
-               @if(($gauchada->user_id == Auth::id())and(!$hay))
-                 <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
-                  <small class="pull-right">
-                    <button type="submit" class="btn btn-info  " autofocus="">Responder Comentario</button>
-                  </small>
-                </form> 
+              @if(($gauchada->user_id == Auth::id())and(!$hay))
+                @if ($gauchada->activo)
+                  <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
+                    <small class="pull-right">
+                      <button type="submit" class="btn btn-info  " autofocus="">Responder Comentario</button>
+                    </small>
+                  </form> 
+                @endif
               @endif
             
                 <hr style="border-color:black;"><p>{{$coment->contenido}}</p>

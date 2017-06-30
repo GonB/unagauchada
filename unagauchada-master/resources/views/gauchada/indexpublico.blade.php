@@ -70,23 +70,23 @@
               }
               if (! $hay_elegido) {
                 if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {?>
-
-                  <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
-                    <small class="pull-right">
-                      <button type="submit" class="btn btn-warning" autofocus="">Postularse</button>
-                    </small>
-                  </form>
-
+                  @if ($gauchada->activo)
+                    <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                      <small class="pull-right">
+                        <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Te Postulaste!')">Postularse</button>
+                      </small>
+                    </form>
+                  @endif
                 <?php
                 } else {
                   if ((Auth::user()->id != $gauchada->user_id) and ($existe)) { ?>
-
-                    <form action="{{route('destroy_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
-                      <small class="pull-right">
-                        <button type="submit" class="btn btn-danger" autofocus="">Despostularse</button>
-                      </small>
-                    </form>
-
+                    @if ($gauchada->activo)
+                      <form action="{{route('destroy_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                        <small class="pull-right">
+                          <button type="submit" class="btn btn-danger" autofocus="" onclick="alert('Te Despostularseespostulaste!')">Despostularse</button>
+                        </small>
+                      </form>
+                    @endif
                 <?php
                   }
                 }
