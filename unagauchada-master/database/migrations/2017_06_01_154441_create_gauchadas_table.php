@@ -19,6 +19,7 @@ class CreateGauchadasTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('fecha_limite')->nullable();
             $table->string('titulo');
+            $table->boolean('activo')->default(true);
             $table->text('descripcion');
             $table->timestamps();
         });
