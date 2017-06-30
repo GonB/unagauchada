@@ -13,7 +13,7 @@
             <p>{{ $gauchada->descripcion }}</p>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php   $user= User::find($gauchada->user_id); ?>
-            Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a>
+           <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
 
             <p>Postulantes:<br>
 
