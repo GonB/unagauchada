@@ -74,12 +74,24 @@
               </small>
             </form>
             @endif
-
+             <p>
             @if ($hay)
-              <p>Postulante elegido: 
-                <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
-              </p>
+              Postulante elegido: 
+              <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
+              @if ($es_mia)
+                <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg]) }}" method='GET'>
+                  <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="">+</button>
+                </form>
+                <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg]) }}" method='GET'>
+                  <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="">0</button>
+                </form>
+                <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg]) }}" method='GET'>
+                  <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="">-</button>
+                </form>
+              @endif
             @endif
+            </p>
+
 
             <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
 
