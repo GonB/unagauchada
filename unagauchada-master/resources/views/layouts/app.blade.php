@@ -56,6 +56,7 @@
                             <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a></li>
 
                             <li><a><?php echo "Mis Creditos: ";
                                     echo Auth::user()->credits ?> </a></li>
