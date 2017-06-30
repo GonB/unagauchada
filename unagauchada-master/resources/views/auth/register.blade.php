@@ -24,7 +24,7 @@
                             </div>
                         </div>
                          <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nick</label>
+                            <label for="nick" class="col-md-4 control-label">Nick</label>
 
                             <div class="col-md-6">
                                 <input id="nick" type="text" class="form-control" name="nick" value="{{ old('nick') }}" required autofocus>
@@ -51,12 +51,15 @@
                             </div>
                         </div>
                            <div class="form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Fecha De Nacimiento</label>
+                            <label for="birthdate" class="col-md-4 control-label">Fecha De Nacimiento</label>
 
                             <div class="col-md-6">
-                                <?php 
-                                          $fecha = date('Y-m-d',strtotime('-18 years')); ?>
-                                <input id="birthdate" type="date" class="form-control" name="birthdate" value="{{ old('birthdate')  }}" max="<?php echo $fecha ?>" required>
+                                <input id="birthdate" type="date" class="form-control" name="birthdate" value="{{ old('birthdate')  }}" required>
+                                @if ($errors->has('birthdate'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birthdate') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
