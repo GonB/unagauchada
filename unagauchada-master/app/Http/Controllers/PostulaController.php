@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Postula;
 use Illuminate\Http\Request;
 use App\Gauchada;
+use App\User;
 use Auth;
 
 class PostulaController extends Controller

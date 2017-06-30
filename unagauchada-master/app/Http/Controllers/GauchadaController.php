@@ -50,7 +50,7 @@ class GauchadaController extends Controller
     public function store(Request $gauchada)
     {
         $user=User::find(Auth::id());
-        if($user->credits>1){
+        if($user->credits>=1){
             $this->validate($gauchada, [
                 'titulo' => 'required|min:5',
                 'descripcion' => 'required|min:15',

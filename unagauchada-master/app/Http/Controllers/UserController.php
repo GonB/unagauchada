@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\input;
 use App\Pago;
-
 
 class UserController extends Controller
 {
@@ -18,6 +19,7 @@ class UserController extends Controller
     {
         return view('perfil.index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +29,7 @@ class UserController extends Controller
     {
         
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,6 +40,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Display the specified resource.
      *
@@ -47,6 +51,7 @@ class UserController extends Controller
     {
         //
     }    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -57,6 +62,7 @@ class UserController extends Controller
     {
         return view('perfil.edit');
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -70,11 +76,10 @@ class UserController extends Controller
         $this->validate($request, [
                 'name' => 'required|min:5',
                 'email' => 'required|email',
-                'password' => 'required|min:6|confirmed'
+                'password' => 'required|min:6'
             ]);
-        $user->password= bcrypt($request['password']);
-        $user->save();
-        $user->update($request->only('name', 'email','credits'));
+
+        $user->update($request->only('name', 'email','password','credits'));
         return redirect()->route('perfil_index_path');
     }
     
@@ -85,6 +90,7 @@ class UserController extends Controller
        $user->save();
        return redirect()->route('home');
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -95,9 +101,12 @@ class UserController extends Controller
     {
         //
     }
+
     public function ver(User $user) {
+
         return view('perfil.show') -> with('user', $user);
     }
+
     public function search(Request $request)
     {
         if (empty(Input::get('search'))) return redirect()->back();
@@ -108,6 +117,30 @@ class UserController extends Controller
             return redirect()->route('ver_perfil_path', ['user' => $user]);
         }else
             redirect()->route('home');
-   
     }
+
+    public function pointSum(User $user_pointSum) 
+    {
+        //return $user_pointSum;
+        $user_pointSum->credits=$user_pointSum->credits + 1;
+        $user_pointSum->save();
+        return redirect()->back();
+    }
+
+    public function pointNull(User $user_pointNull) 
+    {
+        $user_pointNull->credits=$user_pointNull->credits + 0;
+        $user_pointNull->save();
+        return redirect()->back();
+    }
+
+    public function pointRes(User $user_pointRes) 
+    {
+        if ($user_pointRes->credits > 0) {
+            $user_pointRes->credits=$user_pointRes->credits - 1;
+            $user_pointRes->save();
+            return redirect()->back();
+        }
+    }
+
 }
