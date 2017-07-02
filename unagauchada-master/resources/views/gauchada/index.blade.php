@@ -9,10 +9,10 @@
 
                     <small class="pull-right">
                         @if ($gauchada->activo)
-                            <div><a href="{{ route('edit_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-primary">Editar</a></div>
-                            <a href="{{ route('despostular_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-danger">Despublicar</a>
+                            <div><a href="{{ route('edit_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Editar</a></div>
+                            <a href="{{ route('despostular_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Despublicar</a>
                             <form action="{{ route('delete_gauchada_path', ['gauchada' => $gauchada->id]) }}" method="GET">
-                                <button type="submit" class='btn btn-warning'>Eliminar (error si hay postulados)</button>
+                                <button type="submit" class='btn btn-info'>Eliminar (error si hay postulados)</button>
                             </form>
                         @endif
                     </small>  
