@@ -35,13 +35,34 @@ html, body {
 }
 
 .links > a {
-    color: goldenrod;
-    padding: 0 25px;
+    color: #FF7F50;
+    padding: 12px;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+}
+
+.links2 > a {
+    color: #FF7F50;
+    padding: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.links > a:hover {
+    transition: 0.5s;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.links2 > a:hover {
+    transition: 0.5s;
+    background-color: black;
+    border-radius: 5px;
 }
 
 .m-b-md {

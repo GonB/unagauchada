@@ -23,7 +23,7 @@
                     @else
                         <a href="{{ url('/login') }}">Loguearse</a>
                         <a href="{{ url('/register') }}">Registrarse</a>
-                           <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
+                        <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
                     @endif
                 </div>
             @endif
