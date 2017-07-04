@@ -23,18 +23,18 @@
 		{{ csrf_field()}}	
 		<div class="form-group">
 			<label for="Titulo">Titulo:</label>
-			<input type="string" name='titulo' class="form-control" value="{{old('titulo')}}" style="width: 626px" />
+			<input type="string" name='titulo' class="form-control" value="{{old('titulo')}}" style="width: 400px" />
 
 		</div>
 
 		<div class="form-group">
 			<label for="Descripcion">Descripcion:</label>
-			<textarea rows="5" name="descripcion" id="descripcion" class="form-control" style=" width: 626px" />{{ old('descripcion') }}</textarea>
+			<textarea rows="5" name="descripcion" id="descripcion" class="form-control" style=" width: 400px" />{{ old('descripcion') }}</textarea>
 			
 		</div>
 		<div class="form-group">
 			<label for="fecha_limite"> Fecha Limite</label>
-			<input type="date" name="fecha_limite" class="form-control" style="width: 626px"/>
+			<input type="date" name="fecha_limite" class="form-control" style="width: 400px"/>
 			
 		</div>
 

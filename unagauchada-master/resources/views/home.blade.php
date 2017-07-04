@@ -2,26 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="flex-center position-ref full-height">
-                <div class="top-right links">
-                      <div class="flex-center position-ref full-height">
-                        </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" >ACA IRÍA LA IMAGEN DE PERFIL</div>
-
-                <div class="panel-body links2">
-                      @if (Auth::check())
-                         <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
-                         <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
-                         <a href="{{url('/pago/create')}}">Comprar Creditos</a>
-                    @endif
-                </div>
-            
-            </div>
-        </div>
+    <div class="panel panel-default">
+        <div class="cab_form">¿ACA IRÍA LA IMAGEN DE PERFIL?</div>
+        <div class="panel-body links2">
+            @if (Auth::check())
+                <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
+                <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
+                <a href="{{url('/pago/create')}}">Comprar Creditos</a>
+            @endif
+        </div>    
     </div>
 </div>
 @endsection

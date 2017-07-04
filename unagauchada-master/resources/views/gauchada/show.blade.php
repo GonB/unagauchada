@@ -69,40 +69,41 @@
                 ?>
               @endforeach
             @endif
-            @if(Auth::check())
-                @if ($gauchada->activo)
-                <form action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
-                  <small class="pull-right">
-                    <button type="submit" class="btn btn-warning" autofocus="">Añadir Comentario</button>
-                  </small>
-                </form>
-              @endif
-            @endif
             
-            <p>
             @if ($hay)
-              Postulante elegido: 
-              <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
-              @if (($es_mia) and ($gauchada->activo))
-                <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg]) }}" method='GET'>
-                  <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="" onclick="alert('Puntuaste +1 al usuario')">+</button>
-                </form>
-                <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg]) }}" method='GET'>
-                  <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
-                </form>
-                <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg]) }}" method='GET'>
-                  <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
-                </form>
-              @endif
+              <p>
+                Postulante elegido: 
+                <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
+                @if (($es_mia) and ($gauchada->activo))
+                  <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg]) }}" method='GET'>
+                    <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="" onclick="alert('Puntuaste +1 al usuario')">+</button>
+                  </form>
+                  <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg]) }}" method='GET'>
+                    <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
+                  </form>
+                  <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg]) }}" method='GET'>
+                    <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
+                  </form>
+                @endif
+              </p>
             @endif
-            </p>
-
 
             <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
 
+            @if(Auth::check())
+                @if ($gauchada->activo)
+                <form style="text-align: right;" action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
+                    <button type="submit" class="btn btn-primary" autofocus="">Añadir Comentario</button>
+                </form>
+              @endif
+            @endif
 
+            <div style="margin:35px 0px;background-color: coral;color: white;">
+              <hr style="border-color:black;margin: 0px;">
+              <h3 style="margin:0px;padding:15px 0px;text-align: center;">- Comentarios -</h3>
+              <hr style="border-color:black;margin: 0px;">
+            </div>
 
-             <hr style="border-color:black;"><p><h3>Comentarios: </h3>
             @foreach(Comentario::all() as $comentario)
                 <?php 
                   if($comentario->gauchada_id == $gauchada->id){
@@ -116,29 +117,28 @@
                         }
                    }
                ?>
-            <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
+               <p>{{$coment->contenido}}</p>
+               <p>{{User::find($coment->user_id)->nick}}</p>
+               <p>{{$coment->created_at}}</p>
+               
+              <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
               @if(($gauchada->user_id == Auth::id())and(!$hay))
                 @if ($gauchada->activo)
-                  <form action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
-                    <small class="pull-right">
-                      <button type="submit" class="btn btn-info  " autofocus="">Responder Comentario</button>
-                    </small>
+                  <form style="text-align: right;" action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
+                      <button type="submit" class="btn btn-danger" autofocus="">Responder Comentario</button>
                   </form> 
                 @endif
               @endif
-            
-                <hr style="border-color:black;"><p>{{$coment->contenido}}</p>
-                 <p>{{User::find($coment->user_id)->name}}</p>
-                 <p> {{$coment->created_at}}</p><hr>
-                 
+
+              <hr style="margin:10px 0px;border-color: coral;">  
               
                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
                 <?php
                   $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
                  ?>
                   <small class="pull">
-                   {{User::find($respuesta['user_id'])['name']}} : 
+                   {{User::find($respuesta['user_id'])['nick']}} : 
                     {{$respuesta['contenido']}};<br>
                     {{$respuesta['created_at']}}
                    </small>
