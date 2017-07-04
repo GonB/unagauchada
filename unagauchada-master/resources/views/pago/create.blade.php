@@ -40,15 +40,13 @@
 		</div>
 
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" autofocus="">Añadir Pago</button>
-			<button class ="btn btn-warning" onclick="goBack()"> Cancelar</button>
+			<button type="submit" class="btn btn-primary" autofocus="">Comprar</button>
+			<button class ="btn btn-warning" onclick="goBack()">Cancelar</button>
 			<script>
 				function goBack(){
 					window.history.back();
 				}
 			</script>			
- 			
-
 		</div>
 	</div>
 		

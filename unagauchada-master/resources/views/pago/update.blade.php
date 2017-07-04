@@ -31,7 +31,7 @@
 				</div>
 
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary" autofocus="">Confirmar Compra</button>
+					<button type="submit" class="btn btn-primary" autofocus="">Confirmar</button>
 					<button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
 					<script>
 						function goBack(){

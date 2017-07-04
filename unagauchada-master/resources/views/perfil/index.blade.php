@@ -1,25 +1,24 @@
 @extends ('layouts.app')
 
 @section('content')
-	 <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <medium class="pull-left">
+	<div class="container">
+        <div class="panel panel-default">
+            <div class="cab_form">MI PERFIL</div>
+            <div class="panel-body">
+                <strong>
                 <p>Nombre: {{Auth::user()->name}}</p>
                 <p>Nick: {{Auth::user()->nick}}</p>
                 <p>Fecha Nacimiento: {{Auth::user()->birthdate}}</p>
                 <p>Email: {{Auth::user()->email}}</p>
-                <p>Creditos: {{Auth::user()->credits}}</p>
-
+                </strong>
                 <a href="{{ route('edit_perfil_path') }}" class="btn btn-primary">Editar Perfil</a>
                 <button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
-            <script>
-                function goBack(){
-                    window.history.back();
-                }
-            </script>   
-
-            </medium>  
+                <script>
+                    function goBack(){
+                        window.history.back();
+                    }
+                </script>
+            </div>
         </div>
     </div>
-    <hr>
 @endsection

@@ -92,3 +92,8 @@ html, body {
 	border-top-right-radius: 3px;
 	border-top-left-radius: 3px;
 }
+
+.cont{
+    padding: 15px 0px 15px 30px;
+    margin-left: 20px;
+}
