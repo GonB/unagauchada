@@ -13,7 +13,7 @@
             <p>{{ $gauchada->descripcion }}</p>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php   $user= User::find($gauchada->user_id); ?>
-           <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
+            <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
 
             <p>Postulantes:<br>
 
@@ -75,15 +75,16 @@
                 Postulante elegido: 
                 <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
                 @if (($es_mia) and ($gauchada->activo))
-                  <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg]) }}" method='GET'>
+                  <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
                     <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="" onclick="alert('Puntuaste +1 al usuario')">+</button>
                   </form>
-                  <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg]) }}" method='GET'>
+                  <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
                     <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
                   </form>
-                  <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg]) }}" method='GET'>
+                  <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
                     <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
                   </form>
+                  
                 @endif
               </p>
             @endif
@@ -91,7 +92,7 @@
             <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
 
             @if(Auth::check())
-                @if ($gauchada->activo)
+              @if ($gauchada->activo)
                 <form style="text-align: right;" action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
                     <button type="submit" class="btn btn-primary" autofocus="">Añadir Comentario</button>
                 </form>
