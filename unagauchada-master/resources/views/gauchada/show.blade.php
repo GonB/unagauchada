@@ -118,9 +118,9 @@
                         }
                    }
                ?>
-               <p>{{$coment->contenido}}</p>
-               <p>{{User::find($coment->user_id)->nick}}</p>
-               <p>{{$coment->created_at}}</p>
+               {{$coment->contenido}}<br>
+               Autor: {{User::find($coment->user_id)->nick}}<br>
+               {{$coment->created_at}}
                
               <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
@@ -138,11 +138,12 @@
                 <?php
                   $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
                  ?>
-                  <small class="pull">
-                    {{User::find($respuesta['user_id'])['nick']}}<br>
+                  <div style="padding-left: 50px;">
+                    <br>
                     {{$respuesta['contenido']}}<br>
+                    Autor: {{User::find($respuesta['user_id'])['nick']}}<br>
                     {{$respuesta['created_at']}}
-                  </small>
+                  </div>
 
                   <hr style="margin:10px 0px;border-color: coral;">
 

@@ -33,33 +33,24 @@
     @foreach($gauchada as $gauchada)
         @if ($gauchada->activo)
           <div class="row">
-             
-                <div class="col-md-8 col-md-offset-2">
-               
-                 
-
-
+              <div class="col-md-8 col-md-offset-2">
                   <small class="pull-left">
-
                     <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}"><h2>{{ $gauchada->titulo }}</h2></a>
                     <!-- <h2>{{ $gauchada->titulo }}</h2> -->
                     <p>{{ $gauchada->descripcion }}</p>
                     <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
-                      <?php   $user= User::find($gauchada->user_id);
-                      echo "Creado por $user->nick"
+                    <?php   $user= User::find($gauchada->user_id);
+                      echo "Creado por $user->nick";
                     ?>
                     <p>Posteado: {{ $gauchada->created_at->diffForHumans() }}</p>
-                </small>
-                
-
-             
-            @if(Auth::check())
-                <?php
-                // esto es para ver si ya existe la postulacion
-                $existe = False;
-                $hay_elegido = False;
-                $postulaciones = Postula::all();
-                foreach ($postulaciones  as $p) {
+                </small>  
+                @if(Auth::check())
+                  <?php
+                  // esto es para ver si ya existe la postulacion
+                  $existe = False;
+                  $hay_elegido = False;
+                  $postulaciones = Postula::all();
+                  foreach ($postulaciones  as $p) {
                     if (($p->seleccionado == 1) and ($p->gauchada_id == $gauchada->id)) {
                       $hay_elegido = true;
                     }
@@ -67,7 +58,7 @@
                     {
                       $existe = True;
                     }
-                }
+                  }
                 if (! $hay_elegido) {
                   if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {?>
                     @if ($gauchada->activo)
