@@ -131,24 +131,23 @@
                 @endif
               @endif
 
-              <hr style="margin:10px 0px;border-color: coral;">  
+              
               
                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
                 <?php
                   $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
                  ?>
                   <small class="pull">
-                   {{User::find($respuesta['user_id'])['nick']}} : 
-                    {{$respuesta['contenido']}};<br>
+                    {{User::find($respuesta['user_id'])['nick']}}<br>
+                    {{$respuesta['contenido']}}<br>
                     {{$respuesta['created_at']}}
-                   </small>
+                  </small>
+
+                  <hr style="margin:10px 0px;border-color: coral;">
 
                  <?php
-            
                    }
                   ?>
-            
-
 
             @endforeach
         </div>

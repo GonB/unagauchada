@@ -18,7 +18,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Perfil</a>
+                        <a href="{{ url('/home') }}">Home</a>
                         <a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a>
                     @else
                         <a href="{{ url('/login') }}">Loguearse</a>
