@@ -124,7 +124,7 @@
                
               <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
-              @if(($gauchada->user_id == Auth::id())and(!$hay))
+              @if(($gauchada->user_id == Auth::id())and(!$hay)and($coment->user_id != Auth::id()))
                 @if ($gauchada->activo)
                   <form style="text-align: right;" action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
                       <button type="submit" class="btn btn-danger" autofocus="">Responder Comentario</button>
