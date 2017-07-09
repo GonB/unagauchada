@@ -62,6 +62,6 @@ Route::get('/respuesta/create/{comentario}', 'RespuestaController@create')->name
 Route::get('/respuesta/{comentario}', 'RespuestaController@store')->name('store_respuesta_path');
 
 // al momento de puntuar, modifica al usuario
-Route::get('/elegido/Sum/{user_pointSum}', 'UserController@pointSum')->name('pointSum_perfil_path');
-Route::get('/elegido/Null/{user_pointNull}', 'UserController@pointNull')->name('pointNull_perfil_path');
-Route::get('/elegido/Res/{user_pointRes}', 'UserController@pointRes')->name('pointRes_perfil_path');
+Route::get('/elegido/Sum/{user_pointSum}/{gauchada}', 'UserController@pointSum')->name('pointSum_perfil_path');
+Route::get('/elegido/Null/{user_pointNull}/{gauchada}', 'UserController@pointNull')->name('pointNull_perfil_path');
+Route::get('/elegido/Res/{user_pointRes}/{gauchada}', 'UserController@pointRes')->name('pointRes_perfil_path');

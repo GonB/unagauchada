@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Illuminate\Support\Facades\input;
 use App\Pago;
+use App\Gauchada;
 
 class UserController extends Controller
 {
@@ -120,9 +121,13 @@ class UserController extends Controller
             redirect()->route('home');
     }
 
-    public function pointSum(User $user_pointSum) 
+    public function pointSum(User $user_pointSum, Gauchada $gauchada) 
     {
         //return $user_pointSum;
+        //return $gauchada;
+        $gauchada->titulo .= " [FINALIZADA]";
+        $gauchada->activo=0;
+        $gauchada->save();
         $user_pointSum->credits=$user_pointSum->credits + 1;
         $user_pointSum->save();
         return redirect()->back();
@@ -130,6 +135,9 @@ class UserController extends Controller
 
     public function pointNull(User $user_pointNull) 
     {
+        $gauchada->titulo .= " [FINALIZADA]";
+        $gauchada->activo=0;
+        $gauchada->save();
         $user_pointNull->credits=$user_pointNull->credits + 0;
         $user_pointNull->save();
         return redirect()->back();
@@ -138,6 +146,9 @@ class UserController extends Controller
     public function pointRes(User $user_pointRes) 
     {
         if ($user_pointRes->credits > 0) {
+            $gauchada->titulo .= " [FINALIZADA]";
+            $gauchada->activo=0;
+            $gauchada->save();
             $user_pointRes->credits=$user_pointRes->credits - 1;
             $user_pointRes->save();
             return redirect()->back();
