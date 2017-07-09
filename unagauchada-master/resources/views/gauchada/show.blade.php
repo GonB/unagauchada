@@ -141,7 +141,7 @@
                   <div style="padding-left: 50px;">
                     <br>
                     {{$respuesta['contenido']}}<br>
-                    Autor: {{User::find($respuesta['user_id'])['nick']}}<br>
+                    {{User::find($respuesta['user_id'])['nick']}}<br>
                     {{$respuesta['created_at']}}
                   </div>
 
