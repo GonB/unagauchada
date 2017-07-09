@@ -34,15 +34,15 @@
         @if ($gauchada->activo)
           <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                  <small class="pull-left">
+                <small >
                   @if(Auth::check())
                     <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}"><h2>{{ $gauchada->titulo }}</h2></a>
                   @else
                     <h2>{{ $gauchada->titulo }}</h2>
                   @endif
-                    <p>{{ $gauchada->descripcion }}</p>
-                    <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
-                    <?php   $user= User::find($gauchada->user_id);
+                    <p style="margin: 0px;">{{ $gauchada->descripcion }}</p>
+                    <p style="margin: 0px;">Fecha Limite: {{$gauchada->fecha_limite}}</p>
+                    <?php   $user = User::find($gauchada->user_id);
                       echo "Creado por $user->nick";
                     ?>
                     <p>Posteado: {{ $gauchada->created_at->diffForHumans() }}</p>
@@ -63,12 +63,11 @@
                     }
                   }
                 if (! $hay_elegido) {
-                  if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {?>
+                  if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {
+                  ?>
                     @if ($gauchada->activo)
-                      <form action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
-                        <small class="pull-right">
-                          <button type="submit" class="btn btn-danger" autofocus="" onclick="alert('Te Postulaste!')">Postularse</button>
-                        </small>
+                      <form style="text-align: right;" action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                        <button type="submit" class="btn btn-danger" autofocus="" onclick="alert('Te Postulaste!')">Postularse</button>
                       </form>
                     @endif
                   <?php
@@ -81,7 +80,7 @@
                           </small>
                         </form>
                       @endif
-                  <?php
+                <?php
                     }
                   }
                 }

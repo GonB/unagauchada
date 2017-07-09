@@ -139,10 +139,9 @@
                   $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
                  ?>
                   <div style="padding-left: 50px;">
-                    <br>
-                    {{$respuesta['contenido']}}<br>
-                    {{User::find($respuesta['user_id'])['nick']}}<br>
-                    {{$respuesta['created_at']}}
+                    <p style="margin:0px;">{{$respuesta['contenido']}}</p>
+                    <p style="margin:0px;">{{User::find($respuesta['user_id'])['nick']}}</p>
+                    <p style="margin:0px;">{{$respuesta['created_at']}}</p>
                   </div>
 
                   <hr style="margin:10px 0px;border-color: coral;">
