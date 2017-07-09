@@ -35,8 +35,11 @@
           <div class="row">
               <div class="col-md-8 col-md-offset-2">
                   <small class="pull-left">
+                  @if(Auth::check())
                     <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}"><h2>{{ $gauchada->titulo }}</h2></a>
-                    <!-- <h2>{{ $gauchada->titulo }}</h2> -->
+                  @else
+                    <h2>{{ $gauchada->titulo }}</h2>
+                  @endif
                     <p>{{ $gauchada->descripcion }}</p>
                     <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
                     <?php   $user= User::find($gauchada->user_id);

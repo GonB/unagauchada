@@ -17,6 +17,8 @@ class CreateCategoriaUsuariosTable extends Migration
             $table->increments('id');
             $table->integer('admin_id')->unsigned();            
             $table->foreign('admin_id')->references('id')->on('admins');
+            $table->integer('rango_inicial')->required();
+            $table->integer('rango_final')->required();
             $table->string('nombre');
             $table->timestamps();
         });
