@@ -14,8 +14,8 @@
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php   $user= User::find($gauchada->user_id); ?>
             <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
-
-            <p>Postulantes:<br>
+            <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
+            <p style="margin: 0px;">Postulantes:<br>
 
             <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
             <?php 
@@ -41,7 +41,7 @@
                     <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
                     <form action="{{ route('choose_postula_path', ['postula' => $post]) }}" method='GET'>
                     {{ csrf_field() }}
-                    - <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a>
+                    <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a></p>
                     
                     <?php
                     if (! $hay) { ?>
@@ -51,7 +51,6 @@
                 <?php
                     } ?>
                     </form>
-                    <br>
                 <?php
                   } ?>
               @endforeach
@@ -75,21 +74,28 @@
                 Postulante elegido: 
                 <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
                 @if (($es_mia) and ($gauchada->activo))
-                  <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                    <button type="submit" class="btn btn-success btn-sm" id="Sum" autofocus="" onclick="alert('Puntuaste +1 al usuario')">+</button>
-                  </form>
-                  <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                    <button type="submit" class="btn btn-warning btn-sm" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
-                  </form>
-                  <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                    <button type="submit" class="btn btn-danger btn-sm" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
-                  </form>
-                  
+                  <p style="margin: 0px; display: inline-block;">Puntuación:
+                    <div style="padding-left: 15px; display: inline-block;">
+                      <div style="display: inline-block;">
+                        <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
+                          <button type="submit" class="btn btn-danger" id="Sum" autofocus="" style="font-size: 15px;" onclick="alert('Puntuaste +1 al usuario')">+</button>
+                        </form>
+                      </div>
+                      <div style="display: inline-block;">
+                      <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
+                        <button type="submit" class="btn btn-primary" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
+                      </form>
+                      </div>
+                      <div style="display: inline-block;">
+                      <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
+                        <button type="submit" class="btn btn-warning" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
+                      </form>
+                      </div>
+                    </div>
+                  </p>
                 @endif
               </p>
             @endif
-
-            <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
 
             @if(Auth::check())
               @if ($gauchada->activo)
