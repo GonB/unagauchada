@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+<?php
+	use App\CategoriaGauchada;
+?>
 @section('content')
 
 	@if(count($errors) > 0)
@@ -26,11 +28,17 @@
 			<input type="string" name='titulo' class="form-control" value="{{old('titulo')}}" style="width: 400px" />
 
 		</div>
-
 		<div class="form-group">
 			<label for="Descripcion">Descripcion:</label>
 			<textarea rows="5" name="descripcion" id="descripcion" class="form-control" style=" width: 400px" />{{ old('descripcion') }}</textarea>
-			
+		</div>
+		<div class="form-group">
+			<label for="Categoria">Categoria:</label>
+			<select type="string" name='categoria' class="form-control" value="{{old('categoria')}}" style="width: 400px">
+				<?php foreach (CategoriaGauchada::all() as $categoria) {
+					echo '<option value="'.$categoria['id'].'">'.$categoria['nombre'].'</option>';
+				}?>
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="fecha_limite"> Fecha Limite</label>

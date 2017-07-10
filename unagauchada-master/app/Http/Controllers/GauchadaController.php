@@ -60,6 +60,8 @@ class GauchadaController extends Controller
                 'user_id' => Auth::id(),
                 'titulo' => $gauchada['titulo'],
                 'descripcion' => $gauchada['descripcion'],
+                #AGREGAR CAMPO "CATEGORIA" A LAS GAUCHADAS
+                #'categoria' => $gauchada['categoria'],
                 'fecha_limite' => $gauchada['fecha_limite'],
             ]);
             $user->credits=$user->credits-1;
