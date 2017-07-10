@@ -15,86 +15,80 @@
             <?php   $user= User::find($gauchada->user_id); ?>
             <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
             <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
-            <p style="margin: 0px;">Postulantes:<br>
-
-            <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
-            <?php 
-                $hay = False;
-                foreach(Postula::all() as $post) {
-                    //$gau = $post -> gauchada_id para conseguir -> usuario_id
-                    $gau = Gauchada::where('id', '=', $post->gauchada_id) -> first();
-                    if (($post->seleccionado == 1) && ($gauchada->id == $post->gauchada_id)) {
-                        $hay = True;
-                        $postu_eleg = User::where('id', '=', $post->user_id) -> first();
-                    }
-                }
-            ?>
-
-            <!-- SI ES MI GAUCHADA -->
-            @if ($gauchada->user_id == Auth::id())
-              <?php $es_mia = True; ?>
-              @foreach(Postula::all() as $post)
-                <?php
-                  if ($post->gauchada_id == $gauchada->id) {
-                    $user_p = User::where('id', '=', $post->user_id)->first();
-                ?>
-                    <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
-                    <form action="{{ route('choose_postula_path', ['postula' => $post]) }}" method='GET'>
-                    {{ csrf_field() }}
-                    <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a></p>
-                    
-                    <?php
-                    if (! $hay) { ?>
-                      @if ($gauchada->activo)
-                        <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
-                      @endif
-                <?php
-                    } ?>
-                    </form>
-                <?php
-                  } ?>
-              @endforeach
-            <!-- SI NO ES MI GAUCHADA -->
-            @else
-              <?php $es_mia = False; ?>
-              @foreach(Postula::all() as $post)
-                <?php
-                  if ($post->gauchada_id == $gauchada->id) {
-                    $user_p = User::where('id', '=', $post->user_id)->first();
-                ?>
-                  - <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{$user_p -> nick}}</a><br>
-                <?php
-                  }
-                ?>
-              @endforeach
-            @endif
             
-            @if ($hay)
-              <p>
-                Postulante elegido: 
-                <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
-                @if (($es_mia) and ($gauchada->activo))
-                  <p style="margin: 0px; display: inline-block;">Puntuación:
-                    <div style="padding-left: 15px; display: inline-block;">
-                      <div style="display: inline-block;">
-                        <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                          <button type="submit" class="btn btn-danger" id="Sum" autofocus="" style="font-size: 15px;" onclick="alert('Puntuaste +1 al usuario')">+</button>
+            <!-- SOLO PODRÁ VER ESTO EL AUTOR DE LA GAUCHADA -->
+            @if($gauchada->user_id == Auth::id())
+              <p style="margin: 0px;">Postulantes:<br>
+
+              <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
+              <?php 
+                  $hay = False;
+                  foreach(Postula::all() as $post) {
+                      //$gau = $post -> gauchada_id para conseguir -> usuario_id
+                      $gau = Gauchada::where('id', '=', $post->gauchada_id) -> first();
+                      if (($post->seleccionado == 1) && ($gauchada->id == $post->gauchada_id)) {
+                          $hay = True;
+                          $postu_eleg = User::where('id', '=', $post->user_id) -> first();
+                      }
+                  }
+              ?>
+
+              <!-- SI ES MI GAUCHADA -->
+              @if ($gauchada->user_id == Auth::id())
+                <?php $es_mia = True; ?>
+                @foreach(Postula::all() as $post)
+                  <?php
+                    if ($post->gauchada_id == $gauchada->id) {
+                      $user_p = User::where('id', '=', $post->user_id)->first();
+                  ?>
+                      <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
+                      <form action="{{ route('choose_postula_path', ['postula' => $post]) }}" method='GET'>
+                      {{ csrf_field() }}
+                      <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a></p>
+                      
+                      <?php
+                      if (! $hay) { ?>
+                        @if ($gauchada->activo)
+                          <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
+                        @endif
+                  <?php
+                      } ?>
+                      </form>
+                  <?php
+                    } ?>
+                @endforeach
+              <!-- SI NO ES MI GAUCHADA -->
+              @else
+                <?php $es_mia = False; ?>
+              @endif
+              
+              @if ($hay)
+                <p>
+                  Postulante elegido: 
+                  <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
+                  @if (($es_mia) and ($gauchada->activo))
+                    <p style="margin: 0px; display: inline-block;">Puntuación:
+                      <div style="padding-left: 15px; display: inline-block;">
+                        <div style="display: inline-block;">
+                          <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
+                            <button type="submit" class="btn btn-danger" id="Sum" autofocus="" style="font-size: 15px;" onclick="alert('Puntuaste +1 al usuario')">+</button>
+                          </form>
+                        </div>
+                        <div style="display: inline-block;">
+                        <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
+                          <button type="submit" class="btn btn-primary" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
                         </form>
+                        </div>
+                        <div style="display: inline-block;">
+                        <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
+                          <button type="submit" class="btn btn-warning" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
+                        </form>
+                        </div>
                       </div>
-                      <div style="display: inline-block;">
-                      <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                        <button type="submit" class="btn btn-primary" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
-                      </form>
-                      </div>
-                      <div style="display: inline-block;">
-                      <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                        <button type="submit" class="btn btn-warning" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
-                      </form>
-                      </div>
-                    </div>
-                  </p>
-                @endif
-              </p>
+                    </p>
+                  @endif
+                </p>
+              @endif
             @endif
 
             @if(Auth::check())
