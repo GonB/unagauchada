@@ -30,22 +30,22 @@
     </form>
     </small>
   </div>
-    @foreach($gauchada as $gauchada)
-        @if ($gauchada->activo)
+    @foreach($gauchada as $gau)
+        @if ($gau->activo)
           <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <small >
                   @if(Auth::check())
-                    <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}"><h2>{{ $gauchada->titulo }}</h2></a>
+                    <a href="{{ route('gauchada_path', ['gau' => $gau]) }}"><h2>{{ $gau->titulo }}</h2></a>
                   @else
-                    <h2>{{ $gauchada->titulo }}</h2>
+                    <h2>{{ $gau->titulo }}</h2>
                   @endif
-                    <p style="margin: 0px;">{{ $gauchada->descripcion }}</p>
-                    <p style="margin: 0px;">Fecha Limite: {{$gauchada->fecha_limite}}</p>
-                    <?php   $user = User::find($gauchada->user_id);
+                    <p style="margin: 0px;">{{ $gau->descripcion }}</p>
+                    <p style="margin: 0px;">Fecha Limite: {{$gau->fecha_limite}}</p>
+                    <?php   $user = User::find($gau->user_id);
                       echo "Creado por $user->nick";
                     ?>
-                    <p>Posteado: {{ $gauchada->created_at->diffForHumans() }}</p>
+                    <p>Posteado: {{ $gau->created_at->diffForHumans() }}</p>
                 </small>  
                 @if(Auth::check())
                   <?php
@@ -54,27 +54,27 @@
                   $hay_elegido = False;
                   $postulaciones = Postula::all();
                   foreach ($postulaciones  as $p) {
-                    if (($p->seleccionado == 1) and ($p->gauchada_id == $gauchada->id)) {
+                    if (($p->seleccionado == 1) and ($p->gauchada_id == $gau->id)) {
                       $hay_elegido = true;
                     }
-                    if (($p->gauchada_id == $gauchada->id) and ($p->user_id == Auth::id())) 
+                    if (($p->gauchada_id == $gau->id) and ($p->user_id == Auth::id())) 
                     {
                       $existe = True;
                     }
                   }
                 if (! $hay_elegido) {
-                  if ((Auth::user()->id != $gauchada->user_id) and (! $existe)) {
+                  if ((Auth::user()->id != $gau->user_id) and (! $existe)) {
                   ?>
-                    @if ($gauchada->activo)
-                      <form style="text-align: right;" action="{{route('store_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                    @if ($gau->activo)
+                      <form style="text-align: right;" action="{{route('store_postula_path', ['gau' => $gau])}}" method='GET'>
                         <button type="submit" class="btn btn-danger" autofocus="" onclick="alert('Te Postulaste!')">Postularse</button>
                       </form>
                     @endif
                   <?php
                   } else {
-                    if ((Auth::user()->id != $gauchada->user_id) and ($existe)) { ?>
-                      @if ($gauchada->activo)
-                        <form action="{{route('destroy_postula_path', ['gauchada' => $gauchada])}}" method='GET'>
+                    if ((Auth::user()->id != $gau->user_id) and ($existe)) { ?>
+                      @if ($gau->activo)
+                        <form action="{{route('destroy_postula_path', ['gau' => $gau])}}" method='GET'>
                           <small class="pull-right">
                             <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Te Despostularseespostulaste!')">Despostularse</button>
                           </small>
@@ -91,4 +91,5 @@
           <hr>
         @endif
     @endforeach
+    <div style="text-align: center;">{!! $gauchada -> render() !!}</div>
 @endsection
