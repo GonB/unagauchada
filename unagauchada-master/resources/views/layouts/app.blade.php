@@ -55,6 +55,9 @@
                             <li><a href="{{ route('login') }}">Loguearse</a></li>
                             <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
+                            @if (Auth::user()->admin)
+                                <li><a href="{{ route('index_admin_path') }}">Administrar</a></li>
+                            @endif
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a></li>
 

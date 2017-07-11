@@ -65,3 +65,6 @@ Route::get('/respuesta/{comentario}', 'RespuestaController@store')->name('store_
 Route::get('/elegido/Sum/{user_pointSum}/{gauchada}', 'UserController@pointSum')->name('pointSum_perfil_path');
 Route::get('/elegido/Null/{user_pointNull}/{gauchada}', 'UserController@pointNull')->name('pointNull_perfil_path');
 Route::get('/elegido/Res/{user_pointRes}/{gauchada}', 'UserController@pointRes')->name('pointRes_perfil_path');
+
+//ADMIN
+Route::get('/admin', 'AdminController@index')->name('index_admin_path');
