@@ -51,19 +51,16 @@ class GauchadaController extends Controller
     public function store(Request $gauchada)
     {
         $user=User::find(Auth::id());
-        //return $gauchada['categoria'];
         if($user->credits>=1){
             $this->validate($gauchada, [
                 'titulo' => 'required|min:5',
                 'descripcion' => 'required|min:15',
                 'fecha_limite' => 'required|after:today'
             ]);
-            //$categ = CategoriaGauchada::where('titulo', 'LIKE','%'.$gauchada['categoria'].'%');
             Gauchada::create([
                 'user_id' => Auth::id(),
                 'titulo' => $gauchada['titulo'],
                 'descripcion' => $gauchada['descripcion'],
-                #AGREGAR CAMPO "CATEGORIA" A LAS GAUCHADAS
                 'categoria' => $gauchada['categoria'],
                 'fecha_limite' => $gauchada['fecha_limite'],
             ]);
