@@ -2,9 +2,10 @@
   <?php 
     use App\User;
     use App\Postula;
+    use App\Gauchada;
   ?>
 @section('content')
-    @foreach($gauchada as $gauchada)
+    @foreach(Gauchada::all() as $gauchada)
         @if($gauchada -> user_id == Auth::id())
 
             <div class="row">
@@ -19,16 +20,16 @@
 
 
                             <?php
-                                $hay=False;
+                                $hay_postu=False;
                             ?>
                             @foreach(Postula::all() as $post)
                                 @if (($post->gauchada_id == $gauchada->id) AND ($post->seleccionado == 1))
                                     <?php 
-                                        $hay=True;
+                                        $hay_postu=True;
                                     ?>
                                 @endif
                             @endforeach
-                            @if($hay)
+                            @if($hay_postu)
                                 <a class="btn btn-info">No Se puede Despublicar</a>
                             @else
                                 <a href="{{ route('despostular_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Despublicar</a>

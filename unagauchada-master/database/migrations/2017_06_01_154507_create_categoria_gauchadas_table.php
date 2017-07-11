@@ -16,8 +16,8 @@ class CreateCategoriaGauchadasTable extends Migration
         Schema::create('categoria_gauchadas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('id_admin')->unsigned();
-            $table->foreign('id_admin')->references('id')->on('admins');
+            $table->integer('user_id')->unsigned()->required();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

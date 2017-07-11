@@ -15,8 +15,8 @@ class CreateCategoriaUsuariosTable extends Migration
     {
         Schema::create('categoria_usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('admin_id')->unsigned();            
-            $table->foreign('admin_id')->references('id')->on('admins');
+            //$table->integer('user_id')->unsigned()->required();
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->integer('rango_inicial')->required();
             $table->integer('rango_final')->required();
             $table->string('nombre');

@@ -20,6 +20,7 @@ class CreateGauchadasTable extends Migration
             $table->date('fecha_limite')->nullable();
             $table->string('titulo');
             $table->boolean('activo')->default(true);
+            $table->integer('categoria')->nullable();
             $table->text('descripcion');
             $table->timestamps();
         });

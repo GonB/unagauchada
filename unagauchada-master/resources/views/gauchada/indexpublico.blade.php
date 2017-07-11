@@ -2,6 +2,7 @@
   <?php 
     use App\User;
     use App\Postula;
+    use App\Gauchada;
   ?>
 
 @section('content')
