@@ -68,3 +68,7 @@ Route::get('/elegido/Res/{user_pointRes}/{gauchada}', 'UserController@pointRes')
 
 //ADMIN
 Route::get('/admin', 'AdminController@index')->name('index_admin_path');
+
+//Rutas Categoria Gauchada
+Route::get('/categoriagauchada/create', 'CategoriaGauchadaController@create')->name('create_categoriagauchada_path');
+Route::post('/categoriagauchada', 'CategoriaGauchadaController@store')->name('store_categoriagauchada_path');

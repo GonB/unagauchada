@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CategoriaGauchada;
+use Auth;
 use Illuminate\Http\Request;
 
 class CategoriaGauchadaController extends Controller
@@ -24,7 +25,8 @@ class CategoriaGauchadaController extends Controller
      */
     public function create()
     {
-        //
+        $categoriagauchada = new CategoriaGauchada;
+        return view('categoriagauchada.create')->with(['categoriagauchada' => $categoriagauchada]);
     }
 
     /**
@@ -33,9 +35,16 @@ class CategoriaGauchadaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $categoriagauchada)
     {
-        //
+        $this->validate($categoriagauchada, [
+            'nombre' => 'required',
+        ]);
+        CategoriaGauchada::create([
+            'user_id' => Auth::id(),
+            'nombre' => $categoriagauchada['nombre'],
+        ]);
+        return redirect()->route('index_admin_path');
     }
 
     /**

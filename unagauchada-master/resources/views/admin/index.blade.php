@@ -7,8 +7,8 @@
         <div class="panel-body links2">
             @if (Auth::check())
                 <a href="{{ route('index_admin_path') }}">Crear Categoria De Usuarios</a><br> 
-                <a href="{{ route('index_admin_path') }}">Crear Categoria De Gauchadas</a><br>
                 <a href="{{ route('index_admin_path') }}">Categorias De Usuarios</a><br>
+                <a href="{{ route('create_categoriagauchada_path') }}">Crear Categoria De Gauchadas</a><br>
                 <a href="{{ route('index_admin_path') }}">Categorias De Gauchadas</a>
             @endif
         </div>    
