@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\input;
 use App\User;
+use DateTime;
 
 class GauchadaController extends Controller
 {
@@ -20,12 +21,34 @@ class GauchadaController extends Controller
     {
         $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
 
+        foreach ($gauchada as $gau) {
+            if ($gau->activo) {
+                $hoy= new DateTime();
+                if ($gau->fecha_limite < $hoy->format('Y-m-d')) {
+                    $gau->titulo .= " [VENCIDA]";
+                    $gau->activo=false;
+                    $gau->save();
+                }
+            }
+        }
+
         return view ('gauchada.index')->with(['gauchada' => $gauchada]);
     }
 
      public function indexpublico()
     {
         $gauchada = Gauchada:: orderBy('id','desc')->paginate(10);
+        
+        foreach ($gauchada as $gau) {
+            if ($gau->activo) {
+                $hoy= new DateTime();
+                if ($gau->fecha_limite < $hoy->format('Y-m-d')) {
+                    $gau->titulo .= " [VENCIDA]";
+                    $gau->activo=false;
+                    $gau->save();
+                }
+            }
+        }
 
         return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
     }
