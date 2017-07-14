@@ -35,7 +35,7 @@
         @if ($gau->activo)
           <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <small >
+                <small>
                   @if(Auth::check())
                     <a href="{{ route('gauchada_path', ['gau' => $gau]) }}"><h2>{{ $gau->titulo }}</h2></a>
                   @else

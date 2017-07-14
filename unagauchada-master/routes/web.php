@@ -72,3 +72,8 @@ Route::get('/admin', 'AdminController@index')->name('index_admin_path');
 //Rutas Categoria Gauchada
 Route::get('/categoriagauchada/create', 'CategoriaGauchadaController@create')->name('create_categoriagauchada_path');
 Route::post('/categoriagauchada', 'CategoriaGauchadaController@store')->name('store_categoriagauchada_path');
+
+//Rutas Categoria Usuario
+Route::get('/categoriausuario/create', 'CategoriaUsuarioController@create')->name('create_categoriausuario_path');
+Route::get('/categoriausuario', 'CategoriaUsuarioController@store')->name('store_categoriausuario_path');
+Route::get('/categoriausuario/index', 'CategoriaUsuarioController@index')->name('index_categoriausuario_path');

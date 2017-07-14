@@ -14,7 +14,8 @@ class CategoriaUsuarioController extends Controller
      */
     public function index()
     {
-        //
+
+        return view ('categoriausuario.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoriaUsuarioController extends Controller
      */
     public function create()
     {
-        //
+        $categoriausuario= new CategoriaUsuario;
+        return view('categoriausuario.create')->with(['categoriausuario' => $categoriausuario]);
     }
 
     /**
@@ -33,9 +35,21 @@ class CategoriaUsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $categoriausuario)
     {
-        //
+        $messages = ['nombre.unique' => 'Categoría ya existente'];
+         $this->validate($categoriausuario, [
+            'nombre' => 'required|unique:categoria_usuarios',
+            'rango_inicial' => 'required',
+            'rango_final' => 'required',
+        ],
+        $messages);
+        CategoriaUsuario::create([
+            'nombre' => $categoriausuario['nombre'],
+            'rango_inicial' => $categoriausuario['rango_inicial'],
+            'rango_final' => $categoriausuario['rango_final'],
+        ]);
+        return redirect()->route('index_admin_path');
     }
 
     /**

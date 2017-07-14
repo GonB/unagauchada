@@ -25,8 +25,8 @@
 					<strong>
 					<p>Numero Tarjeta: {{$pago->numero_tarjeta}}</p>
 					<p>Codigo Seguridad: {{$pago->cod_seguridad}}</p>
-					<p>Vencimiento: {{$pago->vencimiento}}</p>
-					<p>Creditos: {{$pago->creditos}}</p>
+					<p>Vencimiento: {{$pago->vencimiento}}</p>	
+					<p>A Pagar: ${{$pago->creditos}} ({{$pago->creditos}} Creditos)</p>
 					</strong>
 				</div>
 

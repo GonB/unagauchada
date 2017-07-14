@@ -36,7 +36,7 @@
 		
 		<div class="form-group">	
 			<label for="creditos">Creditos</label>
-			<input type="number" name="creditos" min="1" class="form-control" style="width: 400px" value="{{ $pago->creditos}}"/>
+			<input type="number" name="creditos" min="1" class="form-control" style="width: 400px" value="{{ $pago->creditos}}"/> 1 Credito = $1
 		</div>
 
 		<div class="form-group">
