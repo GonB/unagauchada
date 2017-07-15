@@ -45,7 +45,7 @@
                       $user_p = User::where('id', '=', $post->user_id)->first();
                   ?>
                       <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
-                      <form action="{{ route('choose_postula_path', ['postula' => $post]) }}" method='GET'>
+                      <form action="{{ route('choose_postula_path', ['postula' => $post, 'gauchada' => $gauchada->id]) }}" method='GET'>
                       {{ csrf_field() }}
                       <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a></p>
                       

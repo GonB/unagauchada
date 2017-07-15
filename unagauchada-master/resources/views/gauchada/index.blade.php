@@ -15,8 +15,12 @@
                     <small class="pull-right">
                         @if ($gauchada->activo)
 
-
+                            @if(!$gauchada->seleccionado)
                             <div><a href="{{ route('edit_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Editar</a></div>
+                            @else
+                                <div><a class= "btn btn-info"> No se puede editar (postulante seleccionado)</a></div>
+                            @endif
+
 
 
                             <?php
@@ -30,7 +34,7 @@
                                 @endif
                             @endforeach
                             @if($hay_postu)
-                                <a class="btn btn-info">No Se puede Despublicar</a>
+                                <a class="btn btn-info">No se puede Despublicar (postulante seleccionado)</a>
                             @else
                                 <a href="{{ route('despostular_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Despublicar</a>
                             @endif

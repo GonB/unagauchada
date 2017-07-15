@@ -47,10 +47,12 @@ class PostulaController extends Controller
         return redirect()->route('indexpublico_gauchada_path');
     }
 
-    public function choose(Postula $postula)
-    {
+    public function choose(Postula $postula, Gauchada $gauchada)
+    {   
         $postula->seleccionado = 1;
         $postula->save();
+        $gauchada->seleccionado= 1;
+        $gauchada->save();
         return redirect()->back();
     }
     
