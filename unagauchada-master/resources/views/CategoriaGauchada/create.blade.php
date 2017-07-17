@@ -23,7 +23,7 @@
 		<div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">CREAR CATEGORIA GAUCHADA</div>
 		<div class="panel-body">
 
-		<form action="{{route('store_categoriagauchada_path')}}" method='POST'>
+		<form action="{{route('store_categoriagauchada_path')}}" method='get'>
 			<div class="col-md-8 col-md-offset-2">
 			
 			<div class="form-group">

@@ -37,8 +37,9 @@ class CategoriaGauchadaController extends Controller
      */
     public function store(Request $categoriagauchada)
     {
+        $messages = ['nombre.unique' => 'Categoría ya existente'];
         $this->validate($categoriagauchada, [
-            'nombre' => 'required',
+            'nombre' => 'required|unique:categoria_gauchadas',
         ]);
         CategoriaGauchada::create([
             'user_id' => Auth::id(),

@@ -10,14 +10,15 @@ use App\Gauchada;
         <div class="panel panel-default">
             <div class="cab_form">Ver Mis Postulaciones</div>
             <div class="panel-body">
-                <strong>
+                
                 @foreach($mispostu as $mispostu)
+                <strong>
                     <?php  
                     $gau= Gauchada::find($mispostu->gauchada_id);
                     ?>
-                    Gauchada: {{$gau->titulo}} <br>
+                    Gauchada: <a href="{{ route('gauchada_path', ['gauchada' => $gau]) }}">{{ $gau->titulo }}</a> <br>
                     Fecha : {{$mispostu->created_at->format('Y-m-d')}}</br>
-                    -----------------------------------------------------
+                    <hr style="border-color:grey;margin: 0px;">
                 </strong>
                @endforeach
                
