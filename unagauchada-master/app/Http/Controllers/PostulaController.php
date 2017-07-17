@@ -73,9 +73,10 @@ class PostulaController extends Controller
      * @param  \App\Postula  $postula
      * @return \Illuminate\Http\Response
      */
-    public function edit(Postula $postula)
+    public function misPostulaciones()
     {
-        //
+        $mispostu = Postula::where('user_id', '=', Auth::id())->orderBy('id','desc')->paginate(10);
+        return view ('perfil.postulaciones')->with('mispostu', $mispostu);
     }
 
     /**
