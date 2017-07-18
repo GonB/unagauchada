@@ -14,7 +14,6 @@ class CategoriaUsuarioController extends Controller
      */
     public function index()
     {
-
         return view ('categoriausuario.index');
     }
 

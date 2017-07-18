@@ -16,7 +16,7 @@ class CategoriaGauchadaController extends Controller
      */
     public function index()
     {
-        //
+        return view ('CategoriaGauchada.index');
     }
 
     /**

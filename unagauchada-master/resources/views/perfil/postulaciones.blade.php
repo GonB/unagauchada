@@ -1,9 +1,7 @@
 @extends ('layouts.app')
 <?php 
-
-use App\Gauchada;
- ?>
-
+    use App\Gauchada;
+?>
 
 @section('content')
 	<div class="container">
