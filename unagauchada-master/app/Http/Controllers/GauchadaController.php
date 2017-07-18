@@ -35,9 +35,9 @@ class GauchadaController extends Controller
         return view ('gauchada.index')->with(['gauchada' => $gauchada]);
     }
 
-     public function indexpublico()
+    public function indexpublico()
     {
-        $gauchada = Gauchada:: orderBy('id','desc')->paginate(10);
+        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
         
         foreach ($gauchada as $gau) {
             if ($gau->activo) {
@@ -60,7 +60,6 @@ class GauchadaController extends Controller
      */
     public function create()
     {
-        
         $gauchada = new Gauchada;
         return view('gauchada.create')->with(['gauchada' => $gauchada]);
     }
@@ -114,7 +113,7 @@ class GauchadaController extends Controller
     public function edit(Gauchada $gauchada)
     {
         return view( 'gauchada.edit')-> with (['gauchada' => $gauchada]);
-        }
+    }
 
     /**
      * Update the specified resource in storage.
@@ -148,16 +147,30 @@ class GauchadaController extends Controller
 
     public function search(Request $request)
     {        
-         $this->validate($request, [
-                'titulo' => 'required|min:3',
-            ]);
+        $this->validate($request, [
+            'titulo' => 'required|min:3',
+        ]);
         $gauchada = Gauchada::where('titulo', 'LIKE','%'.$request->titulo.'%')->orderBy('id','desc')->paginate(10);
-        if($request->titulo != "")
+        if($request->titulo != "") {
             return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
-        
-   
+        }
     }
-    public function despostular(Gauchada $gauchada)
+
+  
+    public function categorizar(Request $request) 
+    {
+        //return $request['categoria'];
+        if($request['categoria'] != 100) {
+            $gauchada = Gauchada::where('categoria', 'LIKE', $request['categoria'])->orderBy('id','desc')->paginate(10);
+            return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
+        } else {
+            $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+            return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
+        }
+    } 
+
+
+    public function despublicar(Gauchada $gauchada)
     {
         $gauchada->titulo .= " [DESPUBLICADA]";
         $gauchada->activo=false;

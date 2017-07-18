@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CategoriaGauchada;
+use App\Gauchada;
 use Auth;
 use Illuminate\Http\Request;
 

@@ -3,34 +3,51 @@
     use App\User;
     use App\Postula;
     use App\Gauchada;
+    use App\CategoriaGauchada;
   ?>
 
 @section('content')
- @if(count($errors) > 0)
-  <div class="alert alert-danger">
-    
-    <ul>
-      @foreach ($errors->all() as $error)
-
-      <li>
-        {{$error}}
-      </li>
-      @endforeach
-    </ul>
-  </div>
-
+  @if(count($errors) > 0)
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>
+            {{$error}}
+          </li>
+        @endforeach
+      </ul>
+    </div>
   @endif
+
   <div class="row">
     <small class="col-md-8">
+
       <form action="{{route('buscar_gauchada_path')}}" method="GET" class="navbar-form pull-right">
-            <div class="form-group">
-                    <label for="titulo"></label>
-                  <input type="text" name="titulo" class="form-control" placeholder="Buscar Gauchada" aria-describedby="search"></input>
-             </div>
+        <div class="form-group">
+          <label for="titulo"></label>
+          <input type="text" name="titulo" class="form-control" placeholder="Buscar Gauchada" aria-describedby="search"></input>
+        </div>
         <button type="submit" class="btn btn-info" autofocus="">Buscar</button>
-    </form>
+      </form>
+    
+      <form action="{{route('categorizar_gauchada_path')}}" method="GET" class="navbar-form pull-right">
+        <div class="form-group">
+          <label for="categoria"></label>
+          <select type="string" name='categoria' class="form-control" value="{{old('categoria')}}" style="width: 200px">
+            <?php
+              echo '<option value="100">'.'Todos'.'</option>';
+              foreach (CategoriaGauchada::all() as $categoria) {
+                echo '<option value="'.$categoria['id'].'">'.$categoria['nombre'].'</option>';
+              }
+            ?>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-info" autofocus="">Categoria</button>
+      </form>
+
     </small>
   </div>
+
     @foreach($gauchada as $gau)
         @if ($gau->activo)
           <div class="row">
@@ -77,7 +94,7 @@
                       @if ($gau->activo)
                         <form action="{{route('destroy_postula_path', ['gau' => $gau])}}" method='GET'>
                           <small class="pull-right">
-                            <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Te Despostularseespostulaste!')">Despostularse</button>
+                            <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Te Despostulaste!')">Despostularse</button>
                           </small>
                         </form>
                       @endif

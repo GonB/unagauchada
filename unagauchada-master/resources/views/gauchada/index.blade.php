@@ -36,7 +36,7 @@
                             @if($hay_postu)
                                 <a class="btn btn-info">No se puede Despublicar (postulante seleccionado)</a>
                             @else
-                                <a href="{{ route('despostular_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Despublicar</a>
+                                <a href="{{ route('despublicar_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Despublicar</a>
                             @endif
                                 
 

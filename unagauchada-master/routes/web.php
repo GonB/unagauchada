@@ -27,7 +27,8 @@ Route::get('/gauchada/index/publico', 'GauchadaController@indexpublico')->name('
 Route::get('/gauchada/index', 'GauchadaController@index')->name('gauchadas_path');
 Route::get('/gauchada/{gauchada}', 'GauchadaController@show')->name('gauchada_path');
 Route::get('/gauchada', 'GauchadaController@search')->name('buscar_gauchada_path');
-Route::get('/gauchada/index/{gauchada}', 'GauchadaController@despostular')->name('despostular_gauchada_path');
+Route::get('/gauchada/index/{gauchada}', 'GauchadaController@despublicar')->name('despublicar_gauchada_path');
+Route::get('/categorizar', 'GauchadaController@categorizar')->name('categorizar_gauchada_path');
 
 
 // Rutas perfil
