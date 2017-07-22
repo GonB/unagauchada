@@ -9,7 +9,8 @@
                 <a href="{{ route('create_categoriausuario_path') }}">Crear Categoria De Usuarios</a><br> 
                 <a href="{{ route('index_categoriausuario_path') }}">Categorias De Usuarios</a><br>
                 <a href="{{ route('create_categoriagauchada_path') }}">Crear Categoria De Gauchadas</a><br>
-                <a href="{{ route('index_categoriagauchada_path') }}">Categorias De Gauchadas</a>
+                <a href="{{ route('index_categoriagauchada_path') }}">Categorias De Gauchadas</a><br>
+                <a href="{{route('ranking_usuarios_path')}}">Ranking de Usuarios</a>
             @endif
         </div>    
     </div>

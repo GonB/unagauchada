@@ -50,6 +50,7 @@ Route::get('/postular/{gauchada}', 'PostulaController@store')->name('store_postu
 Route::get('/despostular/{gauchada}', 'PostulaController@destroy')->name('destroy_postula_path');
 Route::get('/elegido/{postula}/{gauchada}', 'PostulaController@choose')->name('choose_postula_path');
 Route::get('/postulaciones', 'PostulaController@misPostulaciones')->name('mis_postulaciones_path');
+Route::get('/misgauchadas', 'PostulaController@misGauchadasRealizadas')->name('mis_gauchadas_path');
 
 
 //Rutas Comentario
@@ -70,6 +71,7 @@ Route::get('/elegido/Res/{user_pointRes}/{gauchada}', 'UserController@pointRes')
 
 //ADMIN
 Route::get('/admin', 'AdminController@index')->name('index_admin_path');
+Route::get('/ranking', 'AdminController@ranking')->name('ranking_usuarios_path');
 
 //Rutas Categoria Gauchada
 Route::get('/categoriagauchada/create', 'CategoriaGauchadaController@create')->name('create_categoriagauchada_path');

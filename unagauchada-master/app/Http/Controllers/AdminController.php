@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use Illuminate\Http\Request;
+use App\User;
+use DB;
 
 class AdminController extends Controller
 {
@@ -22,9 +24,12 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function ranking()
     {
-        //
+        $users = DB::table('users')
+                    ->select('id','nick', 'score', 'email')
+                    ->orderBy('score','desc')->get();
+        return view ('admin.ranking')->with('users', $users);
     }
 
     /**

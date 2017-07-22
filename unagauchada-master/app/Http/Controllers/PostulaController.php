@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Gauchada;
 use App\User;
 use Auth;
+use DB;
 
 class PostulaController extends Controller
 {
@@ -77,6 +78,19 @@ class PostulaController extends Controller
     {
         $mispostu = Postula::where('user_id', '=', Auth::id())->orderBy('id','desc')->paginate(10);
         return view ('perfil.postulaciones')->with('mispostu', $mispostu);
+    }
+
+    public function misGauchadasRealizadas()
+    {
+        $misgau = DB::table('gauchadas')
+                        ->join('postulas', 'gauchadas.user_id', '=', 'postulas.user_id')
+                        ->select('postulas.user_id', 'gauchadas.id', 'gauchadas.created_at')
+                        ->where('gauchadas.activo', '=', '0')
+                        ->where('gauchadas.seleccionado', '=', '1')
+                        ->where('gauchadas.user_id', '=', Auth::id())
+                        ->get();  
+        return view ('perfil.misGauchadas')->with('misgau', $misgau); 
+
     }
 
     /**

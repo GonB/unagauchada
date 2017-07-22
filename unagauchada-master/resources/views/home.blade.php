@@ -9,7 +9,8 @@
                 <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
                 <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
                 <a href="{{url('/pago/create')}}">Comprar Creditos</a><br>
-                <a href="{{route('mis_postulaciones_path')}}"> Ver Mis Postulaciones</a>
+                <a href="{{route('mis_postulaciones_path')}}"> Ver Mis Postulaciones</a><br>
+                <a href="{{route('mis_gauchadas_path')}}">Ver Mis Gauchadas Realizadas</a>
             @endif
         </div>    
     </div>
