@@ -92,6 +92,24 @@ class CategoriaGauchadaController extends Controller
         return redirect()->route('index_categoriagauchada_path');
     }
 
+    public function delete(CategoriaGauchada $categoriaGauchada, Request $request)
+    {
+        $tiene_gauchadas = False;
+        foreach (Gauchada::all() as $gauchada) {
+            if ($gauchada->categoria == $categoriaGauchada->id) {
+                $tiene_gauchadas = True;
+            }
+        }
+        if ($tiene_gauchadas) {
+            //JavaScript::alert('Existen Gauchadas en esta categoria, no se puede eliminar.');
+            return redirect()->route('index_categoriagauchada_path');
+        } else {
+            $categoriaGauchada->delete();
+            session()->flash('message', 'Gauchada Borrada!');
+            return redirect()->route('index_categoriagauchada_path');
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
