@@ -101,7 +101,7 @@ class CategoriaGauchadaController extends Controller
             }
         }
         if ($tiene_gauchadas) {
-            //JavaScript::alert('Existen Gauchadas en esta categoria, no se puede eliminar.');
+            //JavaScript::alert('No se puede eliminar una categoría con Gauchadas');
             return redirect()->route('index_categoriagauchada_path');
         } else {
             $categoriaGauchada->delete();
