@@ -77,6 +77,9 @@ Route::get('/ranking', 'AdminController@ranking')->name('ranking_usuarios_path')
 Route::get('/categoriagauchada/create', 'CategoriaGauchadaController@create')->name('create_categoriagauchada_path');
 Route::get('/categoriagauchada', 'CategoriaGauchadaController@store')->name('store_categoriagauchada_path');
 Route::get('/categoriagauchada/index', 'CategoriaGauchadaController@index')->name('index_categoriagauchada_path');
+Route::get('/categoriagauchada/{categoriaGauchada}/edit', 'CategoriaGauchadaController@edit')->name('edit_categoriagauchada_path');
+Route::get('/categoriagauchada/{categoriaGauchada}/delete', 'CategoriaGauchadaController@delete')->name('delete_categoriagauchada_path');
+Route::get('/categoriagauchada/up/{categoriaGauchada}', 'CategoriaGauchadaController@update')->name('update_categoriagauchada_path');
 
 //Rutas Categoria Usuario
 Route::get('/categoriausuario/create', 'CategoriaUsuarioController@create')->name('create_categoriausuario_path');
