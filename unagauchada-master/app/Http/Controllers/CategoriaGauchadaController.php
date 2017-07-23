@@ -68,7 +68,7 @@ class CategoriaGauchadaController extends Controller
      */
     public function edit(CategoriaGauchada $categoriaGauchada)
     {
-        //
+        return view( 'categoriagauchada.edit')-> with (['categoriaGauchada' => $categoriaGauchada]);
     }
 
     /**
@@ -80,7 +80,16 @@ class CategoriaGauchadaController extends Controller
      */
     public function update(Request $request, CategoriaGauchada $categoriaGauchada)
     {
-        //
+        $messages = ['nombre.unique' => 'Categoría ya existente'];
+        $messages = ['nombre.required' => 'El nombre no puede ser vacío'];
+        $this->validate($request, [
+            'nombre' => 'required|unique:categoria_gauchadas',
+        ]);
+        $categoriaGauchada->update(
+            $request->only('nombre')
+        );
+        session()->flash('message', 'Categoria de Gauchada Actualizada!');
+        return redirect()->route('index_categoriagauchada_path');
     }
 
     /**
