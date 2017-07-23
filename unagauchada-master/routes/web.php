@@ -33,10 +33,13 @@ Route::get('/categorizar', 'GauchadaController@categorizar')->name('categorizar_
 
 // Rutas perfil
 Route::get('/perfil', 'UserController@index')->name('perfil_index_path')->middleware('auth');
+Route::post('/perfil/edit', 'UserController@update_image')->name('update_image_path');
 Route::get('/perfil/edit', 'UserController@edit')->name('edit_perfil_path');
 Route::get('/perfil/{user_id}', 'UserController@update')->name('update_perfil_path');
 Route::get('/perfil/search', 'UserController@search')->name('buscar_perfil_path');
 Route::get('/perfil/{user}/ver', 'UserController@ver')->name('ver_perfil_path');
+Route::get('/perfil/edit/pass', 'UserController@edit_pass')->name('edit_password_path');
+Route::post('/perfil', 'UserController@update_password')->name('update_password_path');
 
 
 //Rutas pago

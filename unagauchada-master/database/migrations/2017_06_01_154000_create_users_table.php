@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->foreign('id_categoria')->references('id')->on('categoria_usuarios');
             $table->integer('score')->unsigned()->nullable()->default(0);
             $table->integer('credits')->unsigned()->nullable()->default(1);
+            $table->string('imagen')->default('usuarioPorDefecto.png');
             $table->timestamps();
             $table->rememberToken();
         });
