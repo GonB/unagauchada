@@ -72,6 +72,8 @@ Route::get('/elegido/Res/{user_pointRes}/{gauchada}', 'UserController@pointRes')
 //ADMIN
 Route::get('/admin', 'AdminController@index')->name('index_admin_path');
 Route::get('/ranking', 'AdminController@ranking')->name('ranking_usuarios_path');
+Route::get('/ganancias', 'AdminController@gananciasForm')->name('ganancias_form_path');
+Route::get('/ganancias/show', 'AdminController@gananciasShow')->name('ganancias_show_path');
 
 //Rutas Categoria Gauchada
 Route::get('/categoriagauchada/create', 'CategoriaGauchadaController@create')->name('create_categoriagauchada_path');

@@ -38,9 +38,29 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function gananciasForm()
     {
-        //
+        return view('admin.ganancias');
+    }
+
+    public function gananciasShow( Request $request)
+    {
+        $messages = ['Desde.before' => 'Fecha Invalida, "Desde" debe ser menor a "Hasta"',
+                    'Hasta.before_or_equal' =>'Fecha Invalida, "Hasta" debe ser menor o igual a la fecha actual',
+                    ];
+        $this->validate($request, [
+            'Desde' => 'required|date|after:$request["Hasta"]',
+            'Hasta' => 'required|date|before_or_equal:today',
+        ],
+        $messages);
+        $ganancias = DB::table('pagos')
+                    ->select('creditos')
+                    ->whereBetween('created_at', array($request["Desde"], $request["Hasta"]))->get();
+        $sum = 0;
+        foreach ($ganancias as $ganancias) {
+            $sum = $sum + $ganancias->creditos;
+        }
+        return view('admin.gananciasshow')->with('sum', $sum);    
     }
 
     /**
