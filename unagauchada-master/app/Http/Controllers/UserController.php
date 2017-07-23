@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Support\Facades\input;
 use App\Pago;
 use App\Gauchada;
+use Image;
 
 class UserController extends Controller
 {
@@ -77,12 +78,25 @@ class UserController extends Controller
         $this->validate($request, [
                 'name' => 'required|min:5',
                 'email' => 'required|email',
-                'password' => 'required|min:6'
             ]);
-        $user->password=bcrypt($request['password']);
-        $user->save();
         $user->update($request->only('name', 'email','credits'));
         return redirect()->route('perfil_index_path');
+    }
+
+        public function update_image(Request $request)
+    {
+        if($request->hasFile('imagen')){
+            $this->validate($request, [
+                'imagen' => 'image',
+            ]);
+            $user = Auth::user();
+            $image = $request->file('imagen');
+            $filename = 'usuario' . $user->id . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 300)->save(public_path('/imagenes/usuarios/' . $filename));
+            $user->imagen = $filename;
+            $user->save();
+        }
+        return view('perfil.edit');
     }
     
     public function update_creditos(Pago $pago)
@@ -93,6 +107,20 @@ class UserController extends Controller
        return redirect()->route('home');
     }
 
+    public function update_password(Request $request)
+    {  
+        $user = Auth::user();
+        $this->validate($request, [
+                'password' => 'required|min:6',
+            ]);
+        $user->password=bcrypt($request['password']);
+        $user->save();
+        return view('perfil.index');
+    }
+    public function edit_pass()
+    {
+        return view('perfil.updatepassword');
+    }
     /**
      * Remove the specified resource from storage.
      *

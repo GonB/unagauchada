@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -60,18 +59,18 @@
                             @endif
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('indexpublico_gauchada_path') }}">Ver Gauchadas</a></li>
+                            <li><a>Mis Creditos: {{ Auth::user()->credits }}</a></li>
 
-                            <li><a><?php echo "Mis Creditos: ";
-                                    echo Auth::user()->credits ?> </a></li>
+                            
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->nick }} <span class="caret"></span>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative; padding-left: 50px;">
+                                    <img src="/imagenes/usuarios/{{ (Auth::user()->imagen) }}" style="width: 32px;border-radius: 50%;position: absolute; top: 10px; left: 10px;">{{ Auth::user()->nick }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                    <a href="{{ route('perfil_index_path') }}"
+                                        <a href="{{ route('perfil_index_path') }}"
                                             onclick="event.preventDefault();
                                                     .submit();">
                                             Ver Perfil
@@ -81,8 +80,6 @@
                                                      document.getElementById('logout-form').submit();">
                                             Cerrar Sesión
                                         </a>
-                                         
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

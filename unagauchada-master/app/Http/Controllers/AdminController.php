@@ -49,7 +49,7 @@ class AdminController extends Controller
                     'Hasta.before_or_equal' =>'Fecha Invalida, "Hasta" debe ser menor o igual a la fecha actual',
                     ];
         $this->validate($request, [
-            'Desde' => 'required|date|after:$request["Hasta"]',
+            'Desde' => 'required|date|after:$requeswt["Hasta"]',
             'Hasta' => 'required|date|before_or_equal:today',
         ],
         $messages);
