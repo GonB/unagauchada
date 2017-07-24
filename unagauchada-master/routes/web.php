@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/gauchada/create', 'GauchadaController@create')->name('create_gauchada_path');
 Route::post('/gauchada', 'GauchadaController@store')->name('store_gauchada_path');
 Route::get('/gauchada/{gauchada}/edit', 'GauchadaController@edit')->name('edit_gauchada_path');
-Route::get('/gauchada/{gauchada}/delete', 'GauchadaController@delete')->name('delete_gauchada_path');
+Route::get('/gauchada/{gauchada}/delete', 'GauchadaController@delete')->name('delete_gauchada_path'); //LO HACE EL ADMIN
 Route::get('/gauchada/up/{gauchada}', 'GauchadaController@update')->name('update_gauchada_path');
 Route::get('/gauchada/index/publico', 'GauchadaController@indexpublico')->name('indexpublico_gauchada_path');
 Route::get('/gauchada/index', 'GauchadaController@index')->name('gauchadas_path');

@@ -39,10 +39,6 @@
                                 <a href="{{ route('despublicar_gauchada_path', ['gauchada' => $gauchada->id]) }}" class="btn btn-info">Despublicar</a>
                             @endif
                                 
-
-                            <form action="{{ route('delete_gauchada_path', ['gauchada' => $gauchada->id]) }}" method="GET">
-                                <button type="submit" class='btn btn-info'>Eliminar (error si existe postulados)</button>
-                            </form>
                         @endif
                     </small>  
                     <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>         

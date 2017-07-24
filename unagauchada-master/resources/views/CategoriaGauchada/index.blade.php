@@ -3,6 +3,16 @@
     use App\CategoriaGauchada;
   ?>
 @section('content')
+    @if(count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                <li>
+                    {{$errors}}
+                </li>
+            </ul>
+        </div>
+    @endif
+
     <div class="container">
         <div class="panel panel-default">
             <div class="cab_form">Categorias de Gauchadas</div>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\input;
 use App\User;
+use App\Postula;
 use DateTime;
 
 class GauchadaController extends Controller
@@ -139,9 +140,14 @@ class GauchadaController extends Controller
      */
     public function delete(Gauchada $gauchada)
     {
+        foreach (Postula::all() as $post) {
+            if ($post->gauchada_id == $gauchada->id) {
+                $post->delete();
+            }
+        }
         $gauchada->delete();
-        session()->flash('message', 'Gauchada Borrada!');
-        return redirect()->route('gauchadas_path');
+        $gau = Gauchada::orderBy('id','desc')->paginate(10);
+        return view ('gauchada.indexpublico')->with(['gauchada' => $gau]);
     }
 
 

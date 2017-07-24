@@ -103,9 +103,16 @@
                   }
                 }
                 ?>
+                @if (Auth::user()->admin)
+                  <form action="{{route('delete_gauchada_path', ['gau' => $gau])}}" method='GET'>
+                    <small class="pull-right">
+                      <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Gauchada Eliminada')">Eliminar</button>
+                    </small>
+                  </form>
+                @endif
             @endif
             </div>
-         </div>
+          </div>
           <hr>
         @endif
     @endforeach
