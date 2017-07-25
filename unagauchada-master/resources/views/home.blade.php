@@ -1,9 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+    use App\CategoriaUsuario;
+
+    $score = Auth::user()->score;
+    $categoria = 'Sin Definir';
+    foreach (CategoriaUsuario::all() as $cate) {
+        if (($score >= $cate->rango_inicial) and ($score <= $cate->rango_final)) {
+            $categoria = $cate->nombre;
+        }
+    }
+?>
+
 <div class="container">
     <div class="panel panel-default">
-        <div class="cab_form">¿ACA IRÍA LA IMAGEN DE PERFIL?</div>
+        <div class="cab_form">{{$categoria}}</div>
         <div class="panel-body links2">
             @if (Auth::check())
                 <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 

@@ -1,5 +1,15 @@
 @extends ('layouts.app')
+<?php
+    use App\CategoriaUsuario;
 
+    $score = $user->score;
+    $categoria = 'Sin Definir';
+    foreach (CategoriaUsuario::all() as $cate) {
+        if (($score >= $cate->rango_inicial) and ($score <= $cate->rango_final)) {
+            $categoria = $cate->nombre;
+        }
+    }
+?>
 @section('content')
 
     <div class="container">
@@ -13,6 +23,7 @@
                 <p>Nick: {{ $user -> nick }}</p>
                 <p>Fecha nacimiento: {{ $user -> birthdate }}</p>
                 <p>Email: {{ $user -> email }}</p>
+                <p>Categoria: {{$categoria}}</p>
                 <a href="{{route('historial_usuario_path', ['user' => $user])}}">Ver Historial de Usuario</a><br>
                 </strong>
                 <button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
