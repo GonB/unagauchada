@@ -154,30 +154,33 @@ class UserController extends Controller
         $gauchada->activo=0;
         $gauchada->save();
         $user_pointSum->credits=$user_pointSum->credits + 1;
+        $user_pointSum->score=$user_pointSum->score + 1;
         $user_pointSum->save();
         return redirect()->back();
     }
 
-    public function pointNull(User $user_pointNull) 
+    public function pointNull(User $user_pointNull, Gauchada $gauchada) 
     {
         $gauchada->titulo .= " [FINALIZADA]";
         $gauchada->activo=0;
         $gauchada->save();
-        $user_pointNull->credits=$user_pointNull->credits + 0;
+        $user_pointNull->credits=$user_pointNull->credits + 1;
+        $user_pointNull->score=$user_pointNull->score + 0;
         $user_pointNull->save();
         return redirect()->back();
     }
 
-    public function pointRes(User $user_pointRes) 
+    public function pointRes(User $user_pointRes, Gauchada $gauchada) 
     {
-        if ($user_pointRes->credits > 0) {
-            $gauchada->titulo .= " [FINALIZADA]";
-            $gauchada->activo=0;
-            $gauchada->save();
-            $user_pointRes->credits=$user_pointRes->credits - 1;
-            $user_pointRes->save();
-            return redirect()->back();
-        }
+        $gauchada->titulo .= " [FINALIZADA]";
+        $gauchada->activo=0;
+        $gauchada->save();
+        $user_pointRes->credits=$user_pointRes->credits + 1;
+        if ($user_pointRes->score > 0) {
+            $user_pointRes->score=$user_pointRes->score - 1;
+        }   
+        $user_pointRes->save();
+        return redirect()->back();
     }
     
 
