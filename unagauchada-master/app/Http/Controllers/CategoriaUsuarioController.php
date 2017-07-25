@@ -24,8 +24,9 @@ class CategoriaUsuarioController extends Controller
      */
     public function create()
     {
+        $error = '';
         $categoriausuario= new CategoriaUsuario;
-        return view('categoriausuario.create')->with(['categoriausuario' => $categoriausuario]);
+        return view('categoriausuario.create')->with(['categoriausuario' => $categoriausuario])->with(['error1' => $error]);
     }
 
     /**
@@ -43,12 +44,34 @@ class CategoriaUsuarioController extends Controller
             'rango_final' => 'required',
         ],
         $messages);
-        CategoriaUsuario::create([
-            'nombre' => $categoriausuario['nombre'],
-            'rango_inicial' => $categoriausuario['rango_inicial'],
-            'rango_final' => $categoriausuario['rango_final'],
-        ]);
-        return redirect()->route('index_admin_path');
+
+        $rangoCorrecto = True;
+        $ri = $categoriausuario->rango_inicial;
+        $rf = $categoriausuario->rango_final;
+
+        if (($ri < 1) or ($ri >= $rf)){
+            $rangoCorrecto = false;
+        } else {
+            foreach (CategoriaUsuario::all() as $cat) {
+                if (!((($ri < $cat->rango_inicial) and ($rf < $cat->rango_inicial)) 
+                    or (($ri > $cat->rango_final) and ($rf > $cat->rango_final)))) {
+                    $rangoCorrecto = False;
+                }
+            }
+        }
+
+        if ($rangoCorrecto) {
+            CategoriaUsuario::create([
+                'nombre' => $categoriausuario['nombre'],
+                'rango_inicial' => $categoriausuario['rango_inicial'],
+                'rango_final' => $categoriausuario['rango_final'],
+            ]);
+            return view ('categoriausuario.index');
+        } else {
+            $error='Categoria fuera de rango.';
+            $categoriausuario= new CategoriaUsuario;
+            return view('categoriausuario.create')->with(['categoriausuario' => $categoriausuario])->with(['error1' => $error]);
+        }
     }
 
     /**
