@@ -40,6 +40,7 @@ Route::get('/search', 'UserController@buscarUser')->name('buscar_perfil_path');
 Route::get('/perfil/{user}/ver', 'UserController@ver')->name('ver_perfil_path');
 Route::get('/perfil/edit/pass', 'UserController@edit_pass')->name('edit_password_path');
 Route::post('/perfil', 'UserController@update_password')->name('update_password_path');
+Route::get('/perfil/{user}/historial', 'UserController@historial')->name('historial_usuario_path');
 
 
 //Rutas pago

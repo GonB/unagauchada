@@ -8,7 +8,9 @@ use Auth;
 use Illuminate\Support\Facades\input;
 use App\Pago;
 use App\Gauchada;
+use App\Postula;
 use Image;
+use DB;
 
 class UserController extends Controller
 {
@@ -178,6 +180,23 @@ class UserController extends Controller
             $user_pointRes->save();
             return redirect()->back();
         }
+    }
+
+    public function historial(User $user){
+        $gauchadas = DB::table('gauchadas')
+                    ->where('user_id', '=', $user->id)
+                    ->orderBy('id', 'desc')->get();
+
+        $postulaciones = Postula::where('user_id', '=', $user->id)->orderBy('id','desc')->paginate(10);
+        $realizadas = DB::table('gauchadas')
+                        ->join('postulas', 'gauchadas.user_id', '=', 'postulas.user_id')
+                        ->select('postulas.user_id', 'gauchadas.id', 'gauchadas.created_at')
+                        ->where('gauchadas.activo', '=', '0')
+                        ->where('gauchadas.seleccionado', '=', '1')
+                        ->where('gauchadas.user_id', '=', $user->id)
+                        ->get();
+        return view('perfil.historial')->with('user',$user)->with('gauchadas',$gauchadas)->with('postulaciones',$postulaciones)->with('realizadas',$realizadas);
+
     }
     
 
