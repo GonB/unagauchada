@@ -8,7 +8,9 @@
         <div class="panel panel-default">
             <div class="cab_form">Mis Gauchadas Realizadas</div>
             <div class="panel-body">
-             
+                @if($misgau == "[]")
+                    <strong>Aun no ha realizado ninguna Gauchada</strong>
+                @endif
                
                 @foreach($misgau as $misgau)
                     

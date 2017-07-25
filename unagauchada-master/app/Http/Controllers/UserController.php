@@ -137,16 +137,13 @@ class UserController extends Controller
         return view('perfil.show') -> with('user', $user);
     }
 
-    public function search(Request $request)
+    public function buscarUser(Request $request)
     {
-        if (empty(Input::get('search'))) return redirect()->back();
-    
-        $search = urlencode(e(Input::get('search')));
-        $user = User::where('nick', $search) -> first();
-        if ($user != null) {
-            return redirect()->route('ver_perfil_path', ['user' => $user]);
-        }else
-            redirect()->route('home');
+        $this->validate($request, [
+            'nick' => 'required']);
+       $users = User::where('nick','LIKE','%'.$request->nick.'%')->orderBy('id','desc')->paginate(10);
+       return view('perfil.busqueda')->with('users', $users);
+        
     }
 
     public function pointSum(User $user_pointSum, Gauchada $gauchada) 
