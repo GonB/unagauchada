@@ -9,9 +9,9 @@ use App\Postula;?>
             <div class="cab_form">Historial de {{$user->nick}}</div>
             <div class="panel-body">
 
-             <strong>Gauchadas Realizadas: </strong><br>
+             <strong>Gauchadas Publicadas: </strong><br>
               @if($gauchadas == "[]")
-                No se ha publicado Gauchadas
+                No ha publicado Gauchadas <br>
             @endif
              @foreach($gauchadas as $gauchada)
                 <?php  
@@ -34,9 +34,9 @@ use App\Postula;?>
                  ?>
                 Gauchada: <a href="{{route('gauchada_path', ['gauchada' => $gauchada])}}">{{$gauchada->titulo}}</a>
                  @if($postulaciones->seleccionado == "0")
-                                No seleccionado<br>
+                                (No seleccionado)<br>
                                 @else 
-                                    Seleccionado como colaborador<br>
+                                    (Seleccionado como colaborador)<br>
                 @endif
             @endforeach
 
