@@ -19,7 +19,7 @@
 
 	@endif
 
-	<form action="{{route('store_gauchada_path')}}" method='POST'>
+	<form action="{{route('store_gauchada_path')}}" method='POST' enctype="multipart/form-data">
 		<div class="col-md-8 col-md-offset-2">
 		
 		{{ csrf_field()}}	
@@ -43,12 +43,13 @@
 		<div class="form-group">
 			<label for="fecha_limite"> Fecha Limite</label>
 			<input type="date" name="fecha_limite" class="form-control" style="width: 400px"/>
-			
 		</div>
-
+		<div class="form-group">
+			<p style="margin-top: 10px;"><strong>Seleccione una imágen: </strong><input style="display: inline-block;" id="imagen" type="file" name="imagen"></p>
+		</div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary" autofocus="">Crear Gauchada</button>
-			<button class="btn btn-warning" onclick="goBack()"> Cancelar</button>
+			<button class="btn btn-warning" onclick="goBack()">Cancelar</button>
 			<script>
 				function goBack(){
 					window.history.back();

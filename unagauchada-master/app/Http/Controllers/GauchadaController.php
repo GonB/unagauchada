@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\input;
 use App\User;
 use App\Postula;
 use DateTime;
+use Image;
 
 class GauchadaController extends Controller
 {
@@ -78,19 +79,30 @@ class GauchadaController extends Controller
             $this->validate($gauchada, [
                 'titulo' => 'required|min:5',
                 'descripcion' => 'required|min:15',
-                'fecha_limite' => 'required|after:today'
+                'fecha_limite' => 'required|after:today',
+                'imagen' => 'image',
             ]);
+            if($gauchada->hasFile('imagen')){
+                $image = $gauchada->file('imagen');
+                $filename = 'gauchada' . $user->id . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(300, 300)->save(public_path('/imagenes/gauchadas/' . $filename));
+                $img = $filename;
+            }
+            else {
+                $img = 'gauchadaPorDefecto.jpg';
+            }
             Gauchada::create([
                 'user_id' => Auth::id(),
                 'titulo' => $gauchada['titulo'],
                 'descripcion' => $gauchada['descripcion'],
                 'categoria' => $gauchada['categoria'],
                 'fecha_limite' => $gauchada['fecha_limite'],
+                'imagen' => $img,
             ]);
             $user->credits=$user->credits-1;
             $user->save();
             return redirect()->route('gauchadas_path');
-        } else
+        } else 
             return view('gauchada.error');
     }
 

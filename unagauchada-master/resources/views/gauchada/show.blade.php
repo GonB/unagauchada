@@ -11,10 +11,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h2>{{ $gauchada->titulo }}</h2>
+            <div>
+              <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}">
+            </div>
             <p>{{ $gauchada->descripcion }}</p>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
+                    
             <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?>
             <p>Categoria: {{ $cate -> nombre }}</p>
+
             <?php   $user= User::find($gauchada->user_id); ?>
             <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
             <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
