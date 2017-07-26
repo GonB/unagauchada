@@ -53,10 +53,10 @@ class RegisterController extends Controller
   //    $validator = Validator::make($input, $rules, $messages);
 
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:5',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'nick' => 'required|string|max:20|unique:users',
+            'nick' => 'required|string|max:20|unique:users|min:5',
             'birthdate' => 'required|date|before:-18 years',
         ],
         $messages);

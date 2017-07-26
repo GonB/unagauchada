@@ -117,7 +117,7 @@ class CategoriaUsuarioController extends Controller
         $rangoCorrecto = True;
         $ri = $categoriaUsuario->rango_inicial;
         $rf = $categoriaUsuario->rango_final;
-        if (($ri < 1) or ($ri >= $rf)){
+        if (($ri < 0) or ($ri >= $rf)){
             $rangoCorrecto = false;
         } else {
             foreach (CategoriaUsuario::all() as $cat) {

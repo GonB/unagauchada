@@ -85,7 +85,7 @@ class UserController extends Controller
         return redirect()->route('perfil_index_path');
     }
 
-        public function update_image(Request $request)
+    public function update_image(Request $request)
     {
         if($request->hasFile('imagen')){
             $this->validate($request, [
