@@ -19,13 +19,18 @@
                     <img src="/imagenes/usuarios/{{ ($user->imagen) }}" style="width: 150px;">
                 </div>
                 <strong>
-                <p>Nombre: {{ $user -> name }}</p>
-                <p>Nick: {{ $user -> nick }}</p>
-                <p>Fecha nacimiento: {{ $user -> birthdate }}</p>
-                <p>Email: {{ $user -> email }}</p>
-                <p>Categoria: {{$categoria}}</p>
-                <a href="{{route('historial_usuario_path', ['user' => $user])}}">Ver Historial de Usuario</a><br>
+                    <p>Nombre: {{ $user -> name }}</p>
+                    <p>Nick: {{ $user -> nick }}</p>
+                    <p>Fecha nacimiento: {{ $user -> birthdate }}</p>
+                    <p>Email: {{ $user -> email }}</p>
+                    <p>Categoria: {{$categoria}}</p>
+                    <a href="{{route('historial_usuario_path', ['user' => $user])}}">Ver Historial de Usuario</a><br>
                 </strong>
+                @if (Auth::user()->admin)
+                    <form action="{{route('cambiarCat_usuario_path', ['user' => $user])}}" method='GET' enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary" autofocus="">Cambiar de Categoria</button>
+                    </form>
+                @endif
                 <button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
                 <script>
                     function goBack(){

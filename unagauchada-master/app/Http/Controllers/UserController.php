@@ -201,6 +201,10 @@ class UserController extends Controller
         return view('perfil.historial')->with('user',$user)->with('gauchadas',$gauchadas)->with('postulaciones',$postulaciones)->with('realizadas',$realizadas);
 
     }
+
+    public function cambiarCat(User $user) {
+         return view('admin.cambiarCategoriaUsuario')->with('user',$user);
+    }
     
 
 }

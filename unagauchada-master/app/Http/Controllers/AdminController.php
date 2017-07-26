@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\CategoriaUsuario;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
@@ -62,6 +63,13 @@ class AdminController extends Controller
         }
         return view('admin.gananciasshow')->with('sum', $sum);    
     }
+
+    public function cambioCat(Request $request, User $user) {
+        $cat = CategoriaUsuario::find($request->categoria);
+        $user->score=$cat->rango_inicial;
+        $user->save();
+        return view('perfil.show') -> with('user', $user);
+    } 
 
     /**
      * Display the specified resource.

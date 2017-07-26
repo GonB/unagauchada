@@ -41,6 +41,7 @@ Route::get('/perfil/{user}/ver', 'UserController@ver')->name('ver_perfil_path');
 Route::get('/perfil/edit/pass', 'UserController@edit_pass')->name('edit_password_path');
 Route::post('/perfil', 'UserController@update_password')->name('update_password_path');
 Route::get('/perfil/{user}/historial', 'UserController@historial')->name('historial_usuario_path');
+Route::get('/perfil/{user}/cambio', 'UserController@cambiarCat')->name('cambiarCat_usuario_path'); //LO HACE EL ADMIN
 
 
 //Rutas pago
@@ -63,8 +64,6 @@ Route::get('/comentar/{gauchada}', 'ComentarioController@store')->name('store_co
 
 
 //Rutas Respuesta
-
-
 Route::get('/respuesta/create/{comentario}', 'RespuestaController@create')->name('create_respuesta_path');
 Route::get('/respuesta/{comentario}', 'RespuestaController@store')->name('store_respuesta_path');
 
@@ -78,6 +77,8 @@ Route::get('/admin', 'AdminController@index')->name('index_admin_path');
 Route::get('/ranking', 'AdminController@ranking')->name('ranking_usuarios_path');
 Route::get('/ganancias', 'AdminController@gananciasForm')->name('ganancias_form_path');
 Route::get('/ganancias/show', 'AdminController@gananciasShow')->name('ganancias_show_path');
+Route::get('/categoria/{user}/cambio', 'AdminController@cambioCat')->name('cambioCat_usuario_path');
+
 
 //Rutas Categoria Gauchada
 Route::get('/categoriagauchada/create', 'CategoriaGauchadaController@create')->name('create_categoriagauchada_path');
