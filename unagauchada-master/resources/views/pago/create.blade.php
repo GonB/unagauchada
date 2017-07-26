@@ -16,6 +16,7 @@
 
 	@endif
 
+
 <form action="{{route('store_pago_path', ['pago' => $pago->id])}}" method='GET'>
 		{{ csrf_field()}}
 	 <div class="col-md-8 col-md-offset-2">

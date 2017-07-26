@@ -48,7 +48,7 @@ use App\Postula;?>
             <?php 
                 $gauch = Gauchada::find($realizadas->id) ?>
                 Gauchada: <a href="{{route('gauchada_path', ['gauchada' => $gauch])}}">{{$gauch->titulo}}</a><br>
-                Fecha: {{$gau->created_at->format('Y-m-d')}}<br>
+                Fecha: {{$gauch->created_at->format('Y-m-d')}}<br>
             @endforeach
 
 
