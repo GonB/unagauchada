@@ -93,7 +93,8 @@ class CategoriaUsuarioController extends Controller
      */
     public function edit(CategoriaUsuario $categoriaUsuario)
     {
-        //
+        $error = '';
+        return view('categoriausuario.edit')-> with (['categoriaUsuario' => $categoriaUsuario])->with(['error1' => $error]);
     }
 
     /**
@@ -105,7 +106,57 @@ class CategoriaUsuarioController extends Controller
      */
     public function update(Request $request, CategoriaUsuario $categoriaUsuario)
     {
-        //
+        $messages = ['nombre.unique' => 'Categoría ya existente'];
+        $messages = ['nombre.required' => 'El nombre no puede ser vacío'];
+        $this->validate($request, [
+            'nombre' => 'required|unique:categoria_usuarios',
+            'rango_inicial' => 'required',
+            'rango_final' => 'required',
+        ]);
+
+        $rangoCorrecto = True;
+        $ri = $categoriaUsuario->rango_inicial;
+        $rf = $categoriaUsuario->rango_final;
+        if (($ri < 1) or ($ri >= $rf)){
+            $rangoCorrecto = false;
+        } else {
+            foreach (CategoriaUsuario::all() as $cat) {
+                if ((!((($ri < $cat->rango_inicial) and ($rf < $cat->rango_inicial)) 
+                    or (($ri > $cat->rango_final) and ($rf > $cat->rango_final))))
+                    and ($cat->id != $categoriaUsuario->id)) {
+                    $rangoCorrecto = False;
+                }
+            }
+        }
+
+        if ($rangoCorrecto) {
+            $categoriaUsuario->update(
+                $request->only('nombre','rango_inicial','rango_final')
+            );
+            session()->flash('message', 'Categoria de Gauchada Actualizada!');
+            return redirect()->route('index_categoriausuario_path');
+        } else {
+            $error = 'Categoría fuera de rango';
+            return view('categoriausuario.edit')-> with (['categoriaUsuario' => $categoriaUsuario])->with(['error1' => $error]);
+        }
+    }
+
+    public function delete(CategoriaUsuario $categoriaUsuario, Request $request)
+    {
+        /*$tiene_usuarios = False;
+        foreach (Users::all() as $usuario) {
+            if ($usuario->score == $categoriaUsuario->id) {
+                $tiene_usuarios = True;
+            }
+        }
+        if ($tiene_usuarios) {
+            $error = 'No se puede eliminar una categoría con Usuarios';
+            return redirect()->route('index_categoriausuario_path') ->with(['errors' => $error]);
+        } else {
+            $categoriaUsuario->delete();
+            session()->flash('message', 'Gauchada Borrada!');
+            return redirect()->route('index_categoriausuario_path');
+        }*/
     }
 
     /**

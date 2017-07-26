@@ -91,3 +91,6 @@ Route::get('/categoriagauchada/up/{categoriaGauchada}', 'CategoriaGauchadaContro
 Route::get('/categoriausuario/create', 'CategoriaUsuarioController@create')->name('create_categoriausuario_path');
 Route::get('/categoriausuario', 'CategoriaUsuarioController@store')->name('store_categoriausuario_path');
 Route::get('/categoriausuario/index', 'CategoriaUsuarioController@index')->name('index_categoriausuario_path');
+Route::get('/categoriausuario/{categoriaUsuario}/edit', 'CategoriaUsuarioController@edit')->name('edit_categoriausuario_path');
+Route::get('/categoriausuario/{categoriaUsuario}/delete', 'CategoriaUsuarioController@delete')->name('delete_categoriausuario_path');
+Route::get('/categoriausuario/up/{categoriaUsuario}', 'CategoriaUsuarioController@update')->name('update_categoriausuario_path');

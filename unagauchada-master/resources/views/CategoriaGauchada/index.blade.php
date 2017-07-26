@@ -15,14 +15,9 @@
 
     <div class="container">
         <div class="panel panel-default">
-            <div class="cab_form">Categorias de Gauchadas</div>
+            <div class="cab_form"><h1>Categorias de Gauchadas</h1></div>
             <div class="panel-body links2">
                 @foreach(CategoriaGauchada::all() as $categoriaGauchada)
-                
-                    <small>
-                        {{$categoriaGauchada->nombre}}<br>
-                    </small>
-
                     <small class="pull-right">
 
                             <div><a href="{{ route('edit_categoriagauchada_path', ['categoriaGauchada' => $categoriaGauchada->id]) }}" class="btn btn-info">Editar</a></div>                                
@@ -32,6 +27,12 @@
                             </form>
                         
                     </small> 
+                    
+                    <small class="pull-lefth">
+                        <h3>{{$categoriaGauchada->nombre}}</h3><br>
+                    </small>
+
+                    
                     <hr style="border-color:grey;margin: 0px;">
                 @endforeach
             </div>
