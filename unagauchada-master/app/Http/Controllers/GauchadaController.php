@@ -89,7 +89,7 @@ class GauchadaController extends Controller
                 $img = $filename;
             }
             else {
-                $img = 'gauchadaPorDefecto.jpg';
+                $img = 'gauchadaPorDefecto.png';
             }
             Gauchada::create([
                 'user_id' => Auth::id(),

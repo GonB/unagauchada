@@ -49,7 +49,7 @@ class CategoriaUsuarioController extends Controller
         $ri = $categoriausuario->rango_inicial;
         $rf = $categoriausuario->rango_final;
 
-        if (($ri < 1) or ($ri >= $rf)){
+        if (($ri < 0) or ($ri >= $rf)){
             $rangoCorrecto = false;
         } else {
             foreach (CategoriaUsuario::all() as $cat) {
@@ -106,37 +106,44 @@ class CategoriaUsuarioController extends Controller
      */
     public function update(Request $request, CategoriaUsuario $categoriaUsuario)
     {
-        $messages = ['nombre.unique' => 'Categoría ya existente'];
-        $messages = ['nombre.required' => 'El nombre no puede ser vacío'];
-        $this->validate($request, [
-            'nombre' => 'required|unique:categoria_usuarios',
-            'rango_inicial' => 'required',
-            'rango_final' => 'required',
-        ]);
-
+        $error = '';
         $rangoCorrecto = True;
-        $ri = $categoriaUsuario->rango_inicial;
-        $rf = $categoriaUsuario->rango_final;
+        $nombreCorrecto = True;
+        $ri = $request->rango_inicial;
+        $rf = $request->rango_final;
+        $nom = $request->nombre;
         if (($ri < 0) or ($ri >= $rf)){
+            $error = 'Categoría fuera de rango';
             $rangoCorrecto = false;
-        } else {
-            foreach (CategoriaUsuario::all() as $cat) {
-                if ((!((($ri < $cat->rango_inicial) and ($rf < $cat->rango_inicial)) 
-                    or (($ri > $cat->rango_final) and ($rf > $cat->rango_final))))
-                    and ($cat->id != $categoriaUsuario->id)) {
-                    $rangoCorrecto = False;
-                }
+        } 
+        foreach (CategoriaUsuario::all() as $cat) {
+            if ((!((($ri < $cat->rango_inicial) and ($rf < $cat->rango_inicial)) 
+                or (($ri > $cat->rango_final) and ($rf > $cat->rango_final))))
+                and ($cat->id != $categoriaUsuario->id)) {
+                $error = 'Categoría fuera de rango';
+                $rangoCorrecto = False;
+            }
+            if (($cat->nombre == $nom) and ($cat->id != $categoriaUsuario->id)) {
+                $error = 'Categoria ya existente';
+                $nombreCorrecto = False;
             }
         }
+        
+        //return $ri;
 
-        if ($rangoCorrecto) {
+        if (($rangoCorrecto) and ($nombreCorrecto)){
+            $messages = ['nombre.required' => 'El nombre no puede ser vacío'];
+            $this->validate($request, [
+                'nombre' => 'required',
+                'rango_inicial' => 'required',
+                'rango_final' => 'required',
+            ]);
             $categoriaUsuario->update(
                 $request->only('nombre','rango_inicial','rango_final')
             );
             session()->flash('message', 'Categoria de Gauchada Actualizada!');
             return redirect()->route('index_categoriausuario_path');
-        } else {
-            $error = 'Categoría fuera de rango';
+        } else {            
             return view('categoriausuario.edit')-> with (['categoriaUsuario' => $categoriaUsuario])->with(['error1' => $error]);
         }
     }
