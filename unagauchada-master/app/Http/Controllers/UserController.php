@@ -192,11 +192,11 @@ class UserController extends Controller
 
         $postulaciones = Postula::where('user_id', '=', $user->id)->orderBy('id','desc')->paginate(10);
         $realizadas = DB::table('gauchadas')
-                        ->join('postulas', 'gauchadas.user_id', '=', 'postulas.user_id')
+                        ->join('postulas', 'gauchadas.id', '=', 'postulas.gauchada_id')
                         ->select('postulas.user_id', 'gauchadas.id', 'gauchadas.created_at')
                         ->where('gauchadas.activo', '=', '0')
                         ->where('gauchadas.seleccionado', '=', '1')
-                        ->where('gauchadas.user_id', '=', $user->id)
+                        ->where('postulas.user_id', '=', $user->id)
                         ->get();
         return view('perfil.historial')->with('user',$user)->with('gauchadas',$gauchadas)->with('postulaciones',$postulaciones)->with('realizadas',$realizadas);
 

@@ -83,12 +83,11 @@ class PostulaController extends Controller
     public function misGauchadasRealizadas()
     {
         $misgau = DB::table('gauchadas')
-                        ->join('postulas', 'gauchadas.user_id', '=', 'postulas.user_id')
-                        ->select('postulas.user_id', 'gauchadas.id', 'gauchadas.created_at')
+                        ->join('postulas', 'gauchadas.id', '=', 'postulas.gauchada_id')
                         ->where('gauchadas.activo', '=', '0')
                         ->where('gauchadas.seleccionado', '=', '1')
-                        ->where('gauchadas.user_id', '=', Auth::id())
-                        ->get();  
+                        ->where('postulas.user_id', '=', Auth::id())
+                        ->get(); 
         return view ('perfil.misGauchadas')->with('misgau', $misgau); 
 
     }
