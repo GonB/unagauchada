@@ -80,7 +80,7 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, Comentario $comentario)
     {
-         $this->validate($comentario, [
+         $this->validate($request, [
                 'contenido' => 'required|min:15',
             ]);
         $comentario->update(
