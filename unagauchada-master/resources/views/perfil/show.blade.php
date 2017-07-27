@@ -24,14 +24,14 @@
                     <p>Fecha nacimiento: {{ $user -> birthdate }}</p>
                     <p>Email: {{ $user -> email }}</p>
                     <p>Categoria: {{$categoria}}</p>
-                    <a href="{{route('historial_usuario_path', ['user' => $user])}}">Ver Historial de Usuario</a><br>
+                    <a href="{{route('historial_usuario_path', ['user' => $user])}}" >Ver Historial de Usuario</a><br>
                 </strong>
                 @if (Auth::user()->admin)
                     <form action="{{route('cambiarCat_usuario_path', ['user' => $user])}}" method='GET' enctype="multipart/form-data">
-                        <button type="submit" class="btn btn-primary" autofocus="">Cambiar de Categoria</button>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 5px;" autofocus="">Cambiar de Categoria</button>
                     </form>
                 @endif
-                <button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
+                <button class ="btn btn-warning" onclick="goBack()" style="margin-top: 5px;"> Atrás</button>
                 <script>
                     function goBack(){
                         window.history.back();

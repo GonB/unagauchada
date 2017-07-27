@@ -24,7 +24,7 @@
 		<div class="panel-body">
 
 		<form action="{{route('store_categoriagauchada_path')}}" method='get'>
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-8 col-md-offset-2" style="margin-left: 0px;">
 			
 			<div class="form-group">
 				<label for="Titulo">Nombre:</label>
@@ -34,7 +34,7 @@
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary" autofocus="">Crear Categoria De Gauchada</button>
-				<button class="btn btn-warning" onclick="goBack()"> Cancelar</button>
+				<button class="btn btn-warning" onclick="goBack()">Cancelar</button>
 				<script>
 					function goBack(){
 						window.history.back();
