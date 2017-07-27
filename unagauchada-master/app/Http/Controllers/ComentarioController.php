@@ -68,7 +68,7 @@ class ComentarioController extends Controller
      */
     public function edit(Comentario $comentario)
     {
-        //
+        return view('comentario.edit')->with('comentario',$comentario);
     }
 
     /**
@@ -80,7 +80,15 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, Comentario $comentario)
     {
-        //
+         $this->validate($comentario, [
+                'contenido' => 'required|min:15',
+            ]);
+        $comentario->update(
+            $request->only('contenido')
+        );
+        session()->flash('message', 'Comentario Actualizado!');
+        $gauchada = Gauchada::find($comentario->gauchada_id);
+        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
 
     /**
