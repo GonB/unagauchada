@@ -4,6 +4,15 @@
   ?>
 
 @section('content')
+  @if($error1 != '')
+    <div class="alert alert-danger">
+      <ul>
+        <li>
+          {{$error1}}
+        </li>
+      </ul>
+    </div>
+  @endif
   
   <div class="container">
     <div class="panel panel-default">

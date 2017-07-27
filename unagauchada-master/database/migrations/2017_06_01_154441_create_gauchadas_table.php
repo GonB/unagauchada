@@ -23,6 +23,7 @@ class CreateGauchadasTable extends Migration
             $table->integer('categoria')->nullable();
             $table->boolean('seleccionado')->default(false);
             $table->text('descripcion');
+            $table->string('imagen');
             $table->timestamps();
         });
     }

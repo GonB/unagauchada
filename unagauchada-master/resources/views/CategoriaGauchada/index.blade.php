@@ -15,25 +15,20 @@
 
     <div class="container">
         <div class="panel panel-default">
-            <div class="cab_form"><h1>Categorias de Gauchadas</h1></div>
+            <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">Categorias de Gauchadas</div>
             <div class="panel-body links2">
                 @foreach(CategoriaGauchada::all() as $categoriaGauchada)
-                    <small class="pull-right">
-
-                            <div><a href="{{ route('edit_categoriagauchada_path', ['categoriaGauchada' => $categoriaGauchada->id]) }}" class="btn btn-info">Editar</a></div>                                
-
+                    <div style="height: 62px; width: 300px; margin: auto; border-bottom: 1px solid grey;margin-top: 10px;"> <!-- div casilla -->
+                        <div style="float: left; height: inherit; width: 70%;">
+                            <h4 style="margin-left: 20px; margin-top: 15px;"><strong>{{$categoriaGauchada->nombre}}</strong></h4>
+                        </div>
+                        <div style="float: left;width: 30%;">
+                            <a href="{{ route('edit_categoriagauchada_path', ['categoriaGauchada' => $categoriaGauchada->id]) }}" class="btn btn-info">Editar</a>                                
                             <form action="{{ route('delete_categoriagauchada_path', ['categoriaGauchada' => $categoriaGauchada->id]) }}" method="GET">
                                 <button type="submit" class='btn btn-info'>Eliminar</button>
                             </form>
-                        
-                    </small> 
-                    
-                    <small class="pull-lefth">
-                        <h3>{{$categoriaGauchada->nombre}}</h3><br>
-                    </small>
-
-                    
-                    <hr style="border-color:grey;margin: 0px;">
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>
