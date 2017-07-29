@@ -143,14 +143,15 @@
               @endif
 
                 <!--BOTON EDITAR COMENTARIO // SI ES MI COMENTARIO-->
-               <?php 
+               <?php
+
                $date=date("Y-m-d G:i:s", time());
                $f = (strtotime($date) - (strtotime($comentario->created_at)))/60;
                $f = abs($f);
                $f = floor($f);
                
                ?>
-                @if((!$hay)and($coment->user_id = Auth::id())and($f<15))
+                @if((!$hay)and($coment->user_id = Auth::id())and($f<10))
                   <form style="text-align: right;" action="{{route('edit_comentario_path', ['comentario' => $coment])}}" method='GET'>
                       <button type="submit" class="btn btn-danger" autofocus="">Editar Comentario</button>
                   </form> 
