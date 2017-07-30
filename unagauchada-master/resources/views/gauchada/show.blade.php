@@ -13,8 +13,8 @@
             <h2>{{ $gauchada->titulo }}</h2>
             <div>
               <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}">
-            </div>
-            <p>{{ $gauchada->descripcion }}</p>
+            </div><br>
+            <p><strong>{{ $gauchada->descripcion }}</p></strong>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?>
             <p>Categoria: {{ $cate -> nombre }}</p>
@@ -130,7 +130,6 @@
 
 
 
-
                
               <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
@@ -146,34 +145,59 @@
                <?php
 
                $date=date("Y-m-d G:i:s", time());
-               $f = (strtotime($date) - (strtotime($comentario->created_at)))/60;
+               $f = (strtotime($date) - (strtotime($coment->created_at)))/60;
                $f = abs($f);
                $f = floor($f);
+              
                
                ?>
-                @if((!$hay)and($coment->user_id = Auth::id())and($f<10))
+             
+
+                @if((!$hay))
+                  @if(($coment->user_id == Auth::id())and($f<10))
                   <form style="text-align: right;" action="{{route('edit_comentario_path', ['comentario' => $coment])}}" method='GET'>
                       <button type="submit" class="btn btn-danger" autofocus="">Editar Comentario</button>
-                  </form> 
-                @endif
+                  </form>
 
-                @if((!$hay)and($coment->user_id = Auth::id())and($f<10))
                   <form style="text-align: right;" action="{{route('confirm_delete_path', ['comentario' => $coment])}}" method='GET'>
                       <button type="submit" class="btn btn-warning" autofocus="">Eliminar Comentario</button>
-                  </form> 
+                  </form>  
+                  @endif
                 @endif
+
+              
 
               
               
                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
+               @if($hay)
                 <?php
+                
                   $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
+                
+                  $date_resp=date("Y-m-d G:i:s", time());
+                   $r = (strtotime($date_resp) - (strtotime($respuesta->created_at)))/60;
+                   $r = abs($r);
+                   $r = floor($r);
                  ?>
                   <div style="padding-left: 50px;">
                     <p style="margin:0px;">{{$respuesta['contenido']}}</p>
                     <p style="margin:0px;">{{User::find($respuesta['user_id'])['nick']}}</p>
                     <p style="margin:0px;">{{$respuesta['created_at']}}</p>
                   </div>
+
+                    @if($respuesta->user_id == Auth::id()and($r<10)) 
+                    <form style="text-align: right;" action="{{route('edit_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
+                      <button type="submit" class="btn btn-danger" autofocus="">Editar Respuesta</button>
+                     </form>
+                      <form style="text-align: right;" action="{{route('confirmdel_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
+                      <button type="submit" class="btn btn-warning" autofocus="">Eliminar Respuesta</button>
+                     </form>  
+                   @endif
+                  @endif
+
+
+
 
                   <hr style="margin:10px 0px;border-color: coral;">
 

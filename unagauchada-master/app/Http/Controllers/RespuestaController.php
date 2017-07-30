@@ -33,6 +33,37 @@ class RespuestaController extends Controller
                 'contenido' => $respuesta['contenido'],
             ]);
              return view('gauchada.show')->with(['gauchada' => Gauchada::find($comentario->gauchada_id)]);
-         }
+    }
 
+    public function edit(Respuesta $respuesta)
+    {
+        return view('respuesta.edit')->with('respuesta', $respuesta);
+    }
+
+    public function update(Request $request, Respuesta $respuesta)
+    {
+         $this->validate($request, [
+                'contenido' => 'required|min:15',
+            ]);
+        $respuesta->update(
+            $request->only('contenido')
+        );
+        session()->flash('message', 'Respuesta Actualizada!');
+        $comentario = Comentario::find($respuesta->comentario_id); 
+        $gauchada = Gauchada::find($comentario->gauchada_id);
+        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
+    }
+
+    public function delete_confirm(Respuesta $respuesta)
+    {
+        return view('respuesta.delete')->with('respuesta', $respuesta);
+    }
+
+    public function delete(Respuesta $respuesta)
+    {
+        $comentario = Comentario::find($respuesta->comentario_id);
+        $gauchada= Gauchada::find($comentario->gauchada_id);
+        $respuesta->delete();
+        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]); 
+    }
 }
