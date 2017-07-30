@@ -72,7 +72,8 @@ Route::get('/respuesta/create/{comentario}', 'RespuestaController@create')->name
 Route::get('/respuesta/{comentario}', 'RespuestaController@store')->name('store_respuesta_path');
 Route::get('/respuesta/edit/{respuesta}', 'RespuestaController@edit')->name('edit_respuesta_path');
 Route::get('/respuesta/update/{respuesta}', 'RespuestaController@update')->name('update_respuesta_path');
-
+Route::get('/respuesta/eliminar/{respuesta}/confirm', 'RespuestaController@delete_confirm')->name('confirmdel_respuesta_path');
+Route::get('/respuesta/eliminar/{respuesta}', 'RespuestaController@delete')->name('delete_respuesta_path');
 // al momento de puntuar, modifica al usuario
 Route::get('/elegido/Sum/{user_pointSum}/{gauchada}', 'UserController@pointSum')->name('pointSum_perfil_path');
 Route::get('/elegido/Null/{user_pointNull}/{gauchada}', 'UserController@pointNull')->name('pointNull_perfil_path');

@@ -13,8 +13,8 @@
             <h2>{{ $gauchada->titulo }}</h2>
             <div>
               <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}">
-            </div>
-            <p>{{ $gauchada->descripcion }}</p>
+            </div><br>
+            <p><strong>{{ $gauchada->descripcion }}</p></strong>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?>
             <p>Categoria: {{ $cate -> nombre }}</p>
@@ -130,7 +130,6 @@
 
 
 
-
                
               <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
 
@@ -149,19 +148,24 @@
                $f = (strtotime($date) - (strtotime($coment->created_at)))/60;
                $f = abs($f);
                $f = floor($f);
+              
                
                ?>
-                @if((!$hay)and($coment->user_id = Auth::id())and($f<10))
+             
+
+                @if((!$hay))
+                  @if(($coment->user_id == Auth::id())and($f<10))
                   <form style="text-align: right;" action="{{route('edit_comentario_path', ['comentario' => $coment])}}" method='GET'>
                       <button type="submit" class="btn btn-danger" autofocus="">Editar Comentario</button>
-                  </form> 
-                @endif
+                  </form>
 
-                @if((!$hay)and($coment->user_id == Auth::id())and($f<10))
                   <form style="text-align: right;" action="{{route('confirm_delete_path', ['comentario' => $coment])}}" method='GET'>
                       <button type="submit" class="btn btn-warning" autofocus="">Eliminar Comentario</button>
-                  </form> 
+                  </form>  
+                  @endif
                 @endif
+
+              
 
               
               
@@ -182,10 +186,13 @@
                     <p style="margin:0px;">{{$respuesta['created_at']}}</p>
                   </div>
 
-                    @if($respuesta->user_id = Auth::id()and($r<10)) 
+                    @if($respuesta->user_id == Auth::id()and($r<10)) 
                     <form style="text-align: right;" action="{{route('edit_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
                       <button type="submit" class="btn btn-danger" autofocus="">Editar Respuesta</button>
-                     </form> 
+                     </form>
+                      <form style="text-align: right;" action="{{route('confirmdel_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
+                      <button type="submit" class="btn btn-warning" autofocus="">Eliminar Respuesta</button>
+                     </form>  
                    @endif
                   @endif
 

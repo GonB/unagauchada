@@ -54,4 +54,16 @@ class RespuestaController extends Controller
         return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
 
+    public function delete_confirm(Respuesta $respuesta)
+    {
+        return view('respuesta.delete')->with('respuesta', $respuesta);
+    }
+
+    public function delete(Respuesta $respuesta)
+    {
+        $comentario = Comentario::find($respuesta->comentario_id);
+        $gauchada= Gauchada::find($comentario->gauchada_id);
+        $respuesta->delete();
+        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]); 
+    }
 }
