@@ -6,6 +6,7 @@ use App\CategoriaGauchada;
 use App\Gauchada;
 use Auth;
 use Illuminate\Http\Request;
+use Session;
 
 class CategoriaGauchadaController extends Controller
 {
@@ -62,7 +63,7 @@ class CategoriaGauchadaController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *'index_categoriagauchada_path'
      * @param  \App\CategoriaGauchada  $categoriaGauchada
      * @return \Illuminate\Http\Response
      */
@@ -88,7 +89,7 @@ class CategoriaGauchadaController extends Controller
         $categoriaGauchada->update(
             $request->only('nombre')
         );
-        session()->flash('message', 'Categoria de Gauchada Actualizada!');
+        session()->flash('message', 'Categoria de gauchada actualizada!');
         return redirect()->route('index_categoriagauchada_path');
     }
 
@@ -105,7 +106,7 @@ class CategoriaGauchadaController extends Controller
             return redirect()->route('index_categoriagauchada_path') ->with(['errors' => $error]);
         } else {
             $categoriaGauchada->delete();
-            session()->flash('message', 'Gauchada Borrada!');
+            session()->flash('message', 'Categoria eliminada!');
             return redirect()->route('index_categoriagauchada_path');
         }
     }

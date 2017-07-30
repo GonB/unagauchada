@@ -142,7 +142,7 @@ class CategoriaUsuarioController extends Controller
             $categoriaUsuario->update(
                 $request->only('nombre','rango_inicial','rango_final')
             );
-            session()->flash('message', 'Categoria de Usuarios Actualizada!');
+            session()->flash('message', 'Categoria de usuarios actualizada!');
             return redirect()->route('index_categoriausuario_path');
         } else {            
             return view('categoriausuario.edit')-> with (['categoriaUsuario' => $categoriaUsuario])->with(['error1' => $error]);
@@ -160,11 +160,11 @@ class CategoriaUsuarioController extends Controller
             }
         }
         if ($tiene_usuarios) {
-            $error = 'No se puede eliminar una categoría con Usuarios';
+            $error = 'No se puede eliminar la categoría con usuarios';
             return view ('categoriausuario.index')->with(['error1' => $error]);
         } else {
             $categoriaUsuario->delete();
-            session()->flash('message', 'Categoria de Usuarios Borrada!');
+            session()->flash('message', 'Categoria de usuarios borrada!');
             return view ('categoriausuario.index')->with(['error1' => $error]);
         }
     }
