@@ -97,8 +97,16 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comentario $comentario)
+    public function delete_confirm(Comentario $comentario)
     {
-        //
+        return view('comentario.delete')->with('comentario', $comentario);
+    }
+
+
+    public function delete(Comentario $comentario)
+    {
+        $gauchada=Gauchada::find($comentario->gauchada_id);
+       $comentario->delete();
+       return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
 }

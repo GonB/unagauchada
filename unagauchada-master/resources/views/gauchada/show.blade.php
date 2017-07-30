@@ -157,6 +157,12 @@
                   </form> 
                 @endif
 
+                @if((!$hay)and($coment->user_id = Auth::id())and($f<10))
+                  <form style="text-align: right;" action="{{route('confirm_delete_path', ['comentario' => $coment])}}" method='GET'>
+                      <button type="submit" class="btn btn-warning" autofocus="">Eliminar Comentario</button>
+                  </form> 
+                @endif
+
               
               
                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->

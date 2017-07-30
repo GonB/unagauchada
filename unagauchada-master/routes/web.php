@@ -62,7 +62,9 @@ Route::get('/misgauchadas', 'PostulaController@misGauchadasRealizadas')->name('m
 Route::get('/comentar/create/{gauchada}', 'ComentarioController@create')->name('create_comentario_path');
 Route::get('/comentar/{gauchada}', 'ComentarioController@store')->name('store_comentario_path');
 Route::get('/comentar/edit/{comentario}', 'ComentarioController@edit')->name('edit_comentario_path');
-Route::get('/comentar/update/{comentario}', 'ComentarioController@update')->name('update_comentario_path');	
+Route::get('/comentar/update/{comentario}', 'ComentarioController@update')->name('update_comentario_path');
+Route::get('comentar/eliminar/{comentario}', 'ComentarioController@delete')->name('delete_comentario_path');
+Route::get('comentar/eliminar/{comentario}/confirm','ComentarioController@delete_confirm')->name('confirm_delete_path');	
 
 
 //Rutas Respuesta

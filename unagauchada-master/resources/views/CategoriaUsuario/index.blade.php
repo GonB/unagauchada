@@ -15,8 +15,8 @@
   @endif
   
   <div class="container">
-    <div class="panel panel-default">
-      <div class="cab_form"><h2>Categorias de Usuarios</h2></div>
+        <div class="panel panel-default">
+      <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">Categorias de Usuarios</div>
       <div class="panel-body">
         @foreach(CategoriaUsuario::all() as $cat)
 
