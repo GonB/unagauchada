@@ -14,6 +14,14 @@
     @endif
 
     <div class="container">
+        <div>
+            @if (Session::has('message'))
+                <div class="alert" style="padding: 0px;margin: 0px auto 10px;background-color: #87a4b7;color: white;text-align: center;font-size: medium;width: 526px;border-radius: 20px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="margin-right: 10px;">&times;</button>
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+        </div>
         <div class="panel panel-default">
             <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">Categorias de Gauchadas</div>
             <div style="width: 300px;margin: 5px auto 0px; padding: 5px 0px;">
