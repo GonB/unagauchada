@@ -46,7 +46,7 @@ class CategoriaGauchadaController extends Controller
             'user_id' => Auth::id(),
             'nombre' => $categoriagauchada['nombre'],
         ]);
-        return redirect()->route('index_admin_path');
+        return redirect()->route('index_categoriagauchada_path');
     }
 
     /**

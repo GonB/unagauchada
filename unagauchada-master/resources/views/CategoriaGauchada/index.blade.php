@@ -16,11 +16,18 @@
     <div class="container">
         <div class="panel panel-default">
             <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">Categorias de Gauchadas</div>
-            <div class="panel-body links2">
+            <div style="width: 300px;margin: 5px auto 0px; padding: 5px 0px;">
+               <a href="{{ route('create_categoriagauchada_path') }}" class="btn btn-primary" style="width: 49%;">Añadir categoría</a>
+               <a href="{{ route('index_admin_path') }}" class="btn btn-warning" style="width: 49%;">Volver</a>
+            </div>
+            <div style="width: 300px; background-color: #87a4b7; color: white; text-align: center;margin: 0px auto">
+                <p style="margin: 0px">Lista de categorias</p>
+            </div>
+            <div class="panel-body links2" style="padding: 2px;">
                 @foreach(CategoriaGauchada::all() as $categoriaGauchada)
-                    <div style="height: 62px; width: 300px; margin: auto; border-bottom: 1px solid grey;margin-top: 10px;"> <!-- div casilla -->
+                    <div style="height: 62px; width: 300px; margin: 2px auto 0px; border-bottom: 1px solid grey;"> <!-- div casilla -->
                         <div style="float: left; height: inherit; width: 70%;">
-                            <h4 style="margin-left: 20px; margin-top: 15px;"><strong>{{$categoriaGauchada->nombre}}</strong></h4>
+                            <p style="margin-left: 20px; margin-top: 15px; font-size: 16px;"><strong>{{$categoriaGauchada->nombre}}</strong></p>
                         </div>
                         <div style="float: left;width: 30%;">
                             <a href="{{ route('edit_categoriagauchada_path', ['categoriaGauchada' => $categoriaGauchada->id]) }}" class="btn btn-info">Editar</a>                                
