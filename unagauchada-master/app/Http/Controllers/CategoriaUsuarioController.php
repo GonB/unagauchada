@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CategoriaUsuario;
 use App\User;
 use Illuminate\Http\Request;
+use Session;
 
 class CategoriaUsuarioController extends Controller
 {
@@ -69,6 +70,7 @@ class CategoriaUsuarioController extends Controller
                 'rango_inicial' => $categoriausuario['rango_inicial'],
                 'rango_final' => $categoriausuario['rango_final'],
             ]);
+            session()->flash('message', 'Nueva categoria de usuarios creada!');
             return view ('categoriausuario.index')->with(['error1' => $error]);
         } else {
             $error='Categoria fuera de rango.';
@@ -164,7 +166,7 @@ class CategoriaUsuarioController extends Controller
             return view ('categoriausuario.index')->with(['error1' => $error]);
         } else {
             $categoriaUsuario->delete();
-            session()->flash('message', 'Categoria de usuarios borrada!');
+            session()->flash('message', 'Categoria eliminada!');
             return view ('categoriausuario.index')->with(['error1' => $error]);
         }
     }

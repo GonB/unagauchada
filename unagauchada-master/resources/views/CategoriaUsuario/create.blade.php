@@ -44,18 +44,12 @@
 
 					<div class="form-group">
 						<label for="rango_final">Rango Final</label>
-						<input type="integer" name='rango_final' class="form-control" value="" style="width: 400px" />			
-
+						<input type="integer" name='rango_final' class="form-control" value="" style="width: 400px" />
 					</div>
 					
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary" autofocus="">Crear Categoría</button>
-						<button class ="btn btn-warning" onclick="goBack()">Atrás</button>
-						<script>
-							function goBack(){
-								window.history.back();
-							}
-						</script>			
+						<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button>
+						<a href= {{ route('index_categoriausuario_path') }} class ="btn btn-warning">Cancelar</a>			
 					</div>	
 				</form>
 			</div>

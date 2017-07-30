@@ -46,6 +46,7 @@ class CategoriaGauchadaController extends Controller
         CategoriaGauchada::create([
             'user_id' => Auth::id(),
             'nombre' => $categoriagauchada['nombre'],
+            session()->flash('message', 'Nueva categoria de gauchadas creada!')
         ]);
         return redirect()->route('index_categoriagauchada_path');
     }
