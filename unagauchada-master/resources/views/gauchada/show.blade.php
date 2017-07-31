@@ -188,8 +188,8 @@
                  ?>
                   <div style="padding-left: 50px;">
                     <div class= "pull-left">
-              <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px" width="65" height="65" >
-            </div><br>
+              <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px" width="65" height="65" class="pull-left" >
+            </div>
                     <p style="margin:0px;"><strong>{{User::find($respuesta['user_id'])['nick']}}</strong></p>
                     <p style="margin:0px;">{{$respuesta['contenido']}}</p>
                     
