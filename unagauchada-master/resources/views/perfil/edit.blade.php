@@ -44,15 +44,9 @@
 						<label for="email">Email</label>
 						<input type="string" name='email' class="form-control" value="{{Auth::user()->email}}" style="width: 400px" />
 					</div>
-
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" autofocus="">Guardar cambios</button>
-						<button class ="btn btn-warning" onclick="goBack()">Atrás</button>
-						<script>
-							function goBack(){
-								window.history.back();
-							}
-						</script>			
+						<a href="{{ route('perfil_index_path') }}" class ="btn btn-warning">Atrás</a>
 					</div>	
 				</form>
 			</div>
