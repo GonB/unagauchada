@@ -120,8 +120,9 @@
             </div>
           </div>
           <hr>
+          <hr style="margin:10px 0px;border-color: coral;">
         @endif
-         <hr style="margin:10px 0px;border-color: coral;">
+         
     @endforeach
     <div style="text-align: center;">{!! $gauchada -> render() !!}</div>
 @endsection

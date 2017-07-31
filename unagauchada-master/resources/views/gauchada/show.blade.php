@@ -25,7 +25,7 @@
             <!-- SOLO PODRÁ VER ESTO EL AUTOR DE LA GAUCHADA -->
             @if($gauchada->user_id == Auth::id())
               
-               <h4 class="pull-left" style="margin:0px;padding:15px 0px;text-align: center;">- Postulantes -</h4><br>
+               <h4 class="pull-left" style="margin:0px;padding:15px 0px;text-align: center;">- Postulantes -</h4><br><br>
 
               <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
               <?php 
@@ -51,17 +51,18 @@
                       <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
                       <form action="{{ route('choose_postula_path', ['postula' => $post, 'gauchada' => $gauchada->id]) }}" method='GET'>
                       {{ csrf_field() }}
-                      <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a></p>
+                      <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a>
                       
                       <?php
                       if (! $hay) { ?>
                         @if ($gauchada->activo)
-                          <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
+                            <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
                         @endif
-                  <?php
+                      <?php
                       } ?>
+                      </p>
                       </form>
-                  <?php
+                    <?php
                     } ?>
                 @endforeach
               <!-- SI NO ES MI GAUCHADA -->
