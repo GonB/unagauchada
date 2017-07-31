@@ -6,7 +6,8 @@ use App\Postula;?>
 @section('content')
 	<div class="container">
         <div class="panel panel-default">
-            <div class="cab_form">Historial de {{$user->nick}}</div>
+        <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">Historial de Usuario</div>
+        <div class="panel-body">
             <div class="panel-body">
 
              <strong>Gauchadas Publicadas: </strong><br>

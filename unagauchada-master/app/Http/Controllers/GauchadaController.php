@@ -21,7 +21,7 @@ class GauchadaController extends Controller
      */
     public function index()
     {
-        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+        $gauchada = Gauchada::orderBy('id','desc')->simplePaginate(10);
 
         foreach ($gauchada as $gau) {
             if ($gau->activo) {
@@ -77,7 +77,7 @@ class GauchadaController extends Controller
         $user=User::find(Auth::id());
         if($user->credits>=1){
             $this->validate($gauchada, [
-                'titulo' => 'required|min:5',
+                'titulo' => 'required|min:5|max:35',
                 'descripcion' => 'required|min:15',
                 'fecha_limite' => 'required|after:today',
                 'imagen' => 'image',

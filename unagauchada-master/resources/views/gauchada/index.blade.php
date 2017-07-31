@@ -50,5 +50,5 @@
             <hr>
         @endif
     @endforeach
-@endsection
+    @endsection
 	

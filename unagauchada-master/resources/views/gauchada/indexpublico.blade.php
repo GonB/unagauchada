@@ -124,5 +124,5 @@
         @endif
          
     @endforeach
-    <div style="text-align: center;">{!! $gauchada -> render() !!}</div>
+    <div style="text-align: center;color: white">{!! $gauchada -> render() !!}</div>
 @endsection
