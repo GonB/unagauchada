@@ -15,7 +15,7 @@
 
 <div class="container">
     <div class="panel panel-default">
-        <div class="cab_form">{{$categoria}}</div>
+        <div class="cab_form">Una Gauchada - SOS DE LA B GATO</div>
         <div class="panel-body links2">
             @if (Auth::check())
                 <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
