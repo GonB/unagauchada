@@ -53,6 +53,9 @@
           <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <small>
+                <div class="pull-left">
+                  <img src="/imagenes/gauchadas/{{ $gau->imagen }}" width="150" height="150" style="margin-right:10px">
+                  </div>
                   @if(Auth::check())
                     <a href="{{ route('gauchada_path', ['gau' => $gau]) }}"><h2>{{ $gau->titulo }}</h2></a>
                   @else

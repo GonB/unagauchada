@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h2>{{ $gauchada->titulo }}</h2>
-            <div>
-              <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}">
+            <div class= "pull-left">
+              <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}" style="margin-right:10px" width="200" height="200" >
             </div><br>
             <p><strong>{{ $gauchada->descripcion }}</p></strong>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
@@ -24,7 +24,8 @@
             
             <!-- SOLO PODRÁ VER ESTO EL AUTOR DE LA GAUCHADA -->
             @if($gauchada->user_id == Auth::id())
-              <p style="margin: 0px;">Postulantes:<br>
+              
+               <h4 class="pull-left" style="margin:0px;padding:15px 0px;text-align: center;">- Postulantes -</h4><br>
 
               <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
               <?php 
@@ -124,9 +125,13 @@
                         }
                    }
                ?>
+               <div class= "pull-left">
+              <img src="/imagenes/usuarios/{{ User::find($coment->user_id)->imagen }}" style="margin-right:10px" width="65" height="65" >
+              </div>
+                <h3><strong>{{User::find($coment->user_id)->nick}}</strong></h3>
                {{$coment->contenido}}<br>
-               Autor: {{User::find($coment->user_id)->nick}}<br>
-               {{$coment->created_at}}
+              
+               <div class="pull-center">{{$coment->created_at}}</div><br>
 
 
 
@@ -181,8 +186,12 @@
                    $r = floor($r);
                  ?>
                   <div style="padding-left: 50px;">
+                    <div class= "pull-left">
+              <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px" width="65" height="65" >
+            </div><br>
+                    <p style="margin:0px;"><strong>{{User::find($respuesta['user_id'])['nick']}}</strong></p>
                     <p style="margin:0px;">{{$respuesta['contenido']}}</p>
-                    <p style="margin:0px;">{{User::find($respuesta['user_id'])['nick']}}</p>
+                    
                     <p style="margin:0px;">{{$respuesta['created_at']}}</p>
                   </div>
 
