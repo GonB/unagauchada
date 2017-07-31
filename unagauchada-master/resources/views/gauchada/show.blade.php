@@ -131,7 +131,7 @@
                 <h3><strong>{{User::find($coment->user_id)->nick}}</strong></h3>
                {{$coment->contenido}}<br>
               
-               <div class="pull-center">{{$coment->created_at}}</div><br>
+               <div class="pull-center">{{$coment->created_at->diffForHumans()}}</div><br>
 
 
 
@@ -192,7 +192,7 @@
                     <p style="margin:0px;"><strong>{{User::find($respuesta['user_id'])['nick']}}</strong></p>
                     <p style="margin:0px;">{{$respuesta['contenido']}}</p>
                     
-                    <p style="margin:0px;">{{$respuesta['created_at']}}</p>
+                    <p style="margin:0px;">{{$respuesta['created_at']->diffForHumans()}}</p>
                   </div>
 
                     @if($respuesta->user_id == Auth::id()and($r<10)) 

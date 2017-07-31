@@ -61,7 +61,7 @@
                   @else
                     <h2>{{ $gau->titulo }}</h2>
                   @endif
-                    <p style="margin: 0px;">{{ $gau->descripcion }}</p>
+                    <strong><p style="margin: 0px;">{{ $gau->descripcion }}</p></strong>
                     <p style="margin: 0px;">Fecha Limite: {{$gau->fecha_limite}}</p>
                     <?php   $user = User::find($gau->user_id);
                       echo "Creado por $user->nick";

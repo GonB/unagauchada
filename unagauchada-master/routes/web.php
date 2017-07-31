@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // Rutas gauchada
-Route::get('/gauchada/create', 'GauchadaController@create')->name('create_gauchada_path');
+Route::get('/gauchada/create', 'GauchadaController@create')->name('create_gauchada_path')->middleware('auth');
 Route::post('/gauchada', 'GauchadaController@store')->name('store_gauchada_path');
 Route::get('/gauchada/{gauchada}/edit', 'GauchadaController@edit')->name('edit_gauchada_path');
 Route::get('/gauchada/{gauchada}/delete', 'GauchadaController@delete')->name('delete_gauchada_path'); //LO HACE EL ADMIN
@@ -28,7 +28,7 @@ Route::get('/gauchada/index', 'GauchadaController@index')->name('gauchadas_path'
 Route::get('/gauchada/{gauchada}', 'GauchadaController@show')->name('gauchada_path');
 Route::get('/gauchada', 'GauchadaController@search')->name('buscar_gauchada_path');
 Route::get('/gauchada/index/{gauchada}', 'GauchadaController@despublicar')->name('despublicar_gauchada_path');
-Route::get('/categorizar', 'GauchadaController@categorizar')->name('categorizar_gauchada_path');
+Route::get('/categorizar', 'GauchadaController@categorizar')->name('categorizar_gauchada_path')->middleware('auth');
 
 
 // Rutas perfil
@@ -54,12 +54,12 @@ Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('updat
 Route::get('/postular/{gauchada}', 'PostulaController@store')->name('store_postula_path');
 Route::get('/despostular/{gauchada}', 'PostulaController@destroy')->name('destroy_postula_path');
 Route::get('/elegido/{postula}/{gauchada}', 'PostulaController@choose')->name('choose_postula_path');
-Route::get('/postulaciones', 'PostulaController@misPostulaciones')->name('mis_postulaciones_path');
-Route::get('/misgauchadas', 'PostulaController@misGauchadasRealizadas')->name('mis_gauchadas_path');
+Route::get('/postulaciones', 'PostulaController@misPostulaciones')->name('mis_postulaciones_path')->middleware('auth');
+Route::get('/misgauchadas', 'PostulaController@misGauchadasRealizadas')->name('mis_gauchadas_path')->middleware('auth');
 
 
 //Rutas Comentario
-Route::get('/comentar/create/{gauchada}', 'ComentarioController@create')->name('create_comentario_path');
+Route::get('/comentar/create/{gauchada}', 'ComentarioController@create')->name('create_comentario_path')->middleware('auth');
 Route::get('/comentar/{gauchada}', 'ComentarioController@store')->name('store_comentario_path');
 Route::get('/comentar/edit/{comentario}', 'ComentarioController@edit')->name('edit_comentario_path');
 Route::get('/comentar/update/{comentario}', 'ComentarioController@update')->name('update_comentario_path');
@@ -68,9 +68,9 @@ Route::get('comentar/eliminar/{comentario}/confirm','ComentarioController@delete
 
 
 //Rutas Respuesta
-Route::get('/respuesta/create/{comentario}', 'RespuestaController@create')->name('create_respuesta_path');
+Route::get('/respuesta/create/{comentario}', 'RespuestaController@create')->name('create_respuesta_path')->middleware('auth');
 Route::get('/respuesta/{comentario}', 'RespuestaController@store')->name('store_respuesta_path');
-Route::get('/respuesta/edit/{respuesta}', 'RespuestaController@edit')->name('edit_respuesta_path');
+Route::get('/respuesta/edit/{respuesta}', 'RespuestaController@edit')->name('edit_respuesta_path')->middleware('auth');
 Route::get('/respuesta/update/{respuesta}', 'RespuestaController@update')->name('update_respuesta_path');
 Route::get('/respuesta/eliminar/{respuesta}/confirm', 'RespuestaController@delete_confirm')->name('confirmdel_respuesta_path');
 Route::get('/respuesta/eliminar/{respuesta}', 'RespuestaController@delete')->name('delete_respuesta_path');
@@ -80,7 +80,7 @@ Route::get('/elegido/Null/{user_pointNull}/{gauchada}', 'UserController@pointNul
 Route::get('/elegido/Res/{user_pointRes}/{gauchada}', 'UserController@pointRes')->name('pointRes_perfil_path');
 
 //ADMIN
-Route::get('/admin', 'AdminController@index')->name('index_admin_path');
+Route::get('/admin', 'AdminController@index')->name('index_admin_path')->middleware('auth');
 Route::get('/ranking', 'AdminController@ranking')->name('ranking_usuarios_path');
 Route::get('/ganancias', 'AdminController@gananciasForm')->name('ganancias_form_path');
 Route::get('/ganancias/show', 'AdminController@gananciasShow')->name('ganancias_show_path');
