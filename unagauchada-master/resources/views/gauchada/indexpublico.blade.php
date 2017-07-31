@@ -68,6 +68,7 @@
                     ?>
                     <p>Posteado: {{ $gau->created_at->diffForHumans() }}</p>
                 </small>  
+
                 @if(Auth::check())
                   <?php
                   // esto es para ver si ya existe la postulacion
@@ -91,6 +92,7 @@
                         <button type="submit" class="btn btn-danger" autofocus="" onclick="alert('Te Postulaste!')">Postularse</button>
                       </form>
                     @endif
+
                   <?php
                   } else {
                     if ((Auth::user()->id != $gau->user_id) and ($existe)) { ?>
@@ -114,10 +116,12 @@
                   </form>
                 @endif
             @endif
+
             </div>
           </div>
           <hr>
         @endif
+         <hr style="margin:10px 0px;border-color: coral;">
     @endforeach
     <div style="text-align: center;">{!! $gauchada -> render() !!}</div>
 @endsection
