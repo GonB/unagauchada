@@ -10,6 +10,9 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
+                 <div class= "pull-left">
+                      <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}" style="margin-right:10px" width="60" height="60" >
+                    </div>
                     <a href="{{ route('gauchada_path', ['gauchada' => $gauchada]) }}">{{ $gauchada->titulo }}</a>
 
                     <small class="pull-right">
