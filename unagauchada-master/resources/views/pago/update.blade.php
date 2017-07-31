@@ -26,13 +26,12 @@
 					<p>Numero Tarjeta: {{$pago->numero_tarjeta}}</p>
 					<p>Codigo Seguridad: {{$pago->cod_seguridad}}</p>
 					<p>Vencimiento: {{$pago->vencimiento}}</p>	
-					<p>A Pagar: ${{$pago->creditos}} ({{$pago->creditos}} Creditos)</p>
+					<p>A Pagar: ${{$pago->creditos}} ({{$pago->creditos}} Créditos)</p>
 					</strong>
 				</div>
-
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary" autofocus="">Confirmar</button>
-					<button class ="btn btn-warning" onclick="goBack()"> Atrás</button>
+					<button class ="btn btn-warning" onclick="goBack()">Atrás</button>
 					<script>
 						function goBack(){
 							window.history.back();

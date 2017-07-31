@@ -20,23 +20,24 @@
 			<form action="{{route('update_gauchada_path', ['gauchada' => $gauchada->id])}}" method='GET'>
 				<div class="col-md-8 col-md-offset-2" style="margin-left: 0px;">
 					<div class="form-group">
-						<label for="Titulo">Titulo:</label>
+						<label for="Titulo" style="margin-bottom: 0px;">Título</label>
 						<input type="string" name='titulo' class="form-control" value="{{$gauchada->titulo}}" style="width: 400px" />
 					</div>
 					<div class="form-group">
-						<label for="Descripcion">Descripcion:</label>
-						<textarea rows="5" name="descripcion" class="form-control" style=" width: 400px" />{{$gauchada->descripcion}}</textarea>
+						<label for="Descripcion" style="margin-bottom: 0px;">Descripción</label>
+						<textarea rows="2" name="descripcion" class="form-control" style=" width: 400px" />{{$gauchada->descripcion}}</textarea>
 					</div>
 					<div class="form-group">
-						<label for="fecha_limite">Fecha Limite</label>
+						<label for="fecha_limite" style="margin-bottom: 0px;">Fecha límite</label>
 						<input type="date" name="fecha_limite" class="form-control" style="width: 400px" value="{{ $gauchada->fecha_limite or old('fecha_limite') }}"/>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button> 
-						<a href="{{ route('gauchadas_path') }}" class ="btn btn-warning">Cancelar</a>
+						<a href="{{ route('home') }}" class ="btn btn-warning">Cancelar</a>
 					</div>
 				</div>		
 			</form>
+		</div>
 		</div>
 	</div>
 @endsection
