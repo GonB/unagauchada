@@ -14,9 +14,18 @@
 ?>
 
 <div class="container">
+<div>
+            @if (Session::has('message'))
+                <div class="alert" style="padding: 0px;margin: 0px auto 10px;background-color: #87a4b7;color: white;text-align: center;font-size: medium;width: 526px;border-radius: 20px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="margin-right: 10px;">&times;</button>
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+        </div>
     <div class="panel panel-default">
         <div class="cab_form">Una Gauchada</div>
         <div class="panel-body links2">
+
             @if (Auth::check())
                 <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
                 <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>

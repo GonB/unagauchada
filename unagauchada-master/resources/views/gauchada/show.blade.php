@@ -9,7 +9,16 @@
 ?>
 @section('content')
     <div class="row">
+      <div>
+            @if (Session::has('message'))
+                <div class="alert" style="padding: 0px;margin: 0px auto 10px;background-color: #87a4b7;color: white;text-align: center;font-size: medium;width: 526px;border-radius: 20px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="margin-right: 10px;">&times;</button>
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+        </div>
         <div class="col-md-8 col-md-offset-2">
+
             <h2>{{ $gauchada->titulo }}</h2>
             <div class= "pull-left">
               <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}" style="margin-right:10px" width="200" height="200" >

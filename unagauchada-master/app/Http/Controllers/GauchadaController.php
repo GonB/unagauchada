@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\input;
 use App\User;
 use App\Postula;
+use DB;
 use DateTime;
 use Image;
 
@@ -22,6 +23,7 @@ class GauchadaController extends Controller
     public function index()
     {
         $gauchada = Gauchada::where('user_id', 'LIKE','%'.Auth::id().'%')->orderBy('id','desc')->paginate(5);
+
 
         foreach ($gauchada as $gau) {
             if ($gau->activo) {
@@ -61,8 +63,19 @@ class GauchadaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $gauchada = new Gauchada;
+    {   
+        $gauchada= new Gauchada;
+        $pendientes = DB::table('gauchadas')
+                        ->where('activo','=', 1)
+                        ->where('seleccionado', '=', 1)
+                        ->get();
+        if($pendientes != "[]"){
+            session()->flash('message', 'Tienes calificaciones pendientes!');
+
+            return redirect()->route('home');
+
+        }
+
         return view('gauchada.create')->with(['gauchada' => $gauchada]);
     }
 
