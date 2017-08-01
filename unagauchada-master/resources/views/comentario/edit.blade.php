@@ -21,7 +21,7 @@
 		<div class="col-md-8 col-md-offset-2">
 		
 			<div class="form-group">
-				<label for="contenido">Comentario:</label>
+				<label for="contenido" style="margin-bottom: 0px;">Comentario</label>
 				<input type="text" name='contenido' class="form-control" value="{{$comentario->contenido}}" style="width: 626px" />
 			</div>
 			<div class="form-group">

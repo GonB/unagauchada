@@ -24,12 +24,12 @@
 		
 					
 				<div class="form-group">
-					<label for="Desde">Desde:</label>
+					<label for="Desde" style="margin-bottom: 0px;">Desde</label>
 					<input type="date" name='Desde' class="form-control" value="" style="width: 400px" />
 				</div>
 
 				<div class="form-group">
-					<label for="Hasta">Hasta:</label>
+					<label for="Hasta" style="margin-bottom: 0px;">Hasta</label>
 					<input type="date" name="Hasta" class="form-control" value="" style="width: 400px">
 				</div>
 

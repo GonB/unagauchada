@@ -9,7 +9,7 @@
 
 				<form action="{{route('cambioCat_usuario_path', ['user' => $user])}}" method='GET' enctype="multipart/form-data">
 	                <p>Cambiar a <b>{{$user -> nick}}</b> a la categoria </p>
-	                <label for="Categoria"></label>
+	                <label for="Categoria" style="margin-bottom: 0px;"></label>
 					<select type="string" name='categoria' class="form-control" value="{{old('categoria')}}" style="width: 400px">
 						<?php foreach (CategoriaUsuario::all() as $categoria) {
 							echo '<option value="'.$categoria['id'].'">'.$categoria['nombre'].'</option>';

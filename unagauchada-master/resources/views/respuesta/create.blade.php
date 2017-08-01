@@ -21,7 +21,7 @@
 		<div class="col-md-8 col-md-offset-2">
 		
 		<div class="form-group">
-			<label for="contenido">Respuesta:</label>
+			<label for="contenido" style="margin-bottom: 0px;">Respuesta</label>
 			<input type="text" name='contenido' class="form-control" value="{{old('contenido')}}" style="width: 400px" />
 		</div>
 

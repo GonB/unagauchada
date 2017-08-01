@@ -25,7 +25,7 @@
 			<form action="{{route('store_categoriagauchada_path')}}" method='get'>
 				<div class="col-md-8 col-md-offset-2" style="margin-left: 0px;">
 					<div class="form-group">
-						<label for="Titulo">Nombre:</label>
+						<label for="Titulo" style="margin-bottom: 0px;">Nombre</label>
 						<input type="string" name='nombre' class="form-control" value="{{old('nombre')}}" style="width: 300px" />
 					</div>
 					<div class="form-group">

@@ -20,7 +20,7 @@
 			<form action="{{route('update_categoriagauchada_path', ['categoriaGauchada' => $categoriaGauchada])}}" method='GET'>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="form-group">
-						<label for="Nombre">Nombre:</label>
+						<label for="Nombre" style="margin-bottom: 0px;">Nombre</label>
 						<input type="string" name='nombre' class="form-control" value="{{$categoriaGauchada->nombre}}" style="width: 300px" />
 					</div>
 					<div class="form-group">

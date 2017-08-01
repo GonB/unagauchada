@@ -11,7 +11,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
+                            <label for="name" class="col-md-4 control-label" style="margin-bottom: 0px;">Nombre</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                          <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
-                            <label for="nick" class="col-md-4 control-label">Nick</label>
+                            <label for="nick" class="col-md-4 control-label" style="margin-bottom: 0px;">Nick</label>
 
                             <div class="col-md-6">
                                 <input id="nick" type="text" class="form-control" name="nick" value="{{ old('nick') }}" required autofocus>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+                            <label for="email" class="col-md-4 control-label" style="margin-bottom: 0px;">E-Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                            <div class="form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
-                            <label for="birthdate" class="col-md-4 control-label">Fecha De Nacimiento</label>
+                            <label for="birthdate" class="col-md-4 control-label" style="margin-bottom: 0px;">Fecha De Nacimiento</label>
 
                             <div class="col-md-6">
                                 <input id="birthdate" type="date" class="form-control" name="birthdate" value="{{ old('birthdate')  }}" required>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
+                            <label for="password" class="col-md-4 control-label" style="margin-bottom: 0px;">Contraseña</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Contraseña</label>
+                            <label for="password-confirm" class="col-md-4 control-label" style="margin-bottom: 0px;">Confirmar Contraseña</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>

@@ -29,15 +29,15 @@
 				<form action="{{route('update_categoriausuario_path', ['categoriaUsuario' => $categoriaUsuario])}}" method='GET'>
 					<div class="col-md-8 col-md-offset-2">
 						<div class="form-group">
-							<label for="Nombre">Nombre:</label>
+							<label for="Nombre" style="margin-bottom: 0px;">Nombre:</label>
 							<input type="string" name='nombre' class="form-control" value="{{$categoriaUsuario->nombre}}" style="width: 300px" />
 						</div>
 						<div class="form-group">
-							<label for="rango_inicial">Rango Inicial</label>
+							<label for="rango_inicial" style="margin-bottom: 0px;">Rango Inicial</label>
 							<input type="integer" name='rango_inicial' class="form-control" value="{{$categoriaUsuario->rango_inicial}}" style="width: 300px" />			
 						</div>
 						<div class="form-group">
-							<label for="rango_final">Rango Final</label>
+							<label for="rango_final" style="margin-bottom: 0px;">Rango Final</label>
 							<input type="integer" name='rango_final' class="form-control" value="{{$categoriaUsuario->rango_final}}" style="width: 300px" />			
 						</div>
 						<div class="form-group">

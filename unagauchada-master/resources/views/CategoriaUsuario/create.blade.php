@@ -32,18 +32,18 @@
 				<form action="{{route('store_categoriausuario_path')}}" method='GET'>
 					
 					<div class="form-group">
-						<label for="nombre">Nombre</label>
+						<label for="nombre" style="margin-bottom: 0px;">Nombre</label>
 						<input type="string" name='nombre' class="form-control" value="" style="width: 400px" />
 					</div>
 
 					<div class="form-group">
-						<label for="rango_inicial">Rango Inicial</label>
+						<label for="rango_inicial" style="margin-bottom: 0px;">Rango Inicial</label>
 						<input type="integer" name='rango_inicial' class="form-control" value="" style="width: 400px" />			
 
 					</div>
 
 					<div class="form-group">
-						<label for="rango_final">Rango Final</label>
+						<label for="rango_final" style="margin-bottom: 0px;">Rango Final</label>
 						<input type="integer" name='rango_final' class="form-control" value="" style="width: 400px" />
 					</div>
 					
