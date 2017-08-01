@@ -5,6 +5,7 @@
     use App\Gauchada;
   ?>
 @section('content')
+
     @foreach(Gauchada::all() as $gauchada)
         @if($gauchada -> user_id == Auth::id())
 
@@ -50,5 +51,5 @@
             <hr>
         @endif
     @endforeach
-@endsection
+    @endsection
 	

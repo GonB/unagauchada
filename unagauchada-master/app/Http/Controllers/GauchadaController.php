@@ -21,7 +21,7 @@ class GauchadaController extends Controller
      */
     public function index()
     {
-        $gauchada = Gauchada::orderBy('id','desc')->simplePaginate(10);
+        $gauchada = Gauchada::orderBy('id','desc')->paginate(5);
 
         foreach ($gauchada as $gau) {
             if ($gau->activo) {
@@ -39,7 +39,7 @@ class GauchadaController extends Controller
 
     public function indexpublico()
     {
-        $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+        $gauchada = Gauchada::orderBy('id','desc')->paginate(5);
         
         foreach ($gauchada as $gau) {
             if ($gau->activo) {
