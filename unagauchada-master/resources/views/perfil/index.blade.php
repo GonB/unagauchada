@@ -15,7 +15,7 @@
         <div class="panel panel-default">
             <div class="cab_form">MI PERFIL</div>
             <div class="panel-body">
-                <div style="text-align: center;">
+                <div class="pull-left" style="text-align: center;margin:15px">
                     <img src="/imagenes/usuarios/{{ (Auth::user()->imagen) }}" style="width: 150px;">
                 </div>
                 <strong>
@@ -24,7 +24,7 @@
                     <p style="margin: 0px">Fecha Nacimiento: {{Auth::user()->birthdate}}</p>
                     <p style="margin: 0px">Email: {{Auth::user()->email}}</p>
                     <p style="margin: 0px">Categoria: {{$categoria}}</p>
-                    <p style="margin: 0px">Puntos: {{Auth::user()->score}}</p>
+                    <p style="margin: 0px">Puntos: {{Auth::user()->score}}</p><br>
                 </strong>
                 <div style="margin-bottom: 5px;"><a href="{{ route('edit_password_path') }}">Modificar contraseña</a></div>
                 <a href="{{ route('edit_perfil_path') }}" class="btn btn-primary">Editar perfil</a>

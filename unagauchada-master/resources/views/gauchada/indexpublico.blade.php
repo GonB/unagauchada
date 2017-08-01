@@ -111,7 +111,7 @@
                 @if (Auth::user()->admin)
                   <form action="{{route('delete_gauchada_path', ['gau' => $gau])}}" method='GET'>
                     <small class="pull-right">
-                      <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Gauchada Eliminada')">Eliminar</button>
+                      <button type="submit" class="btn btn-warning" autofocus="" onclick="confirm('Deseas eliminar la gauchada?')">Eliminar</button>
                     </small>
                   </form>
                 @endif
@@ -119,8 +119,7 @@
 
             </div>
           </div>
-          <hr>
-          <hr style="margin:10px 0px;border-color: coral;">
+          <hr style="margin:10px 15px;border-color: black">
         @endif
          
     @endforeach
