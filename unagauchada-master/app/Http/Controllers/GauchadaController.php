@@ -21,7 +21,7 @@ class GauchadaController extends Controller
      */
     public function index()
     {
-        $gauchada = Gauchada::orderBy('id','desc')->paginate(5);
+        $gauchada = Gauchada::where('user_id', 'LIKE','%'.Auth::id().'%')->orderBy('id','desc')->paginate(5);
 
         foreach ($gauchada as $gau) {
             if ($gau->activo) {
