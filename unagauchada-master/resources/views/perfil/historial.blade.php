@@ -49,7 +49,14 @@ use App\Postula;?>
                     <a href="{{route('gauchada_path', ['gauchada' => $gauch])}}">{{$gauch->titulo}}</a><br>
                     Fecha: {{$gauch->created_at->format('Y-m-d')}}<br>
                 @endforeach
-
+                <div class="form-group">
+                   <button class ="btn btn-warning" onclick="goBack()" style="margin-top: 5px;">Volver</button>
+                       <script>
+                           function goBack(){
+                               window.history.back();
+                           }
+                       </script>
+                </div>
             </div>
         </div>
     </div>

@@ -109,7 +109,7 @@
 
             <div style="margin:35px 0px;background-color: coral;color: white;">
               <hr style="border-color:black;margin: 0px;">
-              <h3 style="margin:0px;padding:15px 0px;text-align: center;">- Comentarios -</h3>
+              <h3 style="margin:0px;padding:8px 0px;text-align: center;">- Comentarios -</h3>
               <hr style="border-color:black;margin: 0px;">
             </div>
 

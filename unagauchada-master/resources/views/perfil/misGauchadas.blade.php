@@ -15,16 +15,23 @@
                 @foreach($misgau as $misgau)
                     <strong>
                         <?php  
-                        $gau = Gauchada::find($misgau->id);
+                          $gau = Gauchada::find($misgau->id);
                         ?>
-                        Gauchada: <a href="{{ route('gauchada_path', ['gauchada' => $gau]) }}">{{ $gau->titulo }}</a> <br>
+                        <a href="{{ route('gauchada_path', ['gauchada' => $gau]) }}">{{ $gau->titulo }}</a> <br>
                         Fecha: {{$misgau->created_at}}
                         <br><br>
-
                         <hr style="border-color:grey;margin: 0px;">
                     </strong>
-               @endforeach
-               
+                @endforeach
+
+                <div class="form-group">
+                   <button class ="btn btn-warning" onclick="goBack()" style="margin-top: 5px;">Volver</button>
+                       <script>
+                           function goBack(){
+                               window.history.back();
+                           }
+                       </script>
+                </div>
             </div>
         </div>
     </div>
