@@ -27,8 +27,15 @@
         <div class="panel-body links2">
 
             @if (Auth::check())
-                <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
+                @if (Auth::user()->credits < 200)
+                    <a href="{{ url('/gauchada/create') }}">Crear Gauchada (1 credito necesario)</a><br> 
+                @else
+                    <a href="{{ url('/gauchada/create') }}">Crear Gauchada</a><br> 
+                @endif
                 <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
+                @if (Auth::user()->credits < 200)
+                    <a href="{{route('create_premium_pago_path')}}">Convertirse en Premium</a><br>
+                @endif
                 <a href="{{url('/pago/create')}}">Comprar Creditos</a><br>
                 <a href="{{route('mis_postulaciones_path')}}"> Ver Mis Postulaciones</a><br>
                 <a href="{{route('mis_gauchadas_path')}}">Ver Mis Gauchadas Realizadas</a>

@@ -54,6 +54,29 @@ class PagoController extends Controller
     return view ('pago.update')->with(['pago' => $pago]);
     }
 
+    public function create_premium()
+    {
+        $pago= new Pago;
+        return view('pago.create_premium')->with(['pago' => $pago]);
+    }
+
+    public function store_premium(Request $pago)
+    {
+         $this->validate($pago, [
+        'numero_tarjeta' => 'required|min:16',
+        'cod_seguridad' => 'required|min:3',
+        'vencimiento' => 'required|after:today',
+    ]);
+    $pago=Pago::create([
+            'user_id' => Auth::id(),
+            'numero_tarjeta' => $pago['numero_tarjeta'],
+            'cod_seguridad' => $pago['cod_seguridad'],
+            'vencimiento' => $pago['vencimiento'],
+            'creditos' => 100,
+            ]);
+    return view ('pago.update_premium')->with(['pago' => $pago]);
+    }
+
     /**
      * Display the specified resource.
      *

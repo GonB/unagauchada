@@ -109,6 +109,14 @@ class UserController extends Controller
        return redirect()->route('home');
     }
 
+    public function update_premium(Pago $pago)
+    {
+       $user = User::find($pago->user_id);
+       $user->credits=1000000;
+       $user->save();
+       return redirect()->route('home');
+    }
+
     public function update_password(Request $request)
     {  
         $user = Auth::user();

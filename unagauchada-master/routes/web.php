@@ -48,7 +48,10 @@ Route::get('/perfil/{user}/cambio', 'UserController@cambiarCat')->name('cambiarC
 Route::get('/pago/create', 'PagoController@create')->name('create_pago_path')->middleware('auth');
 Route::get('/pago', 'PagoController@store')->name('store_pago_path');
 Route::put('/pago/update/{pago}', 'UserController@update_creditos')->name('update_creditos_path');
-
+//Rutas pago Premium
+Route::get('/pago/create/premium', 'PagoController@create_premium')->name('create_premium_pago_path')->middleware('auth');
+Route::get('/pago/premium', 'PagoController@store_premium')->name('store_premium_pago_path');
+Route::put('/pago/update/{pago}/premium', 'UserController@update_premium')->name('update_premium_path');
 
 //Rutas Postula
 Route::get('/postular/{gauchada}', 'PostulaController@store')->name('store_postula_path');
