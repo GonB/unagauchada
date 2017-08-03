@@ -19,12 +19,9 @@
     </div>
   @endif
 
-  <div class="row">
-    <small class="col-md-8">
-
+  <div class="row" style="width: 600px; margin: 0px auto;">
       <form action="{{route('buscar_gauchada_path')}}" method="GET" class="navbar-form pull-right">
         <div class="form-group">
-          <label for="titulo"></label>
           <input type="text" name="titulo" class="form-control" placeholder="Buscar Gauchada" aria-describedby="search"></input>
         </div>
         <button type="submit" class="btn btn-info" autofocus="">Buscar</button>
@@ -44,8 +41,6 @@
         </div>
         <button type="submit" class="btn btn-info" autofocus="">Categoria</button>
       </form>
-
-    </small>
   </div>
 
     @foreach($gauchada as $gau)

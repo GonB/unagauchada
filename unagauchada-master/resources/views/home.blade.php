@@ -34,7 +34,7 @@
                 @endif
                 <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
                 @if (Auth::user()->credits < 200)
-                    <a href="{{route('create_premium_pago_path')}}">Convertirse en Premium</a><br>
+                    <a href="{{route('create_premium_pago_path')}}">Convertirse en usuario Premium</a><br>
                 @endif
                 <a href="{{url('/pago/create')}}">Comprar Creditos</a><br>
                 <a href="{{route('mis_postulaciones_path')}}"> Ver Mis Postulaciones</a><br>
