@@ -171,7 +171,7 @@ class GauchadaController extends Controller
             }
         }
         $gauchada->delete();
-        $gau = Gauchada::orderBy('id','desc')->paginate(10);
+        $gau = Gauchada::orderBy('id','desc')->paginate(5);
         return view ('gauchada.indexpublico')->with(['gauchada' => $gau]);
     }
 
@@ -181,7 +181,7 @@ class GauchadaController extends Controller
         $this->validate($request, [
             'titulo' => 'required|min:3',
         ]);
-        $gauchada = Gauchada::where('titulo', 'LIKE','%'.$request->titulo.'%')->orderBy('id','desc')->paginate(10);
+        $gauchada = Gauchada::where('titulo', 'LIKE','%'.$request->titulo.'%')->orderBy('id','desc')->paginate(5);
         if($request->titulo != "") {
             return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
         }
@@ -192,10 +192,10 @@ class GauchadaController extends Controller
     {
         //return $request['categoria'];
         if($request['categoria'] != 100) {
-            $gauchada = Gauchada::where('categoria', 'LIKE', $request['categoria'])->orderBy('id','desc')->paginate(10);
+            $gauchada = Gauchada::where('categoria', 'LIKE', $request['categoria'])->orderBy('id','desc')->paginate(5);
             return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
         } else {
-            $gauchada = Gauchada::orderBy('id','desc')->paginate(10);
+            $gauchada = Gauchada::orderBy('id','desc')->paginate(5);
             return view ('gauchada.indexpublico')->with(['gauchada' => $gauchada]);
         }
     } 
