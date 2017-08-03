@@ -58,7 +58,7 @@
                   <strong><p style="margin: 0px;font-size: medium;">{{ $gau->descripcion }}</p></strong>
                 </div>
                 <p style="margin: 0 0 0 20px;">
-                  Fecha Limite: {{$gau->fecha_limite}} | <?php $user = User::find($gau->user_id); echo "Creado por $user->nick";?> | Posteado: {{ $gau->created_at->diffForHumans() }}
+                  <strong>Fecha Limite: {{$gau->fecha_limite}} | <?php $user = User::find($gau->user_id); echo "Creado por $user->nick";?> | Posteado: {{ $gau->created_at->diffForHumans() }}</strong>
                 </p>
             </div> 
               <div style="float: left;width: 25%; margin-top: 150px;">

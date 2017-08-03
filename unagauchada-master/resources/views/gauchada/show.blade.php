@@ -19,11 +19,13 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
 
-            <h2>{{ $gauchada->titulo }}</h2>
+            <div class="pull-center">
+                  <pre><h2>                {{ $gauchada->titulo }}</h2></pre>
+                </div>
             <div class= "pull-left">
               <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}" style="margin-right:10px" width="200" height="200" >
             </div><br>
-            <p><strong>{{ $gauchada->descripcion }}</p></strong>
+            <p><strong><h4>{{ $gauchada->descripcion }}</h4></p></strong>
             <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
             <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?>
             <p>Categoria: {{ $cate -> nombre }}</p>
