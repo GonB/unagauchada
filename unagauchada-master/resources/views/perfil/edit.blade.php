@@ -36,12 +36,12 @@
 				<form action="{{route('update_perfil_path', ['user_id' => Auth::user()->id])}}" method='GET' enctype="multipart/form-data">
 					{{ csrf_field() }} 
 					<div class="form-group">
-						<label for="name">Nombre</label>
+						<label for="name" style="margin: 0px;">Nombre</label>
 						<input type="string" name='name' class="form-control" value="{{Auth::user()->name}}" style="width: 400px" />
 					</div>
 
 					<div class="form-group">
-						<label for="email">Email</label>
+						<label for="email" style="margin: 0px;">Email</label>
 						<input type="string" name='email' class="form-control" value="{{Auth::user()->email}}" style="width: 400px" />
 					</div>
 					<div class="form-group">
