@@ -16,7 +16,7 @@
             </div>
         @endif
         <div>
-            <div class="pull-center" style="font-size: 32px;color: dodgerblue;background-color: lavender;border-radius: 30px; text-align: center;">
+            <div class="pull-center" style="font-size: 32px;color: dodgerblue;background-color: lavender;border-radius: 30px; text-align: center;margin-bottom: 5px;">
               {{ $gauchada->titulo }}
             </div>
             <div class= "pull-left">
@@ -25,7 +25,7 @@
             <div style="height: 170px;margin-top: 30px;font-size: larger;font-weight: 700;">
               {{ $gauchada->descripcion }}
             </div>
-            <p style="margin: 0 0 0 50px;">- Fecha Limite: {{$gauchada->fecha_limite}} | <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?> Categoria: {{ $cate -> nombre }} | <?php   $user= User::find($gauchada->user_id); ?> Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a> | Posteado {{ $gauchada->created_at->diffForHumans() }} -</p>
+            <p style="margin: 10px 0px 0px 50px;">- Fecha Limite: {{$gauchada->fecha_limite}} | <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?> Categoria: {{ $cate -> nombre }} | <?php   $user= User::find($gauchada->user_id); ?> Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a> | Posteado {{ $gauchada->created_at->diffForHumans() }} -</p>
             
             <!-- SOLO PODRÁ VER ESTO EL AUTOR DE LA GAUCHADA -->
             @if($gauchada->user_id == Auth::id())
