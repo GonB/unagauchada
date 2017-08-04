@@ -97,7 +97,8 @@ class GauchadaController extends Controller
             ]);
             if($gauchada->hasFile('imagen')){
                 $image = $gauchada->file('imagen');
-                $filename = 'gauchada' . $user->id . '.' . $image->getClientOriginalExtension();
+                $cadena = str_random(20);
+                $filename = $cadena . '.' . $image->getClientOriginalExtension();
                 Image::make($image)->resize(300, 300)->save(public_path('/imagenes/gauchadas/' . $filename));
                 $img = $filename;
             }
