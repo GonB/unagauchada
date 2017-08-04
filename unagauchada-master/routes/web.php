@@ -21,7 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/gauchada/create', 'GauchadaController@create')->name('create_gauchada_path')->middleware('auth');
 Route::post('/gauchada', 'GauchadaController@store')->name('store_gauchada_path');
 Route::get('/gauchada/{gauchada}/edit', 'GauchadaController@edit')->name('edit_gauchada_path');
-Route::get('/gauchada/{gauchada}/delete', 'GauchadaController@delete')->name('delete_gauchada_path'); //LO HACE EL ADMIN
 Route::get('/gauchada/up/{gauchada}', 'GauchadaController@update')->name('update_gauchada_path');
 Route::get('/gauchada/index/publico', 'GauchadaController@indexpublico')->name('indexpublico_gauchada_path');
 Route::get('/gauchada/index', 'GauchadaController@index')->name('gauchadas_path');
@@ -29,6 +28,8 @@ Route::get('/gauchada/{gauchada}', 'GauchadaController@show')->name('gauchada_pa
 Route::get('/gauchada', 'GauchadaController@search')->name('buscar_gauchada_path');
 Route::get('/gauchada/index/{gauchada}', 'GauchadaController@despublicar')->name('despublicar_gauchada_path');
 Route::get('/categorizar', 'GauchadaController@categorizar')->name('categorizar_gauchada_path')->middleware('auth');
+Route::get('/gauchada/index/publico?', 'GauchadaController@delete')->name('delete_gauchada_path'); //LO HACE EL ADMIN
+Route::get('/gauchada/delete/{gauchada}/confirm', 'GauchadaController@delete_confirm')->name('delete_confirm_path'); //LO HACE EL ADMIN
 
 
 // Rutas perfil

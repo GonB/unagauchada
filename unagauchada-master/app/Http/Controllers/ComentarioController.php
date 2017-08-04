@@ -107,8 +107,8 @@ class ComentarioController extends Controller
     public function delete(Comentario $comentario)
     {
         $gauchada=Gauchada::find($comentario->gauchada_id);
-       $comentario->delete();
-       session()->flash('message', '¡Comentario eliminado!');
-       return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
+        $comentario->delete();
+        session()->flash('message', '¡Comentario eliminado!');
+        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
 }

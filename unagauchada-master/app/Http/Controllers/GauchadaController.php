@@ -64,16 +64,15 @@ class GauchadaController extends Controller
      */
     public function create()
     {   
+        //TIENEN QUE SER LAS GAUCHADAS DEL USUARIO AUTENTICADO.
         $gauchada= new Gauchada;
         $pendientes = DB::table('gauchadas')
                         ->where('activo','=', 1)
                         ->where('seleccionado', '=', 1)
                         ->get();
         if($pendientes != "[]"){
-            session()->flash('message', 'Tienes calificaciones pendientes!');
-
+            session()->flash('message', '¡No puedes crear gauchada. Tienes calificaciones pendientes!');
             return redirect()->route('home');
-
         }
 
         return view('gauchada.create')->with(['gauchada' => $gauchada]);
@@ -153,8 +152,13 @@ class GauchadaController extends Controller
         $gauchada->update(
             $request->only('titulo', 'descripcion', 'fecha_limite')
         );
-        session()->flash('message', 'Gauchada Actualizada!');
+        session()->flash('message', '¡Gauchada actualizada!');
         return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
+    }
+
+    public function delete_confirm(Gauchada $gauchada)
+    {
+        return view('gauchada.delete')->with(['gauchada' => $gauchada]);
     }
 
     /**
@@ -172,6 +176,7 @@ class GauchadaController extends Controller
         }
         $gauchada->delete();
         $gau = Gauchada::orderBy('id','desc')->paginate(5);
+        session()->flash('message', '¡Gauchada eliminada!');
         return view ('gauchada.indexpublico')->with(['gauchada' => $gau]);
     }
 
