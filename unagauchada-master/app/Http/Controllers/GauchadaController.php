@@ -69,6 +69,7 @@ class GauchadaController extends Controller
         $pendientes = DB::table('gauchadas')
                         ->where('activo','=', 1)
                         ->where('seleccionado', '=', 1)
+                        ->where('user_id', 'LIKE', Auth::id())
                         ->get();
         if($pendientes != "[]"){
             session()->flash('message', '¡No puedes crear gauchada. Tienes calificaciones pendientes!');

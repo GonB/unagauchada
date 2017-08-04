@@ -47,8 +47,8 @@ class AdminController extends Controller
     public function gananciasShow( Request $request)
     {
         $fecha = $request['Hasta'];
-        $messages = ['Desde.before' => 'Fecha Invalida, "Desde" debe ser menor a "Hasta"',
-                    'Hasta.before_or_equal' =>'Fecha Invalida, "Hasta" debe ser menor o igual a la fecha actual',
+        $messages = ['Desde.before' => 'Fecha inválida, "Desde" debe ser menor a "Hasta"',
+                    'Hasta.before_or_equal' =>'Fecha inválida, "Hasta" debe ser menor o igual a la fecha actual',
                     ];
         $this->validate($request, [
             'Desde' => 'required|date',
