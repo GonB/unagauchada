@@ -40,7 +40,7 @@
             <div class= "pull-left">
               <img src="/imagenes/gauchadas/{{ $gau->imagen }}" style="margin-right:10px" width="60" height="60">
             </div>
-            <a href="{{ route('gauchada_path', ['gau' => $gau]) }}" style="font-size:17px;">{{ $gau->titulo }}</a>
+            <a href="{{ route('gauchada_path', ['gau' => $gau]) }}" style="font-size:17px;" title="Ver detalles de gauchada">{{ $gau->titulo }}</a>
             <?php
                 $hay_pos=False;
             ?>
