@@ -8,35 +8,29 @@
   use App\Respuesta;
 ?>
 @section('content')
-    <div class="row">
-      <div>
-            @if (Session::has('message'))
-                <div class="alert" style="padding: 0px;margin: 0px auto 10px;background-color: #87a4b7;color: white;text-align: center;font-size: medium;width: 526px;border-radius: 20px;">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="margin-right: 10px;">&times;</button>
-                    {{ Session::get('message') }}
-                </div>
-            @endif
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-
-            <div class="pull-center">
-                  <pre><h2>                {{ $gauchada->titulo }}</h2></pre>
-                </div>
+    <div style="width: 850px;margin: 0px auto;">
+        @if (Session::has('message'))
+            <div class="alert" style="padding: 0px;margin: 0px auto 10px;background-color: #87a4b7;color: white;text-align: center;font-size: medium;width: 526px;border-radius: 20px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="margin-right: 10px;">&times;</button>
+                {{ Session::get('message') }}
+            </div>
+        @endif
+        <div>
+            <div class="pull-center" style="font-size: 32px;color: dodgerblue;background-color: lavender;border-radius: 30px; text-align: center;">
+              {{ $gauchada->titulo }}
+            </div>
             <div class= "pull-left">
-              <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}" style="margin-right:10px" width="200" height="200" >
-            </div><br>
-            <p><strong><h4>{{ $gauchada->descripcion }}</h4></p></strong>
-            <p>Fecha Limite: {{$gauchada->fecha_limite}}</p>
-            <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?>
-            <p>Categoria: {{ $cate -> nombre }}</p>
-            <?php   $user= User::find($gauchada->user_id); ?>
-            <p>Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a></p>
-            <p>Posteado {{ $gauchada->created_at->diffForHumans() }}</p>
+              <img src="/imagenes/gauchadas/{{ $gauchada->imagen }}" style="margin-right:10px" width="200" height="200">
+            </div>
+            <div style="height: 170px;margin-top: 30px;font-size: larger;font-weight: 700;">
+              {{ $gauchada->descripcion }}
+            </div>
+            <p style="margin: 0 0 0 50px;">- Fecha Limite: {{$gauchada->fecha_limite}} | <?php $cate = CategoriaGauchada::where('id', '=', $gauchada->categoria)->first(); ?> Categoria: {{ $cate -> nombre }} | <?php   $user= User::find($gauchada->user_id); ?> Creado por: <a href="{{ route('ver_perfil_path', ['user' => $user]) }}">{{ $user -> nick }}</a> | Posteado {{ $gauchada->created_at->diffForHumans() }} -</p>
             
             <!-- SOLO PODRÁ VER ESTO EL AUTOR DE LA GAUCHADA -->
             @if($gauchada->user_id == Auth::id())
               
-               <h4 class="pull-left" style="margin:0px;padding:15px 0px;text-align: center;">- Postulantes -</h4><br><br>
+              <div style="margin:0px;text-align: left;font-weight: 700;"> Postulantes:</div>
 
               <!-- ME FIJO SI YA HAY ALGUNO ELEGIDO -->
               <?php 
@@ -62,16 +56,15 @@
                       <!-- EL FORM ESTA ACA Y NO EN EL BOTON MISMO POR CUESTION DE ESTETICA -->
                       <form action="{{ route('choose_postula_path', ['postula' => $post, 'gauchada' => $gauchada->id]) }}" method='GET'>
                       {{ csrf_field() }}
-                      <p style="margin: 0px;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a>
-                      
-                      <?php
-                      if (! $hay) { ?>
-                        @if ($gauchada->activo)
-                            <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
-                        @endif
-                      <?php
-                      } ?>
-                      </p>
+                        <p style="margin:0px;text-align: left;margin: 0 0 0 20px;color: coral;">- <a href="{{ route('ver_perfil_path', ['user' => $user_p]) }}">{{ $user_p -> nick }}</a>
+                          <?php
+                          if (! $hay) { ?>
+                            @if ($gauchada->activo)
+                                <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
+                            @endif
+                          <?php
+                          } ?>
+                        </p>
                       </form>
                     <?php
                     } ?>
@@ -82,25 +75,25 @@
               @endif
               
               @if ($hay)
-                <p>
-                  Postulante elegido: 
+                <p style="font-weight: 700;margin: 0px;">
+                  Postulante elegido:
                   <a href="{{ route('ver_perfil_path', ['user' => $postu_eleg]) }}"> {{ $postu_eleg -> nick }}</a>
                   @if (($es_mia) and ($gauchada->activo))
-                    <p style="margin: 0px; display: inline-block;">Puntuación:
-                      <div style="padding-left: 15px; display: inline-block;">
+                    <p style="margin: 0 0 0 25px; display: inline-block;font-weight: 700;">Puntuar usuario:
+                      <div style="padding-left: 10px; display: inline-block;">
                         <div style="display: inline-block;">
                           <form action="{{ route('pointSum_perfil_path', ['user_pointSum' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                            <button type="submit" class="btn btn-danger" id="Sum" autofocus="" style="font-size: 15px;" onclick="alert('Puntuaste +1 al usuario')">+</button>
+                            <button type="submit" class="btn btn-danger" id="Sum" style="font-size: 15px;width: 30px;" onclick="alert('Puntuaste +1 al usuario')"> + </button>
                           </form>
                         </div>
                         <div style="display: inline-block;">
                         <form action="{{ route('pointNull_perfil_path', ['user_pointNull' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                          <button type="submit" class="btn btn-primary" id="Null" autofocus="" onclick="alert('Puntuacion Nula')">0</button>
+                          <button type="submit" class="btn btn-primary" id="Null" style="font-size: 15px;width: 30px;" onclick="alert('Puntuacion Nula')">0</button>
                         </form>
                         </div>
                         <div style="display: inline-block;">
                         <form action="{{ route('pointRes_perfil_path', ['user_pointRes' => $postu_eleg, 'gauchada' => $gauchada]) }}" method='GET'>
-                          <button type="submit" class="btn btn-warning" id="Res" autofocus="" onclick="alert('Puntuaste -1 al usuario')">-</button>
+                          <button type="submit" class="btn btn-warning" id="Res" style="font-size: 15px;width: 30px;" onclick="alert('Puntuaste -1 al usuario')"> - </button>
                         </form>
                         </div>
                       </div>
@@ -113,16 +106,12 @@
             @if(Auth::check())
               @if ($gauchada->activo)
                 <form style="text-align: right;" action="{{route('create_comentario_path', ['gauchada' => $gauchada])}}" method='GET'>
-                    <button type="submit" class="btn btn-primary" autofocus="">Añadir Comentario</button>
+                    <button type="submit" class="btn btn-primary">Añadir Comentario</button>
                 </form>
               @endif
             @endif
-
-            <div style="margin:35px 0px;background-color: coral;color: white;">
-              <hr style="border-color:black;margin: 0px;">
-              <h3 style="margin:0px;padding:8px 0px;text-align: center;">- Comentarios -</h3>
-              <hr style="border-color:black;margin: 0px;">
-            </div>
+          </div>
+            <div style="margin:20px 0px;background-color: coral;color: white;border-bottom: 1px solid black; border-top: 1px solid black;text-align: center;font-size: 20px;">- Comentarios -</div>
 
             @foreach(Comentario::all() as $comentario)
                 <?php 
@@ -137,97 +126,98 @@
                         }
                    }
                ?>
-               <div class= "pull-left">
-              <img src="/imagenes/usuarios/{{ User::find($coment->user_id)->imagen }}" style="margin-right:10px" width="65" height="65" >
-              </div>
-                <h3><strong>{{User::find($coment->user_id)->nick}}</strong></h3>
-               {{$coment->contenido}}<br>
-              
-               <div class="pull-center">{{$coment->created_at->diffForHumans()}}</div><br>
-
-
-
-               
-              <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
-
-              @if(($gauchada->user_id == Auth::id())and(!$hay)and($coment->user_id != Auth::id()))
-                @if ($gauchada->activo)
-                  <form style="text-align: right;" action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
-                      <button type="submit" class="btn btn-danger" autofocus="">Responder Comentario</button>
-                  </form> 
-                @endif
-              @endif
-
-                <!--BOTON EDITAR COMENTARIO // SI ES MI COMENTARIO-->
-               <?php
-
-               $date=date("Y-m-d G:i:s", time());
-               $f = (strtotime($date) - (strtotime($coment->created_at)))/60;
-               $f = abs($f);
-               $f = floor($f);
-              
-               
-               ?>
-             
-
-                @if((!$hay))
-                  @if(($coment->user_id == Auth::id())and($f<10))
-                  <form style="text-align: right;" action="{{route('edit_comentario_path', ['comentario' => $coment])}}" method='GET'>
-                      <button type="submit" class="btn btn-danger" autofocus="">Editar Comentario</button>
-                  </form>
-
-                  <form style="text-align: right;" action="{{route('confirm_delete_path', ['comentario' => $coment])}}" method='GET'>
-                      <button type="submit" class="btn btn-warning" autofocus="">Eliminar Comentario</button>
-                  </form>  
-                  @endif
-                @endif
-
-              
-
-              
-              
-               <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
-               @if($hay)
-                <?php
-                
-                  $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
-                
-                  $date_resp=date("Y-m-d G:i:s", time());
-                   $r = (strtotime($date_resp) - (strtotime($respuesta->created_at)))/60;
-                   $r = abs($r);
-                   $r = floor($r);
-                 ?>
-                  <div style="padding-left: 50px;">
+              <!-- CONTENEDOR DE COMENTARIO Y RESPUESTA--> 
+              <div class="row" style="border-bottom: 1px solid coral;padding: 10px 0px;width: 850px;margin: 0px;">
+                <!-- CONTENEDOR DE COMENTARIO -->
+                <div>
+                  <!-- CONTENIDO DEL COMENTARIO -->
+                  <div style="float: left;width: 75%;">
                     <div class= "pull-left">
-              <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px" width="65" height="65" class="pull-left" >
-            </div>
-                    <p style="margin:0px;"><strong>{{User::find($respuesta['user_id'])['nick']}}</strong></p>
-                    <p style="margin:0px;">{{$respuesta['contenido']}}</p>
-                    
-                    <p style="margin:0px;">{{$respuesta['created_at']->diffForHumans()}}</p>
+                      <img src="/imagenes/usuarios/{{ User::find($coment->user_id)->imagen }}" style="margin-right:10px;border-radius: 40px;" width="65" height="65">
+                    </div>
+                    <p style="font-size: 15px;font-weight: 700; margin: 0px">{{$coment->contenido}}</p>
+                    <div style="font-size: small;">Por: {{User::find($coment->user_id)->nick}} - {{$coment->created_at->diffForHumans()}}</div>
+                     
+                    <!--BOTON RESPUESTA //// SI ES MI GAUCHADA -->
+
+                    @if(($gauchada->user_id == Auth::id())and(!$hay)and($coment->user_id != Auth::id()))
+                      @if ($gauchada->activo)
+                        <form style="text-align: right;" action="{{route('create_respuesta_path', ['comentario' => $coment])}}" method='GET'>
+                            <button type="submit" class="btn btn-danger">Responder comentario</button>
+                        </form> 
+                      @endif
+                    @endif
                   </div>
+                  
+                  <!--BOTONES DE COMENTARIO // SI ES MI COMENTARIO-->
+                  <div style="float:left;width: 25%;">
+                     <?php
+                       $date=date("Y-m-d G:i:s", time());
+                       $f = (strtotime($date) - (strtotime($coment->created_at)))/60;
+                       $f = abs($f);
+                       $f = floor($f);   
+                     ?>
 
-                    @if($respuesta->user_id == Auth::id()and($r<10)) 
-                    <form style="text-align: right;" action="{{route('edit_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
-                      <button type="submit" class="btn btn-danger" autofocus="">Editar Respuesta</button>
-                     </form>
-                      <form style="text-align: right;" action="{{route('confirmdel_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
-                      <button type="submit" class="btn btn-warning" autofocus="">Eliminar Respuesta</button>
-                     </form>  
-                   @endif
+                      @if((!$hay))
+                        @if(($coment->user_id == Auth::id())and($f<10))
+                        <form style="text-align: right;" action="{{route('edit_comentario_path', ['comentario' => $coment])}}" method='GET'>
+                            <button type="submit" class="btn btn-danger">Editar comentario</button>
+                        </form>
+
+                        <form style="text-align: right;" action="{{route('confirm_delete_path', ['comentario' => $coment])}}" method='GET'>
+                            <button type="submit" class="btn btn-warning">Eliminar comentario</button>
+                        </form>  
+                        @endif
+                      @endif
+                  </div>
+                </div>
+
+                <!-- CONTENEDOR RESPUESTA -->
+                <div>
+                <!--Aca es para buscar la respuesta del comentario, pero falta hacerlo bien.-->
+                 @if($hay)
+                  <?php
+                  
+                    $respuesta= Respuesta::where('comentario_id', '=', $coment->id)->first();
+                  
+                    $date_resp=date("Y-m-d G:i:s", time());
+                     $r = (strtotime($date_resp) - (strtotime($respuesta->created_at)))/60;
+                     $r = abs($r);
+                     $r = floor($r);
+                   ?>
+                    <div style="float: left;width: 75%;padding-left: 60px;">
+                      <div class= "pull-left">
+                        <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px; border-radius: 40px;" width="65" height="65">
+                      </div>
+                      <p style="font-size: 15px;font-weight: 700; margin: 0px">{{$respuesta['contenido']}}</p>
+                      <div style="font-size: small;">Por: {{User::find($respuesta['user_id'])['nick']}} - {{$respuesta['created_at']->diffForHumans()}}</div>
+                    </div>
+
+                    <div style="float: left; width: 25%;">
+                      @if($respuesta->user_id == Auth::id()and($r<10)) 
+                      <form style="text-align: right;" action="{{route('edit_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
+                        <button type="submit" class="btn btn-danger" autofocus="">Editar Respuesta</button>
+                       </form>
+                        <form style="text-align: right;" action="{{route('confirmdel_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
+                        <button type="submit" class="btn btn-warning" autofocus="">Eliminar Respuesta</button>
+                       </form>  
+                     @endif
+                    </div>
                   @endif
-
-
-
-
-                  <hr style="margin:10px 0px;border-color: coral;">
+                </div>
+            </div>
 
                  <?php
                    }
                   ?>
 
             @endforeach
+            <div style="text-align: center;"><button class ="btn btn-warning" onclick="goBack()" style="margin:20px auto;width: 100px;">Atrás</button>
+                <script>
+                    function goBack(){
+                        window.history.back();
+                    }
+                </script>
+            </div>
         </div>
-    </div>
-    <hr>
 @endsection

@@ -22,7 +22,7 @@
 		
 			<div class="form-group">
 				<label for="contenido" style="margin-bottom: 0px;">Comentario</label>
-				<input type="text" name='contenido' class="form-control" value="{{old('contenido')}}" style="width: 626px" />
+				<input type="text" name='contenido' class="form-control" value="{{old('contenido')}}" style="width: 400px" />
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button>

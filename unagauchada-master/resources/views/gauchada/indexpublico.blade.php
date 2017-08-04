@@ -45,9 +45,9 @@
     @foreach($gauchada as $gau)
         @if ($gau->activo)
           <div class="row" style="width: 800px; margin: 0px auto; border-bottom: 1px solid coral;">
-            <div style="float: left;width: 75%;">
+            <div style="float: left;width: 80%;">
               @if(Auth::check())
-                <a href="{{ route('gauchada_path', ['gau' => $gau]) }}"><p style="font-size: xx-large;margin: 0px;">{{ $gau->titulo }}</p></a>
+                <a href="{{ route('gauchada_path', ['gau' => $gau]) }}" title="Ver detalles de gauchada"><p class="links2" style="font-size: xx-large;margin: 0px;">{{ $gau->titulo }}</p></a>
               @else
                 <p style="font-size: xx-large;margin: 0px;">{{ $gau->titulo }}</p>
               @endif
@@ -55,13 +55,13 @@
                   <img src="/imagenes/gauchadas/{{ $gau->imagen }}" width="150" height="150" style="margin-right:10px">
                 </div>
                 <div style="height: 150px;">
-                  <strong><p style="margin: 0px;font-size: medium;">{{ $gau->descripcion }}</p></strong>
+                  <p style="margin: 0px;font-size: medium;font-weight: 700;">{{ $gau->descripcion }}</p>
                 </div>
                 <p style="margin: 0 0 0 20px;">
-                  <strong>Fecha Limite: {{$gau->fecha_limite}} | <?php $user = User::find($gau->user_id); echo "Creado por $user->nick";?> | Posteado: {{ $gau->created_at->diffForHumans() }}</strong>
+                  Fecha Limite: {{$gau->fecha_limite}} | <?php $user = User::find($gau->user_id); echo "Creado por $user->nick";?> | Posteado: {{ $gau->created_at->diffForHumans() }}
                 </p>
             </div> 
-              <div style="float: left;width: 25%; margin-top: 150px;">
+              <div style="float: left;width: 20%; margin-top: 160px;padding-left: 40px;">
                   @if(Auth::check())
                     <?php
                     // esto es para ver si ya existe la postulacion
