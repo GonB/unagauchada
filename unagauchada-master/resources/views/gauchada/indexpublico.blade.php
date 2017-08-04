@@ -24,7 +24,7 @@
         <div class="form-group">
           <input type="text" name="titulo" class="form-control" placeholder="Buscar Gauchada" aria-describedby="search"></input>
         </div>
-        <button type="submit" class="btn btn-info" autofocus="">Buscar</button>
+        <button type="submit" class="btn btn-info">Buscar</button>
       </form>
     
       <form action="{{route('categorizar_gauchada_path')}}" method="GET" class="navbar-form pull-right">
@@ -38,7 +38,7 @@
             ?>
           </select>
         </div>
-        <button type="submit" class="btn btn-info" autofocus="">Mostrar</button>
+        <button type="submit" class="btn btn-info">Mostrar</button>
       </form>
   </div>
 
@@ -82,7 +82,7 @@
                     ?>
                       @if ($gau->activo)
                         <form action="{{route('store_postula_path', ['gau' => $gau])}}" method='GET'>
-                          <button type="submit" class="btn btn-danger" autofocus="" onclick="alert('Te Postulaste!')">Postularse</button>
+                          <button type="submit" class="btn btn-danger" onclick="alert('Te Postulaste!')">Postularse</button>
                         </form>
                       @endif
 
@@ -92,7 +92,7 @@
                         @if ($gau->activo)
                           <form action="{{route('destroy_postula_path', ['gau' => $gau])}}" method='GET'>
                             <div>
-                              <button type="submit" class="btn btn-warning" autofocus="" onclick="alert('Te Despostulaste!')">Despostularse</button>
+                              <button type="submit" class="btn btn-warning" onclick="alert('Te Despostulaste!')">Despostularse</button>
                             </div>
                           </form>
                         @endif
@@ -104,7 +104,7 @@
                   @if (Auth::user()->admin)
                     <form action="{{route('delete_gauchada_path', ['gau' => $gau])}}" method='GET'>
                       <div>
-                        <button type="submit" class="btn btn-warning" autofocus="" onclick="confirm('Deseas eliminar la gauchada?')">Eliminar</button>
+                        <button type="submit" class="btn btn-warning" onclick="confirm('Deseas eliminar la gauchada?')">Eliminar</button>
                       </div>
                     </form>
                   @endif

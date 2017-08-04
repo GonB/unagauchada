@@ -18,15 +18,13 @@
                 <div class="pull-left" style="text-align: center;margin:15px">
                     <img src="/imagenes/usuarios/{{ (Auth::user()->imagen) }}" style="width: 150px;">
                 </div>
-                <strong>
-                    <p style="margin: 0px">Nombre: {{Auth::user()->name}}</p>
-                    <p style="margin: 0px">Nick: {{Auth::user()->nick}}</p>
-                    <p style="margin: 0px">Fecha Nacimiento: {{Auth::user()->birthdate}}</p>
-                    <p style="margin: 0px">Email: {{Auth::user()->email}}</p>
-                    <p style="margin: 0px">Categoria: {{$categoria}}</p>
-                    <p style="margin: 0px">Puntos: {{Auth::user()->score}}</p><br>
-                </strong>
-                <div style="margin-bottom: 5px;"><a href="{{ route('edit_password_path') }}">Modificar contraseña</a></div>
+                <p style="margin: 0px">Nombre: <strong>{{Auth::user()->name}}</strong></p>
+                <p style="margin: 0px">Nick: <strong>{{Auth::user()->nick}}</strong></p>
+                <p style="margin: 0px">Fecha Nacimiento: <strong>{{Auth::user()->birthdate}}</strong></p>
+                <p style="margin: 0px">Email: <strong>{{Auth::user()->email}}</strong></p>
+                <p style="margin: 0px">Categoria: <strong>{{$categoria}}</strong></p>
+                <p style="margin: 0px">Puntos: <strong>{{Auth::user()->score}}</strong></p>
+                <div style="margin-bottom: 5px;"><strong><a href="{{ route('edit_password_path') }}">Modificar contraseña</a></strong></div>
                 <a href="{{ route('edit_perfil_path') }}" class="btn btn-primary">Editar perfil</a>
                 <button class ="btn btn-warning" onclick="goBack()">Atrás</button>
                 <script>

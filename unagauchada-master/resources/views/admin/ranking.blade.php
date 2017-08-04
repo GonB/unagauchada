@@ -19,7 +19,7 @@
                     <hr style="border-color:grey;margin: 0px;">
                 </strong>
                @endforeach
-               
+               <div style="text-align: center;margin-top: 10px;"><a href="{{ route('index_admin_path') }}" class ="btn btn-warning" style="width: 100px;">Atrás</a></div>
             </div>
         </div>
     </div>

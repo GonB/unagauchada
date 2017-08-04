@@ -60,7 +60,7 @@
                           <?php
                           if (! $hay) { ?>
                             @if ($gauchada->activo)
-                                <button type="submit" class="btn btn-info" autofocus="" onclick="alert('Postulante Elegido!')">Elegir</button>
+                                <button type="submit" class="btn btn-info" onclick="alert('Postulante Elegido!')" style="margin-left: 15px;">Elegir</button>
                             @endif
                           <?php
                           } ?>
@@ -133,7 +133,7 @@
                   <!-- CONTENIDO DEL COMENTARIO -->
                   <div style="float: left;width: 75%;">
                     <div class= "pull-left">
-                      <img src="/imagenes/usuarios/{{ User::find($coment->user_id)->imagen }}" style="margin-right:10px;border-radius: 40px;" width="65" height="65">
+                      <img src="/imagenes/usuarios/{{ User::find($coment->user_id)->imagen }}" style="margin-right:10px;border-radius: 40px;" width="60" height="60">
                     </div>
                     <p style="font-size: 15px;font-weight: 700; margin: 0px">{{$coment->contenido}}</p>
                     <div style="font-size: small;">Por: {{User::find($coment->user_id)->nick}} - {{$coment->created_at->diffForHumans()}}</div>
@@ -187,7 +187,7 @@
                    ?>
                     <div style="float: left;width: 75%;padding-left: 60px;">
                       <div class= "pull-left">
-                        <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px; border-radius: 40px;" width="65" height="65">
+                        <img src="/imagenes/usuarios/{{ User::find($respuesta->user_id)->imagen }}" style="margin-right:10px; border-radius: 40px;" width="60" height="60">
                       </div>
                       <p style="font-size: 15px;font-weight: 700; margin: 0px">{{$respuesta['contenido']}}</p>
                       <div style="font-size: small;">Por: {{User::find($respuesta['user_id'])['nick']}} - {{$respuesta['created_at']->diffForHumans()}}</div>

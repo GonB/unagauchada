@@ -45,6 +45,7 @@ class ComentarioController extends Controller
                 'user_id' => Auth::id(),
                 'gauchada_id' => $gauchada->id,
                 'contenido' => $comentario['contenido'],
+                session()->flash('message', '¡Nuevo comentario añadido!')
             ]);
              return view('gauchada.show')->with(['gauchada' => $gauchada]);
          }
@@ -107,6 +108,7 @@ class ComentarioController extends Controller
     {
         $gauchada=Gauchada::find($comentario->gauchada_id);
        $comentario->delete();
+       session()->flash('message', '¡Comentario eliminado!');
        return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
     }
 }

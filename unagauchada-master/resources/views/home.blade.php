@@ -33,7 +33,7 @@
                     <a href="{{ url('/gauchada/create') }}">Crear Gauchada</a><br> 
                 @endif
                 <a href="{{route('gauchadas_path')}}">Mis Gauchadas</a><br>
-                @if (Auth::user()->credits < 200)
+                @if ( (Auth::user()->credits < 200) and (!Auth::user()->admin) )
                     <a href="{{route('create_premium_pago_path')}}">Convertirse en usuario Premium</a><br>
                 @endif
                 <a href="{{url('/pago/create')}}">Comprar Creditos</a><br>

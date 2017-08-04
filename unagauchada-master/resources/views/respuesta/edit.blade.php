@@ -16,24 +16,27 @@
 	</div>
 
 	@endif
-
-	<form action="{{route('update_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
-		<div class="col-md-8 col-md-offset-2">
-		
-			<div class="form-group">
-				<label for="contenido" style="margin-bottom: 0px;">Respuesta</label>
-				<input type="text" name='contenido' class="form-control" value="{{$respuesta->contenido}}" style="width: 626px" />
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button>
-				<button class ="btn btn-warning" onclick="goBack()"> Cancelar</button>
-				<script>
-					function goBack(){
-						window.history.back();
-					}
-				</script>								
-			</div>
+	
+	<div class="panel panel-default">
+		<div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:3px 8px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">
+			Editar respuesta
+	    </div>
+	    <div class="panel-body">
+			<form action="{{route('update_respuesta_path', ['respuesta' => $respuesta])}}" method='GET'>
+				<div class="form-group">
+					<label for="contenido" style="margin-bottom: 0px;">Respuesta</label>
+					<input type="text" name='contenido' class="form-control" value="{{$respuesta->contenido}}" style="width: 500px" />
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary" autofocus="">Aceptar</button>
+					<button class ="btn btn-warning" onclick="goBack()">Cancelar</button>
+					<script>
+						function goBack(){
+							window.history.back();
+						}
+					</script>								
+				</div>
+			</form>
 		</div>
-	</form>
-
+	</div>
 @endsection

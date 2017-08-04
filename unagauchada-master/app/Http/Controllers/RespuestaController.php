@@ -31,6 +31,7 @@ class RespuestaController extends Controller
                 'comentario_id' => $comentario->id,
                 'user_id' => Auth::user()->id,
                 'contenido' => $respuesta['contenido'],
+                session()->flash('message', '¡Nueva respuesta añadida!')
             ]);
              return view('gauchada.show')->with(['gauchada' => Gauchada::find($comentario->gauchada_id)]);
     }
@@ -48,7 +49,7 @@ class RespuestaController extends Controller
         $respuesta->update(
             $request->only('contenido')
         );
-        session()->flash('message', 'Respuesta Actualizada!');
+        session()->flash('message', '¡Respuesta actualizada!');
         $comentario = Comentario::find($respuesta->comentario_id); 
         $gauchada = Gauchada::find($comentario->gauchada_id);
         return redirect()->route('gauchada_path', ['gauchada' => $gauchada]);
@@ -64,6 +65,7 @@ class RespuestaController extends Controller
         $comentario = Comentario::find($respuesta->comentario_id);
         $gauchada= Gauchada::find($comentario->gauchada_id);
         $respuesta->delete();
+        session()->flash('message', '¡Respuesta eliminada!');
         return redirect()->route('gauchada_path', ['gauchada' => $gauchada]); 
     }
 }

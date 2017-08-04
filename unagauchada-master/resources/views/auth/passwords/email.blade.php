@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">Restablecer contraseña</div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -32,9 +32,14 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Enviar Contraseña de restauración
+                                <button type="submit" class="btn btn-primary" onclick="goBack()">
+                                    Enviar contraseña de restauración
                                 </button>
+                                <script>
+                                    function goBack(){
+                                        window.history.back();
+                                    }
+                                </script>
                             </div>
                         </div>
                     </form>

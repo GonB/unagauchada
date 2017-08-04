@@ -14,6 +14,9 @@
 
     <div class="container">
         <div class="panel panel-default">
+            <div style="color:#FFF;background-color:#FF7F50;border-color:#d3e0e9;text-align:center;font-size:20px;padding:3px 8px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;">
+                Información de perfil
+            </div>
             <div class="panel-body">
                 <div style="text-align: center;" class="pull-right">
                     <img src="/imagenes/usuarios/{{ ($user->imagen) }}" style="width: 150px;">
